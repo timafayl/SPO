@@ -9,15 +9,15 @@ namespace FuelCalculation
         /// </summary>
         /// <returns></returns>
         bool SuccessProbobility();
-        double GetWearRate();
-        double GetFuelWaste();
-        double GetSpeed();
-        double GetWay();
-        double GetTankVolume();
-        double SetWearRate();
-        double SetFuelWaste();
-        double SetSpeed();
-        double SetWay();
-        double SetTankVolume();
+        double getWearRate();
+        double getFuelWaste();
+        double getSpeed();
+        double getWay();
+        double getTankVolume();
+        void setWearRate();
+        void setFuelWaste();
+        void setSpeed();
+        void setWay();
+        void setTankVolume();
     }
 }
