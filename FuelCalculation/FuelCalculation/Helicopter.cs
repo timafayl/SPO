@@ -30,6 +30,10 @@ namespace FuelCalculation
             return _speed;
         }
 
+        /// <summary>
+        /// Аксессор для получения значения массы груза на вертолете
+        /// </summary>
+        /// <returns>Массу груза</returns>
         public double GetMass()
         {
             return _mass;
@@ -78,6 +82,9 @@ namespace FuelCalculation
             }
         }
 
+        /// <summary>
+        /// Аксессор для установления значения массы груза
+        /// </summary>
         public void SetMass()
         {
             Console.WriteLine("Введите массу перевозимого груза (кг): ");

@@ -30,6 +30,10 @@ namespace FuelCalculation
             return _speed;
         }
 
+        /// <summary>
+        /// Аксессор для получения значения типа используемого топлева
+        /// </summary>
+        /// <returns>Тип используемого топлева</returns>
         public string GetFuelType()
         {
             return _fuelType;
@@ -78,6 +82,9 @@ namespace FuelCalculation
             }
         }
 
+        /// <summary>
+        /// Аксессор для внесения значения типа используемого топлева
+        /// </summary>
         public void SetFuelType()
         {
             Console.WriteLine("Введите название используемого топлива: ");
