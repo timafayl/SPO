@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace FuelCalculation
 {
-    public class Helicopter: ITransportProperty
+    //Если класс наследует интерфейс, то его название оканчивается на название интерфейса
+    //HelicopterTransportProperty
+    //CarTransportProperty итд
+    //TODO:Доделать интерфейс
+    public class HelicopterTransportProperty : ITransportProperty
     {
         private double _wearRate;
         private double _fuelWaste;
@@ -14,6 +18,20 @@ namespace FuelCalculation
         private double _mass;
         private double _way;
         private double _tankVolume;
+
+        //TODO: Сделай аксессоры вот так, в блоке гет идет вывод данных, это геттер, в сет идет установка данных
+        //TODO: Почитай про свойства классов в c#
+        public double WearRate
+        {
+            get { return _wearRate; }
+            set
+            {
+                if (value<=0)
+                    throw new ArgumentException();//Вот так делается генерация ошибки(исключение)
+                _wearRate = value;
+
+            }
+        }
 
         public double GetWearRate()
         {
@@ -51,6 +69,8 @@ namespace FuelCalculation
 
         public void SetWearRate()
         {
+            //TODO: Насколько я знаю нельзя привязывать к интерфейсу(всмысле консольному)
+            //TODO:Сделай через throw new...
             Console.WriteLine("Введите процент износа авто: ");
             _wearRate = Convert.ToDouble(Console.ReadLine());
             while ((_wearRate < 0) || (_wearRate > 1))
