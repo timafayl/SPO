@@ -62,11 +62,11 @@ namespace FuelCalculation
 
         public void SetFuelWaste()
         {
-            Console.WriteLine("Введите расход топлива на 100 км: ");
+            Console.WriteLine("Введите расход топлива за 1 час (л/ч): ");
             _fuelWaste = Convert.ToDouble(Console.ReadLine());
-            while ((_fuelWaste < 1) || (_fuelWaste > 50))
+            while ((_fuelWaste < 20) || (_fuelWaste > 50))
             {
-                Console.WriteLine("Введенное значение некорректно, значение должно быть вещественным числом от 1 до 50. Пожалуйста повторите попытку: ");
+                Console.WriteLine("Введенное значение некорректно, значение должно быть вещественным числом от 20 до 50. Пожалуйста повторите попытку: ");
                 _fuelWaste = Convert.ToDouble(Console.ReadLine());
             }
         }
@@ -120,7 +120,7 @@ namespace FuelCalculation
 
         public bool SuccessProbobility()
         {
-            double calcValue = 0.01 * _fuelWaste * (1 + _wearRate) * (_speed / 40) * (1 + 0.0001*_mass) * _way;
+            double calcValue = 0.01 * _fuelWaste * (1 + _wearRate) * (_speed / 40) * (1 + 0.0001*_mass) * (_way / _speed);
 
             _wearRate += 0.01 * _way / 10;
 
