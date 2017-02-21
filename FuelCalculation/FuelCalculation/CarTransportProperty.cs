@@ -4,11 +4,29 @@ namespace FuelCalculation
 {
     public class CarTransportProperty : ITransportProperty
     {
+        /// <summary>
+        /// Степень износа авто
+        /// </summary>
         private double _wearRate;
+        /// <summary>
+        /// Расход топлива на 100 км
+        /// </summary>
         private double _fuelWaste;
+        /// <summary>
+        /// Скорость авто во время поездки
+        /// </summary>
         private double _speed;
+        /// <summary>
+        /// Используемый тип топлива
+        /// </summary>
         private string _fuelType;
+        /// <summary>
+        /// Заданный путь
+        /// </summary>
         private double _way;
+        /// <summary>
+        /// Общий объём бака
+        /// </summary>
         private double _tankVolume;
 
         public double WearRate

@@ -4,11 +4,29 @@ namespace FuelCalculation
 {
     public class HelicopterTransportProperty : ITransportProperty
     {
+        /// <summary>
+        /// Степень износа вертолёта
+        /// </summary>
         private double _wearRate;
+        /// <summary>
+        /// Расход топлива за 1 час
+        /// </summary>
         private double _fuelWaste;
+        /// <summary>
+        /// Скорость авто во время поездки
+        /// </summary>
         private double _speed;
+        /// <summary>
+        /// Масса груза
+        /// </summary>
         private double _mass;
+        /// <summary>
+        /// Заданный путь
+        /// </summary>
         private double _way;
+        /// <summary>
+        /// Общий объём бака
+        /// </summary>
         private double _tankVolume;
 
         public double WearRate
