@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FuelCalculation
 {
@@ -27,7 +23,8 @@ namespace FuelCalculation
             set
             {
                 if (value<=0)
-                    throw new ArgumentException();//Вот так делается генерация ошибки(исключение)
+                    //Сообщение в скобках можно потом вывести в приложении, причем в консольке и в форме либо еще как нибудь
+                    throw new ArgumentException("Неверно указан износ ТС");
                 _wearRate = value;
 
             }
