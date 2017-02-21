@@ -5,6 +5,10 @@ namespace FuelCalculation
     public class CarTransportProperty : ITransportProperty
     {
         /// <summary>
+        /// Марка машины
+        /// </summary>
+        private string _carName;
+        /// <summary>
         /// Степень износа авто
         /// </summary>
         private double _wearRate;
@@ -29,12 +33,41 @@ namespace FuelCalculation
         /// </summary>
         private double _tankVolume;
 
+        public CarTransportProperty(string carName, double wearRate, double fuelWaste, double speed, string fuelType, double way, double tankVolume)
+        {
+            CarName = carName;
+            WearRate = wearRate;
+            FuelWaste = fuelWaste;
+            Speed = speed;
+            FuelType = fuelType;
+            Way = way;
+            TankVolume = tankVolume;
+        }
+
+        public string CarName
+        {
+            get { return _carName; }
+            set
+            {
+                foreach (char letter in value)
+                {
+                    if (((int)letter < 97) || ((int)letter > 122))
+                    {
+                        throw new ArgumentException(
+                            "Неверно указана марка авто, значение должно содержать только буквы латинского алфавита");
+                    }
+                }
+
+                _carName = value;
+            }
+        }
+
         public double WearRate
         {
             get { return _wearRate; }
             set
             {
-                if ((_wearRate >= 0) && (_wearRate <= 1))
+                if ((value >= 0) && (value <= 1))
                     _wearRate = value;
                 else
                     throw new ArgumentException("Неверно указан износ ТС, значение должно быть от 0 до 1");
@@ -46,7 +79,7 @@ namespace FuelCalculation
             get { return _fuelWaste; }
             set
             {
-                if ((_fuelWaste >= 5) && (_fuelWaste <= 30))
+                if ((value >= 5) && (value <= 30))
                     _fuelWaste = value;
                 else
                     throw new ArgumentException("Неверно указан расход топлива, значение должно быть от 5 до 30");
@@ -58,7 +91,7 @@ namespace FuelCalculation
             get { return _speed; }
             set
             {
-                if ((_speed > 1) && (_speed < 180))
+                if ((value > 1) && (value < 180))
                     _speed = value;
                 else
                     throw new ArgumentException("Неверно указана скорость, значение должно быть от 1 до 180");
@@ -74,7 +107,7 @@ namespace FuelCalculation
             get { return _fuelType; }
             set
             {
-                if ((_fuelType == "бензин") || (_fuelType == "дизель"))
+                if ((value == "бензин") || (value == "дизель"))
                     _fuelType = value;
                 else
                     throw new ArgumentException("Неверно указан тип топлива, значение может быть либо 'бензин', либо 'дизель'");
@@ -86,7 +119,7 @@ namespace FuelCalculation
             get { return _way; }
             set
             {
-                if (_way > 0)
+                if (value > 0)
                     _way = value;
                 else
                     throw new ArgumentException("Неверно указан путь, значение должно быть больше нуля");
@@ -98,7 +131,7 @@ namespace FuelCalculation
             get { return _tankVolume; }
             set
             {
-                if ((_tankVolume >= 20) && (_tankVolume <= 100))
+                if ((value >= 20) && (value <= 100))
                     _tankVolume = value;
                 else
                     throw new ArgumentException("Неверно указан объём бака, значение должно быть в диапозоне от 20 до 100");
@@ -110,14 +143,14 @@ namespace FuelCalculation
             double calcValue;
             if (_fuelType == "бензин")
             {
-                calcValue = 0.01*_fuelWaste*(1 + _wearRate)*(_speed/40)*_way;
+                calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed/80) * _way;
             }
             else
             {
-                calcValue = 0.9*0.01*_fuelWaste*(1 + _wearRate)*(_speed/40)*_way;
+                calcValue = 0.9* 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 80) * _way;
             }
 
-            _wearRate += 0.01*_way/10;
+            _wearRate += 0.0001 * _way;
 
             return ((calcValue <= _tankVolume) && (_wearRate <= 1));
         }

@@ -34,7 +34,7 @@ namespace FuelCalculation
             get { return _wearRate; }
             set
             {
-                if ((_wearRate >= 0) && (_wearRate <= 1))
+                if ((value >= 0) && (value <= 1))
                     _wearRate = value;
                 else
                     throw new ArgumentException("Неверно указан износ ТС, значение должно быть от 0 до 1");
@@ -46,7 +46,7 @@ namespace FuelCalculation
             get { return _fuelWaste; }
             set
             {
-                if ((_fuelWaste >= 20) && (_fuelWaste <= 50))
+                if ((value >= 20) && (value <= 50))
                     _fuelWaste = value;
                 else
                     throw new ArgumentException("Неверно указан расход топлива, значение должно быть от 20 до 50");
@@ -58,7 +58,7 @@ namespace FuelCalculation
             get { return _speed; }
             set
             {
-                if ((_speed > 1) && (_speed < 400))
+                if ((value > 1) && (value < 400))
                     _speed = value;
                 else
                     throw new ArgumentException("Неверно указана скорость, значение должно быть от 1 до 400");
@@ -74,7 +74,7 @@ namespace FuelCalculation
             get { return _mass; }
             set
             {
-                if ((_mass > 0) && (_mass < 1000))
+                if ((value > 0) && (value < 1000))
                     _mass = value;
                 else
                     throw new ArgumentException("Неверно указана массы, значение должно быть от 1 до 1000");
@@ -86,7 +86,7 @@ namespace FuelCalculation
             get { return _way; }
             set
             {
-                if (_way > 0)
+                if (value > 0)
                     _way = value;
                 else
                     throw new ArgumentException("Неверно указан путь, значение должно быть больше нуля");
@@ -98,7 +98,7 @@ namespace FuelCalculation
             get { return _tankVolume; }
             set
             {
-                if ((_tankVolume >= 50) && (_tankVolume <= 200))
+                if ((value >= 50) && (value <= 200))
                     _tankVolume = value;
                 else
                     throw new ArgumentException("Неверно указан объём бака, значение должно быть в диапозоне от 50 до 200");
@@ -107,9 +107,9 @@ namespace FuelCalculation
 
         public bool SuccessProbobility()
         {
-            double calcValue = 0.01 * _fuelWaste * (1 + _wearRate) * (_speed / 40) * (1 + 0.0001*_mass) * (_way / _speed);
+            double calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 200) * (1 + 0.0001*_mass) * (_way / _speed);
 
-            _wearRate += 0.01 * _way / 10;
+            _wearRate += 0.0001 * _way;
 
             return ((calcValue <= _tankVolume) && (_wearRate <= 1));
         }
