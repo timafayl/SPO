@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FuelCalculation
 {
-    public class Car : ITransportProperty
+    public class CarTransportProperty : ITransportProperty
     {
         private double _wearRate;
         private double _fuelWaste;
