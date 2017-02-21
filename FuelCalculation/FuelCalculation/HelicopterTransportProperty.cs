@@ -29,6 +29,7 @@ namespace FuelCalculation
         /// </summary>
         private double _tankVolume;
 
+        //TODO:XML комментарии
         public double WearRate
         {
             get { return _wearRate; }
@@ -41,6 +42,7 @@ namespace FuelCalculation
             }
         }
 
+        //TODO:XML комментарии
         public double FuelWaste
         {
             get { return _fuelWaste; }
@@ -53,6 +55,7 @@ namespace FuelCalculation
             }
         }
 
+        //TODO:XML комментарии
         public double Speed
         {
             get { return _speed; }
@@ -81,6 +84,7 @@ namespace FuelCalculation
             }
         }
 
+        //TODO:XML комментарии
         public double Way
         {
             get { return _way; }
@@ -93,6 +97,7 @@ namespace FuelCalculation
             }
         }
 
+        //TODO:XML комментарии
         public double TankVolume
         {
             get { return _tankVolume; }
@@ -105,6 +110,7 @@ namespace FuelCalculation
             }
         }
 
+        //TODO:XML комментарии
         public bool SuccessProbobility()
         {
             double calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 200) * (1 + 0.0001*_mass) * (_way / _speed);

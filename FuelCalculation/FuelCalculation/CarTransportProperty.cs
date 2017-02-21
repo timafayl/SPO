@@ -32,7 +32,8 @@ namespace FuelCalculation
         /// Общий объём бака
         /// </summary>
         private double _tankVolume;
-
+        
+        //TODO:XML комментарии
         public CarTransportProperty(string carName, double wearRate, double fuelWaste, double speed, string fuelType, double way, double tankVolume)
         {
             CarName = carName;
@@ -44,6 +45,7 @@ namespace FuelCalculation
             TankVolume = tankVolume;
         }
 
+        //TODO:XML комментарии
         public string CarName
         {
             get { return _carName; }
@@ -62,6 +64,7 @@ namespace FuelCalculation
             }
         }
 
+        //TODO: XML комментарии
         public double WearRate
         {
             get { return _wearRate; }
@@ -74,6 +77,7 @@ namespace FuelCalculation
             }
         }
 
+        //TODO:XML комментарии
         public double FuelWaste
         {
             get { return _fuelWaste; }
@@ -86,6 +90,7 @@ namespace FuelCalculation
             }
         }
 
+        //TODO:XML комментарии
         public double Speed
         {
             get { return _speed; }
@@ -107,6 +112,8 @@ namespace FuelCalculation
             get { return _fuelType; }
             set
             {
+                //Приводишь  строку в нижний регистр. Т.к. могут написать Бензин, бенЗин...
+                value = value.ToLower();
                 if ((value == "бензин") || (value == "дизель"))
                     _fuelType = value;
                 else
@@ -114,6 +121,7 @@ namespace FuelCalculation
             }
         }
 
+        //TODO:XML комментарии
         public double Way
         {
             get { return _way; }
@@ -126,6 +134,7 @@ namespace FuelCalculation
             }
         }
 
+        //TODO:XML комментарии
         public double TankVolume
         {
             get { return _tankVolume; }
@@ -138,9 +147,10 @@ namespace FuelCalculation
             }
         }
 
+        //TODO:XML комментарии
         public bool SuccessProbobility()
         {
-            double calcValue;
+            double calcValue; //Приводишь к нижнему регистру, а лучше сделай enum
             if (_fuelType == "бензин")
             {
                 calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed/80) * _way;
