@@ -31,7 +31,7 @@ namespace FuelCalculation
                 if ((_fuelWaste >= 20) && (_fuelWaste <= 50))
                     _fuelWaste = value;
                 else
-                    throw new ArgumentException("Неверно указан износ расхода топлива, значение должно быть от 20 до 50");
+                    throw new ArgumentException("Неверно указан расход топлива, значение должно быть от 20 до 50");
             }
         }
 
@@ -93,14 +93,7 @@ namespace FuelCalculation
 
             _wearRate += 0.01 * _way / 10;
 
-            if ((calcValue <= _tankVolume) && (_wearRate <= 1))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return ((calcValue <= _tankVolume) && (_wearRate <= 1));
         }
     }
 }

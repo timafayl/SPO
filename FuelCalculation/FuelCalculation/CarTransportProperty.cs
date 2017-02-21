@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FuelCalculation
 {
@@ -15,106 +11,79 @@ namespace FuelCalculation
         private double _way;
         private double _tankVolume;
 
-        public double GetWearRate()
+        public double WearRate
         {
-            return _wearRate ;
-        }
-
-        public double GetFuelWaste()
-        {
-            return _fuelWaste;
-        }
-
-        public double GetSpeed()
-        {
-            return _speed;
-        }
-
-        /// <summary>
-        /// Аксессор для получения значения типа используемого топлева
-        /// </summary>
-        /// <returns>Тип используемого топлева</returns>
-        public string GetFuelType()
-        {
-            return _fuelType;
-        }
-
-        public double GetWay()
-        {
-            return _way;
-        }
-
-        public double GetTankVolume()
-        {
-            return _tankVolume;
-        }
-
-        public void SetWearRate()
-        {
-            Console.WriteLine("Введите процент износа авто: ");
-            _wearRate = Convert.ToDouble(Console.ReadLine());
-            while ((_wearRate < 0) || (_wearRate > 1))
+            get { return _wearRate; }
+            set
             {
-                Console.WriteLine("Значение износа введено некорректно, значение должно быть вещественным числом от 0 до 1. Пожалуйста повторите попытку: ");
-                _wearRate = Convert.ToDouble(Console.ReadLine());
+                if ((_wearRate >= 0) && (_wearRate <= 1))
+                    _wearRate = value;
+                else
+                    throw new ArgumentException("Неверно указан износ ТС, значение должно быть от 0 до 1");
             }
         }
 
-        public void SetFuelWaste()
+        public double FuelWaste
         {
-            Console.WriteLine("Введите расход топлива на 100 км: ");
-            _fuelWaste = Convert.ToDouble(Console.ReadLine());
-            while ((_fuelWaste < 1) || (_fuelWaste > 30))
+            get { return _fuelWaste; }
+            set
             {
-                Console.WriteLine("Введенное значение некорректно, значение должно быть вещественным числом от 1 до 30. Пожалуйста повторите попытку: ");
-                _fuelWaste = Convert.ToDouble(Console.ReadLine());
+                if ((_fuelWaste >= 5) && (_fuelWaste <= 30))
+                    _fuelWaste = value;
+                else
+                    throw new ArgumentException("Неверно указан расход топлива, значение должно быть от 5 до 30");
             }
         }
 
-        public void SetSpeed()
+        public double Speed
         {
-            Console.WriteLine("Введите значение скорости (км/ч): ");
-            _speed = Convert.ToDouble(Console.ReadLine());
-            while ((_speed < 1) || (_speed > 180))
+            get { return _speed; }
+            set
             {
-                Console.WriteLine("Введенное значение некорректно, значение должно быть в диапозоне от 1 до 180. Пожалуйста повторите попытку: ");
-                _speed = Convert.ToDouble(Console.ReadLine());
+                if ((_speed > 1) && (_speed < 180))
+                    _speed = value;
+                else
+                    throw new ArgumentException("Неверно указана скорость, значение должно быть от 1 до 180");
             }
         }
 
         /// <summary>
-        /// Аксессор для внесения значения типа используемого топлева
+        /// Аксессор для получения значения типа топлива авто.
         /// </summary>
-        public void SetFuelType()
+        /// <returns>Массу груза</returns>
+        public string FuelType
         {
-            Console.WriteLine("Введите название используемого топлива: ");
-            _fuelType = Console.ReadLine();
-            while ((_fuelType != "бензин") || (_fuelType != "дизель"))
+            get { return _fuelType; }
+            set
             {
-                Console.WriteLine("Введенное значение некорректно, значение должно быть либо 'бензин', либо 'дизель'. Пожалуйста повторите попытку: ");
-                _fuelType = Console.ReadLine();
+                if ((_fuelType == "бензин") || (_fuelType == "дизель"))
+                    _fuelType = value;
+                else
+                    throw new ArgumentException("Неверно указан тип топлива, значение может быть либо 'бензин', либо 'дизель'");
             }
         }
 
-        public void SetWay()
+        public double Way
         {
-            Console.WriteLine("Введите значение пути, который хотите проехать (км): ");
-            _way = Convert.ToDouble(Console.ReadLine());
-            while (_way < 0)
+            get { return _way; }
+            set
             {
-                Console.WriteLine("Введенное значение некорректно, значение должно быть больше нуля. Пожалуйста повторите попытку: ");
-                _way = Convert.ToDouble(Console.ReadLine());
+                if (_way > 0)
+                    _way = value;
+                else
+                    throw new ArgumentException("Неверно указан путь, значение должно быть больше нуля");
             }
         }
 
-        public void SetTankVolume()
+        public double TankVolume
         {
-            Console.WriteLine("Введите объем бака авто (л): ");
-            _tankVolume = Convert.ToDouble(Console.ReadLine());
-            while ((_tankVolume < 20) || (_tankVolume > 100))
+            get { return _tankVolume; }
+            set
             {
-                Console.WriteLine("Введенное значение некорректно, значение должно быть в диапозоне от 20 до 100. Пожалуйста повторите попытку: ");
-                _tankVolume = Convert.ToDouble(Console.ReadLine());
+                if ((_tankVolume >= 20) && (_tankVolume <= 100))
+                    _tankVolume = value;
+                else
+                    throw new ArgumentException("Неверно указан объём бака, значение должно быть в диапозоне от 20 до 100");
             }
         }
 
@@ -132,14 +101,7 @@ namespace FuelCalculation
 
             _wearRate += 0.01*_way/10;
 
-            if ((calcValue <= _tankVolume) && (_wearRate <= 1))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return ((calcValue <= _tankVolume) && (_wearRate <= 1));
         }
     }
 }

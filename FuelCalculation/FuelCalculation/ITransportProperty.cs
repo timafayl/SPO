@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FuelCalculation
+﻿namespace FuelCalculation
 {
     public interface ITransportProperty
     {
