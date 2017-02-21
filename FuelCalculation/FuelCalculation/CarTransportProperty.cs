@@ -5,7 +5,7 @@ namespace FuelCalculation
     public class CarTransportProperty : ITransportProperty
     {
         /// <summary>
-        /// Марка машины
+        /// Модель вертолёта
         /// </summary>
         private string _carName;
         /// <summary>
@@ -33,7 +33,16 @@ namespace FuelCalculation
         /// </summary>
         private double _tankVolume;
         
-        //TODO:XML комментарии
+        /// <summary>
+        /// Конструктор класса CarTransportProperty
+        /// </summary>
+        /// <param name="copterName">марка машины</param>
+        /// <param name="wearRate">степень износа</param>
+        /// <param name="fuelWaste">расход топлива</param>
+        /// <param name="speed">скорость</param>
+        /// <param name="fuelType">вид топлива</param>
+        /// <param name="way">расстояние</param>
+        /// <param name="tankVolume">объём бака</param>
         public CarTransportProperty(string carName, double wearRate, double fuelWaste, double speed, string fuelType, double way, double tankVolume)
         {
             CarName = carName;
@@ -45,12 +54,15 @@ namespace FuelCalculation
             TankVolume = tankVolume;
         }
 
-        //TODO:XML комментарии
+        /// <summary>
+        /// Аксессор для получения значения марки машины
+        /// </summary>
         public string CarName
         {
             get { return _carName; }
             set
             {
+                value = value.ToLower();
                 foreach (char letter in value)
                 {
                     if (((int)letter < 97) || ((int)letter > 122))
@@ -64,7 +76,9 @@ namespace FuelCalculation
             }
         }
 
-        //TODO: XML комментарии
+        /// <summary>
+        /// Аксессор для получения значения износа авто
+        /// </summary>
         public double WearRate
         {
             get { return _wearRate; }
@@ -77,7 +91,9 @@ namespace FuelCalculation
             }
         }
 
-        //TODO:XML комментарии
+        /// <summary>
+        /// Аксессор для получения значения расхода топлива
+        /// </summary>
         public double FuelWaste
         {
             get { return _fuelWaste; }
@@ -90,7 +106,9 @@ namespace FuelCalculation
             }
         }
 
-        //TODO:XML комментарии
+        /// <summary>
+        /// Аксессор для получения значения скорости
+        /// </summary>
         public double Speed
         {
             get { return _speed; }
@@ -112,7 +130,6 @@ namespace FuelCalculation
             get { return _fuelType; }
             set
             {
-                //Приводишь  строку в нижний регистр. Т.к. могут написать Бензин, бенЗин...
                 value = value.ToLower();
                 if ((value == "бензин") || (value == "дизель"))
                     _fuelType = value;
@@ -121,7 +138,9 @@ namespace FuelCalculation
             }
         }
 
-        //TODO:XML комментарии
+        /// <summary>
+        /// Аксессор для получения значения расстояния
+        /// </summary>
         public double Way
         {
             get { return _way; }
@@ -134,7 +153,9 @@ namespace FuelCalculation
             }
         }
 
-        //TODO:XML комментарии
+        /// <summary>
+        /// Аксессор для получения значения объёма бака
+        /// </summary>
         public double TankVolume
         {
             get { return _tankVolume; }
@@ -147,10 +168,14 @@ namespace FuelCalculation
             }
         }
 
-        //TODO:XML комментарии
+        /// <summary>
+        /// Метод, вычисляющий вероятность успеха поездки
+        /// </summary>
+        /// <returns>true или false в зависимости от успеха поездки</returns>
         public bool SuccessProbobility()
         {
-            double calcValue; //Приводишь к нижнему регистру, а лучше сделай enum
+            double calcValue;
+
             if (_fuelType == "бензин")
             {
                 calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed/80) * _way;
