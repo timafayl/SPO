@@ -4,7 +4,7 @@ using FuelCalculation;
 
 namespace FuelCalculation_Console
 {
-    static class TravelSuccessCalculation //класс статический
+    static class TravelSuccessCalculation
     {
         static void Main()
         {
@@ -13,13 +13,23 @@ namespace FuelCalculation_Console
             var mercedez = new CarTransportProperty("mercedez", 0.22, 13, 100, "дизель", 240, 58);
 
             var cars = new List<CarTransportProperty> {toyota, subaru, mercedez};
+
+            double a = 10;
+
             foreach (CarTransportProperty car in cars)
             {
                 Console.WriteLine("Марка машины: " + car.CarName);
-                if (car.SuccessProbobility()) //оставляешь просто car.SuccessProbobility(), не нужно сравнивать с true
+                if (car.SuccessProbobility(a))
+                {
+                    Console.WriteLine("calcValue = " + a);
                     Console.WriteLine("Вы сможете преодолеть заданный маршрут на данном авто");
+                }
                 else
+                {
+                    Console.WriteLine("calcValue = " + a);
                     Console.WriteLine("Путешествие обречено на провал");
+                }
+
             }
         }
     }
