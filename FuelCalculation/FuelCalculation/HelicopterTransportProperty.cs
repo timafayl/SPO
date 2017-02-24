@@ -65,6 +65,7 @@ namespace FuelCalculation
                 value = value.ToLower();
                 foreach (char letter in value)
                 {
+                    //TODO: тут не нужно приведение к int 
                     if (((int)letter < 97) || ((int)letter > 122))
                     {
                         throw new ArgumentException(
@@ -84,6 +85,7 @@ namespace FuelCalculation
             get { return _wearRate; }
             set
             {
+                //TODO:Скобки
                 if ((value >= 0) && (value <= 1))
                     _wearRate = value;
                 else
@@ -99,6 +101,7 @@ namespace FuelCalculation
             get { return _fuelWaste; }
             set
             {
+                //TODO:Скобки
                 if ((value >= 20) && (value <= 50))
                     _fuelWaste = value;
                 else
@@ -114,6 +117,7 @@ namespace FuelCalculation
             get { return _speed; }
             set
             {
+                //TODO: Скобки
                 if ((value > 1) && (value < 400))
                     _speed = value;
                 else
@@ -130,6 +134,7 @@ namespace FuelCalculation
             get { return _mass; }
             set
             {
+                //TODO: Скобки
                 if ((value > 0) && (value < 1000))
                     _mass = value;
                 else
@@ -145,6 +150,7 @@ namespace FuelCalculation
             get { return _way; }
             set
             {
+                //TODO: Скобки
                 if (value > 0)
                     _way = value;
                 else
@@ -160,6 +166,7 @@ namespace FuelCalculation
             get { return _tankVolume; }
             set
             {
+                //TODO: Скобки
                 if ((value >= 50) && (value <= 200))
                     _tankVolume = value;
                 else
@@ -171,12 +178,13 @@ namespace FuelCalculation
         /// Метод, вычисляющий вероятность успеха поездки
         /// </summary>
         /// <returns>true или false в зависимости от успеха поездки</returns>
-        public bool SuccessProbobility(double a)
+        //TODO: XML комментарий для a
+        public bool SuccessProbability(double a)
         {
             double calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 200) * (1 + 0.0001*_mass) * (_way / _speed);
 
             _wearRate += 0.0001 * _way;
-
+            //TODO: Возможно присвоение не выполнится
             a = calcValue;
 
             return ((calcValue <= _tankVolume) && (_wearRate <= 1));
