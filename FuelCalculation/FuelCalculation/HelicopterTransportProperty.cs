@@ -5,6 +5,10 @@ namespace FuelCalculation
     public class HelicopterTransportProperty : ITransportProperty
     {
         /// <summary>
+        /// Модель вертолёта
+        /// </summary>
+        private string _copterName;
+        /// <summary>
         /// Степень износа вертолёта
         /// </summary>
         private double _wearRate;
@@ -29,7 +33,52 @@ namespace FuelCalculation
         /// </summary>
         private double _tankVolume;
 
-        //TODO:XML комментарии
+        /// <summary>
+        /// Конструктор класса HelicopterTransportProperty
+        /// </summary>
+        /// <param name="copterName">модель вертолёта</param>
+        /// <param name="wearRate">степень износа</param>
+        /// <param name="fuelWaste">расход топлива</param>
+        /// <param name="speed">скорость</param>
+        /// <param name="mass">масса груза</param>
+        /// <param name="way">расстояние</param>
+        /// <param name="tankVolume">объём бака</param>
+        public HelicopterTransportProperty(string copterName, double wearRate, double fuelWaste, double speed, double mass, double way, double tankVolume)
+        {
+            CopterName = copterName;
+            WearRate = wearRate;
+            FuelWaste = fuelWaste;
+            Speed = speed;
+            Mass = mass;
+            Way = way;
+            TankVolume = tankVolume;
+        }
+
+        /// <summary>
+        /// Аксессор для получения значения модели вертолёта
+        /// </summary>
+        public string CopterName
+        {
+            get { return _copterName; }
+            set
+            {
+                value = value.ToLower();
+                foreach (char letter in value)
+                {
+                    if (((int)letter < 97) || ((int)letter > 122))
+                    {
+                        throw new ArgumentException(
+                            "Неверно указана марка авто, значение должно содержать только буквы латинского алфавита");
+                    }
+                }
+
+                _copterName = value;
+            }
+        }
+
+        /// <summary>
+        /// Аксессор для получения значения износа транспортного средства
+        /// </summary>
         public double WearRate
         {
             get { return _wearRate; }
@@ -42,7 +91,9 @@ namespace FuelCalculation
             }
         }
 
-        //TODO:XML комментарии
+        /// <summary>
+        /// Аксессор для получения значения расхода топлива
+        /// </summary>
         public double FuelWaste
         {
             get { return _fuelWaste; }
@@ -55,7 +106,9 @@ namespace FuelCalculation
             }
         }
 
-        //TODO:XML комментарии
+        /// <summary>
+        /// Аксессор для получения значения скорости
+        /// </summary>
         public double Speed
         {
             get { return _speed; }
@@ -84,7 +137,9 @@ namespace FuelCalculation
             }
         }
 
-        //TODO:XML комментарии
+        /// <summary>
+        /// Аксессор для получения значения расстояния
+        /// </summary>
         public double Way
         {
             get { return _way; }
@@ -97,7 +152,9 @@ namespace FuelCalculation
             }
         }
 
-        //TODO:XML комментарии
+        /// <summary>
+        /// Аксессор для получения значения объёма бака
+        /// </summary>
         public double TankVolume
         {
             get { return _tankVolume; }
@@ -110,12 +167,17 @@ namespace FuelCalculation
             }
         }
 
-        //TODO:XML комментарии
-        public bool SuccessProbobility()
+        /// <summary>
+        /// Метод, вычисляющий вероятность успеха поездки
+        /// </summary>
+        /// <returns>true или false в зависимости от успеха поездки</returns>
+        public bool SuccessProbobility(double a)
         {
             double calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 200) * (1 + 0.0001*_mass) * (_way / _speed);
 
             _wearRate += 0.0001 * _way;
+
+            a = calcValue;
 
             return ((calcValue <= _tankVolume) && (_wearRate <= 1));
         }

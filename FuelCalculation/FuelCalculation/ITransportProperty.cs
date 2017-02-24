@@ -3,10 +3,10 @@
     public interface ITransportProperty
     {
         /// <summary>
-        /// Метод расчета расхода топлива транспортным средством
+        /// Метод, вычисляющий вероятность успеха поездки
         /// </summary>
         /// <returns>Возвращает true или false в зависимости от того, сможет трансортное средство проехать заднный путь, или же нет</returns>
-        bool SuccessProbobility();
+        bool SuccessProbobility(double a);
 
         /// <summary>
         /// Аксессор для получения значения износа транспортного средства
