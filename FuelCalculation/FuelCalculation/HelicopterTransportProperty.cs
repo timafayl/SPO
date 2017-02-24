@@ -171,11 +171,13 @@ namespace FuelCalculation
         /// Метод, вычисляющий вероятность успеха поездки
         /// </summary>
         /// <returns>true или false в зависимости от успеха поездки</returns>
-        public bool SuccessProbobility()
+        public bool SuccessProbobility(double a)
         {
             double calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 200) * (1 + 0.0001*_mass) * (_way / _speed);
 
             _wearRate += 0.0001 * _way;
+
+            a = calcValue;
 
             return ((calcValue <= _tankVolume) && (_wearRate <= 1));
         }
