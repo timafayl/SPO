@@ -5,46 +5,44 @@ namespace FuelCalculation
     public class CarTransportProperty : ITransportProperty
     {
         /// <summary>
-        /// Модель вертолёта
+        /// Марка машины.
         /// </summary>
         private string _carName;
         /// <summary>
-        /// Степень износа авто
+        /// Степень износа авто.
         /// </summary>
         private double _wearRate;
         /// <summary>
-        /// Расход топлива на 100 км
+        /// Расход топлива на 100 км.
         /// </summary>
         private double _fuelWaste;
         /// <summary>
-        /// Скорость авто во время поездки
+        /// Скорость авто во время поездки.
         /// </summary>
         private double _speed;
         /// <summary>
-        /// Используемый тип топлива
+        /// Используемый тип топлива.
         /// </summary>
         private string _fuelType;
         /// <summary>
-        /// Заданный путь
+        /// Заданный путь.
         /// </summary>
         private double _way;
         /// <summary>
-        /// Общий объём бака
+        /// Общий объём бака.
         /// </summary>
         private double _tankVolume;
         
         /// <summary>
-        /// Конструктор класса CarTransportProperty
+        /// Конструктор класса CarTransportProperty.
         /// </summary>
-        //У тебя нет параметра коптер нейм, а есть кар нейм
-        //TODO: Исправить комментарии 
-        /// <param name="copterName">марка машины</param>
-        /// <param name="wearRate">степень износа</param>
-        /// <param name="fuelWaste">расход топлива</param>
-        /// <param name="speed">скорость</param>
-        /// <param name="fuelType">вид топлива</param>
-        /// <param name="way">расстояние</param>
-        /// <param name="tankVolume">объём бака</param>
+        /// <param name="carName">Марка машины</param>
+        /// <param name="wearRate">Степень износа</param>
+        /// <param name="fuelWaste">Расход топлива</param>
+        /// <param name="speed">Скорость</param>
+        /// <param name="fuelType">Вид топлива</param>
+        /// <param name="way">Расстояние</param>
+        /// <param name="tankVolume">Объём бака</param>
         public CarTransportProperty(string carName, double wearRate, double fuelWaste, double speed, string fuelType, double way, double tankVolume)
         {
             CarName = carName;
@@ -57,20 +55,17 @@ namespace FuelCalculation
         }
 
         /// <summary>
-        /// Аксессор для получения значения марки машины
+        /// Аксессор для получения значения марки машины.
         /// </summary>
         public string CarName
         {
             get { return _carName; }
             set
             {
-                value = value.ToLower();
+                //value = value.ToLower();
                 foreach (char letter in value)
                 {
-                    //TODO:Убрать приведение
-                    //TODO: Лучше сравнивать с символом
-                    //Не нужно приводить к int
-                    if (((int)letter < 97) || ((int)letter > 122))
+                    if ((letter < 'a') || (letter > 'z'))
                     {
                         throw new ArgumentException(
                             "Неверно указана марка авто, значение должно содержать только буквы латинского алфавита");
@@ -82,14 +77,13 @@ namespace FuelCalculation
         }
 
         /// <summary>
-        /// Аксессор для получения значения износа авто
+        /// Аксессор для получения значения износа авто.
         /// </summary>
         public double WearRate
         {
             get { return _wearRate; }
             set
             {
-                //TODO: Скобки после условий
                 if ((value >= 0) && (value <= 1))
                 {
                     _wearRate = value;
@@ -102,34 +96,40 @@ namespace FuelCalculation
         }
 
         /// <summary>
-        /// Аксессор для получения значения расхода топлива
+        /// Аксессор для получения значения расхода топлива.
         /// </summary>
         public double FuelWaste
         {
             get { return _fuelWaste; }
             set
             {
-                //TODO:Скобки {}
                 if ((value >= 5) && (value <= 30))
+                {
                     _fuelWaste = value;
+                }
                 else
+                {
                     throw new ArgumentException("Неверно указан расход топлива, значение должно быть от 5 до 30");
+                }
             }
         }
 
         /// <summary>
-        /// Аксессор для получения значения скорости
+        /// Аксессор для получения значения скорости.
         /// </summary>
         public double Speed
         {
             get { return _speed; }
             set
             {
-                //TODO:Скобки {}
                 if ((value > 1) && (value < 180))
+                {
                     _speed = value;
+                }
                 else
+                {
                     throw new ArgumentException("Неверно указана скорость, значение должно быть от 1 до 180");
+                }
             }
         }
 
@@ -144,49 +144,60 @@ namespace FuelCalculation
             {
                 value = value.ToLower();
                 if ((value == "бензин") || (value == "дизель"))
+                {
                     _fuelType = value;
+                }
                 else
+                {
                     throw new ArgumentException("Неверно указан тип топлива, значение может быть либо 'бензин', либо 'дизель'");
+                }
             }
         }
 
         /// <summary>
-        /// Аксессор для получения значения расстояния
+        /// Аксессор для получения значения расстояния.
         /// </summary>
         public double Way
         {
             get { return _way; }
             set
             {
-                //TODO:Скобки
                 if (value > 0)
+                {
                     _way = value;
+                }
                 else
+                {
                     throw new ArgumentException("Неверно указан путь, значение должно быть больше нуля");
+                }
             }
         }
 
         /// <summary>
-        /// Аксессор для получения значения объёма бака
+        /// Аксессор для получения значения объёма бака.
         /// </summary>
         public double TankVolume
         {
             get { return _tankVolume; }
             set
             {
-                //TODO: Скобки
                 if ((value >= 20) && (value <= 100))
+                {
                     _tankVolume = value;
+                }
                 else
+                {
                     throw new ArgumentException("Неверно указан объём бака, значение должно быть в диапозоне от 20 до 100");
+                }
             }
         }
 
         /// <summary>
-        /// Метод, вычисляющий вероятность успеха поездки
+        /// Метод, вычисляющий вероятность успеха поездки.
         /// </summary>
+        /// <param name="a">Переменная для получения значения рассчитываемого количества топлива</param>
         /// <returns>true или false в зависимости от успеха поездки</returns>
-        public bool SuccessProbability(double a)
+        public bool SuccessProbability(ref double a)
         {
             double calcValue;
 
@@ -200,7 +211,7 @@ namespace FuelCalculation
             }
 
             _wearRate += 0.0001 * _way;
-            //TODO: Проверь, скорее всего у тебя a не изменится
+
             a = calcValue;
 
             return ((calcValue <= _tankVolume) && (_wearRate <= 1));
