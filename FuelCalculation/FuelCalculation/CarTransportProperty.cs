@@ -36,6 +36,8 @@ namespace FuelCalculation
         /// <summary>
         /// Конструктор класса CarTransportProperty
         /// </summary>
+        //У тебя нет параметра коптер нейм, а есть кар нейм
+        //TODO: Исправить комментарии 
         /// <param name="copterName">марка машины</param>
         /// <param name="wearRate">степень износа</param>
         /// <param name="fuelWaste">расход топлива</param>
@@ -65,6 +67,9 @@ namespace FuelCalculation
                 value = value.ToLower();
                 foreach (char letter in value)
                 {
+                    //TODO:Убрать приведение
+                    //TODO: Лучше сравнивать с символом
+                    //Не нужно приводить к int
                     if (((int)letter < 97) || ((int)letter > 122))
                     {
                         throw new ArgumentException(
@@ -84,10 +89,15 @@ namespace FuelCalculation
             get { return _wearRate; }
             set
             {
+                //TODO: Скобки после условий
                 if ((value >= 0) && (value <= 1))
+                {
                     _wearRate = value;
+                }
                 else
+                {
                     throw new ArgumentException("Неверно указан износ ТС, значение должно быть от 0 до 1");
+                }
             }
         }
 
@@ -99,6 +109,7 @@ namespace FuelCalculation
             get { return _fuelWaste; }
             set
             {
+                //TODO:Скобки {}
                 if ((value >= 5) && (value <= 30))
                     _fuelWaste = value;
                 else
@@ -114,6 +125,7 @@ namespace FuelCalculation
             get { return _speed; }
             set
             {
+                //TODO:Скобки {}
                 if ((value > 1) && (value < 180))
                     _speed = value;
                 else
@@ -146,6 +158,7 @@ namespace FuelCalculation
             get { return _way; }
             set
             {
+                //TODO:Скобки
                 if (value > 0)
                     _way = value;
                 else
@@ -161,6 +174,7 @@ namespace FuelCalculation
             get { return _tankVolume; }
             set
             {
+                //TODO: Скобки
                 if ((value >= 20) && (value <= 100))
                     _tankVolume = value;
                 else
@@ -172,7 +186,7 @@ namespace FuelCalculation
         /// Метод, вычисляющий вероятность успеха поездки
         /// </summary>
         /// <returns>true или false в зависимости от успеха поездки</returns>
-        public bool SuccessProbobility(double a)
+        public bool SuccessProbability(double a)
         {
             double calcValue;
 
@@ -186,7 +200,7 @@ namespace FuelCalculation
             }
 
             _wearRate += 0.0001 * _way;
-
+            //TODO: Проверь, скорее всего у тебя a не изменится
             a = calcValue;
 
             return ((calcValue <= _tankVolume) && (_wearRate <= 1));
