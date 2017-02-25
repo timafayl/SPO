@@ -14,12 +14,12 @@ namespace FuelCalculation_Console
 
             var cars = new List<CarTransportProperty> {toyota, subaru, mercedes};
 
-            double a = 10;
+            var a = new double();
 
             foreach (CarTransportProperty car in cars)
             {
                 Console.WriteLine("Марка машины: " + car.CarName);
-                if (car.SuccessProbability(a))
+                if (car.SuccessProbability(ref a))
                 {
                     Console.WriteLine("calcValue = " + a);
                     Console.WriteLine("Вы сможете преодолеть заданный маршрут на данном авто");
