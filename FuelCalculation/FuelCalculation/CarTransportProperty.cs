@@ -203,14 +203,9 @@ namespace FuelCalculation
         {
             double calcValue;
 
-            if (_fuelType == "бензин")
-            {
-                calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed/80) * _way;
-            }
-            else
-            {
-                calcValue = 0.9* 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 80) * _way;
-            }
+            var coef = (_fuelType == "бензин") ? 1 : 0.9;
+       
+            calcValue = coef * 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed/80) * _way;
 
             _wearRate += 0.0001 * _way;
 
