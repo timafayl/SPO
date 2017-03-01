@@ -6,7 +6,7 @@
         /// Метод, вычисляющий вероятность успеха поездки.
         /// </summary>
         /// <returns>Возвращает true или false в зависимости от того, сможет трансортное средство проехать заднный путь, или же нет</returns>
-        bool SuccessProbability(ref double a);
+        bool IsCanPassDistance(ref double distance);
 
         /// <summary>
         /// Наименование транспорта.
@@ -30,12 +30,6 @@
         /// </summary>
         /// <returns>Значение скорости передвижения</returns>
         double Speed { get; set; }
-
-        /// <summary>
-        /// Аксессор для получения значения пути, который нужно преодолеть.
-        /// </summary>
-        /// <returns>Значение пути, который нужно преодолеть</returns>
-        double Way { get; set; }
 
         /// <summary>
         /// Аксессор для получения объёма бака транспортного средства.

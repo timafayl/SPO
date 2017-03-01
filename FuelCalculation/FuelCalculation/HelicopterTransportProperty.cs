@@ -2,7 +2,7 @@
 
 namespace FuelCalculation
 {
-    public class HelicopterTransportProperty : ITransportProperty
+    public class Helicopter : ITransportProperty
     {
         /// <summary>
         /// Модель вертолёта.
@@ -25,13 +25,11 @@ namespace FuelCalculation
         /// </summary>
         private double _mass;
         /// <summary>
-        /// Заданный путь.
-        /// </summary>
-        private double _way;
-        /// <summary>
         /// Общий объём бака.
         /// </summary>
         private double _tankVolume;
+
+        public Helicopter() { }
 
         /// <summary>
         /// Конструктор класса HelicopterTransportProperty.
@@ -43,14 +41,13 @@ namespace FuelCalculation
         /// <param name="mass">Масса груза</param>
         /// <param name="way">Расстояние</param>
         /// <param name="tankVolume">Объём бака</param>
-        public HelicopterTransportProperty(string copterName, double wearRate, double fuelWaste, double speed, double mass, double way, double tankVolume)
+        public Helicopter(string copterName, double wearRate, double fuelWaste, double speed, double mass, double tankVolume)
         {
             TransportName = copterName;
             WearRate = wearRate;
             FuelWaste = fuelWaste;
             Speed = speed;
             Mass = mass;
-            Way = way;
             TankVolume = tankVolume;
         }
 
@@ -154,25 +151,6 @@ namespace FuelCalculation
         }
 
         /// <summary>
-        /// Аксессор для получения значения расстояния.
-        /// </summary>
-        public double Way
-        {
-            get { return _way; }
-            set
-            {
-                if (value > 0)
-                {
-                    _way = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Неверно указан путь, значение должно быть больше нуля");
-                }
-            }
-        }
-
-        /// <summary>
         /// Аксессор для получения значения объёма бака.
         /// </summary>
         public double TankVolume
@@ -196,13 +174,11 @@ namespace FuelCalculation
         /// </summary>
         /// <param name="a">Переменная для получения значения рассчитываемого количества топлива</param>
         /// <returns>true или false в зависимости от успеха поездки</returns>
-        public bool SuccessProbability(ref double a)
+        public bool IsCanPassDistance(ref double distance)
         {
-            double calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 200) * (1 + 0.0001*_mass) * (_way / _speed);
+            double calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 200) * (1 + 0.0001*_mass) * (distance / _speed);
 
-            _wearRate += 0.0001 * _way;
-
-            a = calcValue;
+            _wearRate += 0.0001 * distance;
 
             return ((calcValue <= _tankVolume) && (_wearRate <= 1));
         }

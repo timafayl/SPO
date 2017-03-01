@@ -2,7 +2,7 @@
 
 namespace FuelCalculation
 {
-    public class CarTransportProperty : ITransportProperty
+    public class Car : ITransportProperty
     {
         /// <summary>
         /// Марка машины.
@@ -25,15 +25,11 @@ namespace FuelCalculation
         /// </summary>
         private string _fuelType;
         /// <summary>
-        /// Заданный путь.
-        /// </summary>
-        private double _way;
-        /// <summary>
         /// Общий объём бака.
         /// </summary>
         private double _tankVolume;
 
-        public CarTransportProperty() { }
+        public Car() { }
 
         /// <summary>
         /// Конструктор класса CarTransportProperty.
@@ -45,14 +41,13 @@ namespace FuelCalculation
         /// <param name="fuelType">Вид топлива</param>
         /// <param name="way">Расстояние</param>
         /// <param name="tankVolume">Объём бака</param>
-        public CarTransportProperty(string carName, double wearRate, double fuelWaste, double speed, string fuelType, double way, double tankVolume)
+        public Car(string carName, double wearRate, double fuelWaste, double speed, string fuelType, double tankVolume)
         {
             TransportName = carName;
             WearRate = wearRate;
             FuelWaste = fuelWaste;
             Speed = speed;
             FuelType = fuelType;
-            Way = way;
             TankVolume = tankVolume;
         }
 
@@ -157,25 +152,6 @@ namespace FuelCalculation
         }
 
         /// <summary>
-        /// Аксессор для получения значения расстояния.
-        /// </summary>
-        public double Way
-        {
-            get { return _way; }
-            set
-            {
-                if (value > 0)
-                {
-                    _way = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Неверно указан путь, значение должно быть больше нуля");
-                }
-            }
-        }
-
-        /// <summary>
         /// Аксессор для получения значения объёма бака.
         /// </summary>
         public double TankVolume
@@ -199,17 +175,15 @@ namespace FuelCalculation
         /// </summary>
         /// <param name="a">Переменная для получения значения рассчитываемого количества топлива</param>
         /// <returns>true или false в зависимости от успеха поездки</returns>
-        public bool SuccessProbability(ref double a)
+        public bool IsCanPassDistance(ref double distance)
         {
             double calcValue;
 
             var coef = (_fuelType == "бензин") ? 1 : 0.9;
        
-            calcValue = coef * 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed/80) * _way;
+            calcValue = coef * 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed/80) * distance;
 
-            _wearRate += 0.0001 * _way;
-
-            a = calcValue;
+            _wearRate += 0.0001 * distance;
 
             return ((calcValue <= _tankVolume) && (_wearRate <= 1));
         }
