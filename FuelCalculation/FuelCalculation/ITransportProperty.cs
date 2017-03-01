@@ -6,7 +6,7 @@
         /// Метод, вычисляющий вероятность успеха поездки.
         /// </summary>
         /// <returns>Возвращает true или false в зависимости от того, сможет трансортное средство проехать заднный путь, или же нет</returns>
-        bool IsCanPassDistance(ref double distance);
+        bool IsCanPassDistance(double distance);
 
         /// <summary>
         /// Наименование транспорта.

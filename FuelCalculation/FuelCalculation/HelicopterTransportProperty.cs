@@ -29,10 +29,13 @@ namespace FuelCalculation
         /// </summary>
         private double _tankVolume;
 
+        /// <summary>
+        /// Конструктор класса Helicopter.
+        /// </summary>
         public Helicopter() { }
 
         /// <summary>
-        /// Конструктор класса HelicopterTransportProperty.
+        /// Конструктор класса Helicopter.
         /// </summary>
         /// <param name="copterName">Модель вертолёта</param>
         /// <param name="wearRate">Степень износа</param>
@@ -172,9 +175,9 @@ namespace FuelCalculation
         /// <summary>
         /// Метод, вычисляющий вероятность успеха поездки.
         /// </summary>
-        /// <param name="a">Переменная для получения значения рассчитываемого количества топлива</param>
+        /// <param name="distance">Переменная для получения значения рассчитываемого количества топлива</param>
         /// <returns>true или false в зависимости от успеха поездки</returns>
-        public bool IsCanPassDistance(ref double distance)
+        public bool IsCanPassDistance(double distance)
         {
             double calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 200) * (1 + 0.0001*_mass) * (distance / _speed);
 

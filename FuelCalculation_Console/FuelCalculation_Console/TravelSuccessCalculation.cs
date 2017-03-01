@@ -12,11 +12,10 @@ namespace FuelCalculation_Console
             var mercedes = new Car("mercedes", 0.22, 13, 100, "дизель", 58);
             var  subaru = new Car("subaru", 0.05, 9, 120, "бензин", 60);
   
-            var cars = new List<ITransportProperty> {toyota, subaru, mercedes};
+            var transports = new List<ITransportProperty> {toyota, subaru, mercedes};
 
             var robinson = new Helicopter("robinson", 0.2, 25, 273, 900, 100);
-
-            cars.Add(robinson);
+            transports.Add(robinson);
 
             double distance = 0;
             try
@@ -34,18 +33,18 @@ namespace FuelCalculation_Console
                     throw new ArgumentException("Distance value have to be double");
             }
 
-            foreach (ITransportProperty car in cars)
+            foreach (ITransportProperty transport in transports)
             {
-                Console.WriteLine("Наименование транспорта: " + car.TransportName);
-                if (car.IsCanPassDistance(ref distance))
+                Console.WriteLine("\nНаименование транспорта: " + transport.TransportName);
+                if (transport.IsCanPassDistance(ref distance))
                 {
-                    Console.WriteLine("wearRate = " + car.WearRate);
-                    Console.WriteLine("Вы сможете преодолеть заданный маршрут на данном авто");
+                    Console.WriteLine("wearRate = " + transport.WearRate);
+                    Console.WriteLine("Вы сможете преодолеть заданный маршрут на данном авто\n");
                 }
                 else
                 {
-                    Console.WriteLine("wearRate = " + car.WearRate);
-                    Console.WriteLine("Путешествие обречено на провал");
+                    Console.WriteLine("wearRate = " + transport.WearRate);
+                    Console.WriteLine("Путешествие обречено на провал\n");
                 }
             }
         }
