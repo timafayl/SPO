@@ -88,6 +88,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FuelCalculation\FuelCalculation.csproj">
+      <Project>{6304e18e-e5dd-4f1c-ad01-664fc4f995b4}</Project>
+      <Name>FuelCalculation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
