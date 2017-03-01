@@ -18,7 +18,21 @@ namespace FuelCalculation_Console
 
             cars.Add(robinson);
 
-            double distance = Convert.ToDouble(Console.ReadLine());
+            double distance = 0;
+            try
+            {
+                Console.WriteLine("Введите расстояние: ");
+                distance = Convert.ToDouble(Console.ReadLine());
+                while (distance < 0)
+                {
+                    Console.WriteLine("Введите расстояние: ");
+                    distance = Convert.ToDouble(Console.ReadLine());
+                }
+            }
+            catch (FormatException)
+            {
+                    throw new ArgumentException("Distance value have to be double");
+            }
 
             foreach (ITransportProperty car in cars)
             {
