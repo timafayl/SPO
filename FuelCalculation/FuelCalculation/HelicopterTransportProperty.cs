@@ -45,7 +45,7 @@ namespace FuelCalculation
         /// <param name="tankVolume">Объём бака</param>
         public HelicopterTransportProperty(string copterName, double wearRate, double fuelWaste, double speed, double mass, double way, double tankVolume)
         {
-            CopterName = copterName;
+            TransportName = copterName;
             WearRate = wearRate;
             FuelWaste = fuelWaste;
             Speed = speed;
@@ -57,7 +57,7 @@ namespace FuelCalculation
         /// <summary>
         /// Аксессор для получения значения модели вертолёта.
         /// </summary>
-        public string CopterName
+        public string TransportName
         {
             get { return _copterName; }
             set

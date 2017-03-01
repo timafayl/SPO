@@ -9,6 +9,11 @@
         bool SuccessProbability(ref double a);
 
         /// <summary>
+        /// Наименование транспорта.
+        /// </summary>
+        string TransportName { get; set; }
+
+        /// <summary>
         /// Аксессор для получения значения износа транспортного средства.
         /// </summary>
         /// <returns>Значение износа транспортного средства</returns>

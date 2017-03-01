@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{140AC3FA-EB3D-45F1-92CE-8F4418686D0C}</ProjectGuid>
+    <ProjectGuid>{6304E18E-E5DD-4F1C-AD01-664FC4F995B4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FuelCalculation</RootNamespace>

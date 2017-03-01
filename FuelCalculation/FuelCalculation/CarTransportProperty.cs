@@ -32,7 +32,9 @@ namespace FuelCalculation
         /// Общий объём бака.
         /// </summary>
         private double _tankVolume;
-        
+
+        public CarTransportProperty() { }
+
         /// <summary>
         /// Конструктор класса CarTransportProperty.
         /// </summary>
@@ -45,7 +47,7 @@ namespace FuelCalculation
         /// <param name="tankVolume">Объём бака</param>
         public CarTransportProperty(string carName, double wearRate, double fuelWaste, double speed, string fuelType, double way, double tankVolume)
         {
-            CarName = carName;
+            TransportName = carName;
             WearRate = wearRate;
             FuelWaste = fuelWaste;
             Speed = speed;
@@ -57,7 +59,7 @@ namespace FuelCalculation
         /// <summary>
         /// Аксессор для получения значения марки машины.
         /// </summary>
-        public string CarName
+        public string TransportName
         {
             get { return _carName; }
             set
