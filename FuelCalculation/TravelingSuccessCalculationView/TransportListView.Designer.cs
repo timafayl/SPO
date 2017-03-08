@@ -50,7 +50,7 @@
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Location = new System.Drawing.Point(2, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(574, 486);
+            this.groupBox1.Size = new System.Drawing.Size(553, 487);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "TransportList";
@@ -58,7 +58,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(320, 428);
+            this.button3.Location = new System.Drawing.Point(392, 428);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(127, 38);
             this.button3.TabIndex = 3;
@@ -67,7 +67,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(158, 428);
+            this.button2.Location = new System.Drawing.Point(201, 428);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(127, 38);
             this.button2.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(20, 428);
+            this.button1.Location = new System.Drawing.Point(28, 428);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 38);
             this.button1.TabIndex = 1;
@@ -95,7 +95,7 @@
             this.Column5});
             this.dataGridView1.Location = new System.Drawing.Point(6, 19);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(562, 380);
+            this.dataGridView1.Size = new System.Drawing.Size(547, 380);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -132,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 490);
+            this.ClientSize = new System.Drawing.Size(550, 490);
             this.Controls.Add(this.groupBox1);
             this.Name = "TransportListView";
             this.Text = "TransportForm";
