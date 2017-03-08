@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FuelCalculation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace TravelingSuccessCalculationView
         public TransportListView()
         {
             InitializeComponent();
+            var TransportList = new List<ITransportProperty>();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -24,7 +26,14 @@ namespace TravelingSuccessCalculationView
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var addIetm = new AddNewItemForm();
+            AddNewItemForm frm = new AddNewItemForm();
+            frm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ChangeItemForm frm = new ChangeItemForm();
+            frm.Show();
         }
     }
 }
