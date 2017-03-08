@@ -193,7 +193,7 @@
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Name = "AddNewItemForm";
-            this.Text = "AddNewItemForm";
+            this.Text = "AddNewItem";
             this.ResumeLayout(false);
             this.PerformLayout();
 
