@@ -17,36 +17,7 @@ namespace FuelCalculation_Console
             var robinson = new Helicopter("robinson", 0.2, 25, 273, 900, 100);
             transports.Add(robinson);
 
-            double distance = 0;
-            try
-            {
-                Console.WriteLine("Введите расстояние: ");
-                distance = Convert.ToDouble(Console.ReadLine());
-                while (distance < 0)
-                {
-                    Console.WriteLine("Введите расстояние: ");
-                    distance = Convert.ToDouble(Console.ReadLine());
-                }
-            }
-            catch (FormatException)
-            {
-                    throw new ArgumentException("Distance value have to be double");
-            }
-
-            foreach (ITransportProperty transport in transports)
-            {
-                Console.WriteLine("\nНаименование транспорта: " + transport.TransportName);
-                if (transport.IsCanPassDistance(ref distance))
-                {
-                    Console.WriteLine("wearRate = " + transport.WearRate);
-                    Console.WriteLine("Вы сможете преодолеть заданный маршрут на данном авто\n");
-                }
-                else
-                {
-                    Console.WriteLine("wearRate = " + transport.WearRate);
-                    Console.WriteLine("Путешествие обречено на провал\n");
-                }
-            }
+            
         }
     }
 }
