@@ -58,6 +58,8 @@
     <Compile Include="ChangeItemForm.Designer.cs">
       <DependentUpon>ChangeItemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileName.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="TransportListView.cs">
       <SubType>Form</SubType>
     </Compile>
