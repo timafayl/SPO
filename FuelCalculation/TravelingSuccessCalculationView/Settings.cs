@@ -5,27 +5,24 @@ using System.Xml.Serialization;
 
 namespace TravelingSuccessCalculationView
 {
-    public class Settings
+    public class Serialization
     {
-        public static Settings GetSettings()
+        public static void Deserialize(ref List<ITransportProperty> myList)
         {
-            Settings settings = null;
             string filename = FileName.SettingsFile;
             if (File.Exists(filename))
             {
                 using (FileStream stream = new FileStream(filename, FileMode.Open))
                 {
                     XmlSerializer xser = new XmlSerializer(typeof(List<ITransportProperty>));
-                    settings = (Settings)xser.Deserialize(stream);
+                    myList = (List<ITransportProperty>)xser.Deserialize(stream);
                     stream.Close();
                 }
             }
-            else settings = new Settings();
-
-            return settings;
+            else myList = null;
         }
 
-        public void Save()
+        public static void Serialize(List<ITransportProperty> myList)
         {
             string filename = FileName.SettingsFile;
 
@@ -34,7 +31,7 @@ namespace TravelingSuccessCalculationView
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             {
                 XmlSerializer xser = new XmlSerializer(typeof(List<ITransportProperty>));
-                xser.Serialize(stream, this);
+                xser.Serialize(stream, myList);
                 stream.Close();
             }
         }
