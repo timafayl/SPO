@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FuelCalculation;
+using TravelingSuccessCalculationView;
+using System;
 
 namespace FuelCalculation_Console
 {
@@ -17,7 +18,16 @@ namespace FuelCalculation_Console
             var robinson = new Helicopter("robinson", 0.2, 25, 273, 900, 100);
             transports.Add(robinson);
 
-            
+            Serialization.Serialize(transports);
+
+            var testList = new List<ITransportProperty>();
+
+            Serialization.Deserialize(ref testList);
+
+            foreach(ITransportProperty element in testList)
+            {
+                Console.WriteLine(element.TransportName + "\n");
+            }
         }
     }
 }

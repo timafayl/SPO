@@ -2,6 +2,7 @@
 
 namespace FuelCalculation
 {
+    [Serializable]
     public class Helicopter : ITransportProperty
     {
         /// <summary>

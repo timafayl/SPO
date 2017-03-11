@@ -2,6 +2,7 @@
 
 namespace FuelCalculation
 {
+    [Serializable]
     public class Car : ITransportProperty
     {
         /// <summary>
