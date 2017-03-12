@@ -143,6 +143,8 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "TransportListView";
             this.Text = "TransportForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TransportListView_FormClosing);
+            this.Load += new System.EventHandler(this.TransportListView_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

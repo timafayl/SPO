@@ -240,3 +240,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/FuelCalculation/TravelingSuccessCalculationView/Properties/DataSources

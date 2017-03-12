@@ -86,6 +86,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\AddNewItemForm.datasource" />
+    <None Include="Properties\DataSources\ChangeItemForm.datasource" />
+    <None Include="Properties\DataSources\FilePath.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\Serialization.datasource" />
+    <None Include="Properties\DataSources\TransportListView.datasource" />
+    <None Include="Properties\DataSources\TravelingSuccessCalculationView.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\TravelingSuccessCalculationView.Properties.Settings.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
