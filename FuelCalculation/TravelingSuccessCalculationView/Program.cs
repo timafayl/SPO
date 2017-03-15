@@ -14,7 +14,6 @@ namespace TravelingSuccessCalculationView
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new TransportListView());
-            Serialization.Deserialize(ref TransportListView.transportList);
         }
     }
 }

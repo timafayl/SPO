@@ -52,12 +52,6 @@
     <Compile Include="AddNewItemForm.Designer.cs">
       <DependentUpon>AddNewItemForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangeItemForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChangeItemForm.Designer.cs">
-      <DependentUpon>ChangeItemForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="FilePath.cs" />
     <Compile Include="Serialization.cs" />
     <Compile Include="TransportListView.cs">
@@ -70,9 +64,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddNewItemForm.resx">
       <DependentUpon>AddNewItemForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ChangeItemForm.resx">
-      <DependentUpon>ChangeItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TransportListView.resx">
       <DependentUpon>TransportListView.cs</DependentUpon>
@@ -89,6 +80,9 @@
     <None Include="Properties\DataSources\AddNewItemForm.datasource" />
     <None Include="Properties\DataSources\ChangeItemForm.datasource" />
     <None Include="Properties\DataSources\FilePath.datasource" />
+    <None Include="Properties\DataSources\FuelCalculation.Car.datasource" />
+    <None Include="Properties\DataSources\FuelCalculation.Helicopter.datasource" />
+    <None Include="Properties\DataSources\FuelCalculation.ITransportProperty.datasource" />
     <None Include="Properties\DataSources\Program.datasource" />
     <None Include="Properties\DataSources\Serialization.datasource" />
     <None Include="Properties\DataSources\TransportListView.datasource" />
