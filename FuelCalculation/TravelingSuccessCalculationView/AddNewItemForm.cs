@@ -21,7 +21,7 @@ namespace TravelingSuccessCalculationView
         {
                 label6.Text = "FuelType";
                 label6.Visible = true;
-                textBox6.Visible = true;
+                comboBox1.Visible = true;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace TravelingSuccessCalculationView
                 car.FuelWaste = Convert.ToDouble(textBox3.Text);
                 car.Speed = Convert.ToDouble(textBox4.Text);
                 car.TankVolume = Convert.ToDouble(textBox5.Text);
-                car.FuelType = textBox6.Text;
+                car.FuelType = (FuelType) Enum.Parse(typeof(FuelType), comboBox1.Text);
 
                 return car;
             }
@@ -78,7 +78,7 @@ namespace TravelingSuccessCalculationView
                 Car carTransport = new Car();
                 carTransport = (Car)transport;
                 radioButton1.Checked = true;
-                textBox6.Text = Convert.ToString(carTransport.FuelType);
+                comboBox1.Text = Convert.ToString(carTransport.FuelType);
             }
             else //if (transport is Helicopter)
             {
