@@ -22,9 +22,9 @@ namespace FuelCalculation
         /// </summary>
         private double _speed;
         /// <summary>
-        /// Используемый тип топлива.
+        /// Испольуемый тип топлива.
         /// </summary>
-        private string _fuelType;
+        private FuelType _fuelType;
         /// <summary>
         /// Общий объём бака.
         /// </summary>
@@ -45,7 +45,7 @@ namespace FuelCalculation
         /// <param name="fuelType">Вид топлива</param>
         /// <param name="way">Расстояние</param>
         /// <param name="tankVolume">Объём бака</param>
-        public Car(string carName, double wearRate, double fuelWaste, double speed, string fuelType, double tankVolume)
+        public Car(string carName, double wearRate, double fuelWaste, double speed, FuelType fuelType, double tankVolume)
         {
             TransportName = carName;
             WearRate = wearRate;
@@ -138,19 +138,18 @@ namespace FuelCalculation
         /// Аксессор для получения значения типа топлива авто.
         /// </summary>
         /// <returns>Массу груза</returns>
-        public string FuelType
+        public FuelType FuelType
         {
             get { return _fuelType; }
             set
             {
-                value = value.ToLower();
-                if ((value == "бензин") || (value == "дизель"))
+                if (((int)value < 1) || ((int)value > 2))
                 {
-                    _fuelType = value;
+                    _fuelType = (FuelType)value;
                 }
                 else
                 {
-                    throw new ArgumentException("Неверно указан тип топлива, значение может быть либо 'бензин', либо 'дизель'");
+                    throw new ArgumentException("Неверно указан тип топлива, значение может быть либо 'Бензин', либо 'Дизель'");
                 }
             }
         }
@@ -183,7 +182,7 @@ namespace FuelCalculation
         {
             double calcValue;
 
-            var coef = (_fuelType == "бензин") ? 1 : 0.9;
+            var coef = (_fuelType == FuelType.Бензин) ? 1 : 0.9;
        
             calcValue = coef * 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed/80) * distance;
 

@@ -80,7 +80,7 @@ namespace TravelingSuccessCalculationView
                 radioButton1.Checked = true;
                 textBox6.Text = Convert.ToString(carTransport.FuelType);
             }
-            else if (transport is Helicopter)
+            else //if (transport is Helicopter)
             {
                 Helicopter carTransport = new Helicopter();
                 carTransport = (Helicopter)transport;

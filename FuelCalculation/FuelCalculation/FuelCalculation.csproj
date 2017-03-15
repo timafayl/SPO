@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarTransportProperty.cs" />
+    <Compile Include="FuelType.cs" />
     <Compile Include="HelicopterTransportProperty.cs" />
     <Compile Include="ITransportProperty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
