@@ -54,19 +54,19 @@
     </Compile>
     <Compile Include="FilePath.cs" />
     <Compile Include="Serialization.cs" />
-    <Compile Include="TransportListView.cs">
+    <Compile Include="TransportListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TransportListView.Designer.cs">
-      <DependentUpon>TransportListView.cs</DependentUpon>
+    <Compile Include="TransportListForm.Designer.cs">
+      <DependentUpon>TransportListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddNewItemForm.resx">
       <DependentUpon>AddNewItemForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TransportListView.resx">
-      <DependentUpon>TransportListView.cs</DependentUpon>
+    <EmbeddedResource Include="TransportListForm.resx">
+      <DependentUpon>TransportListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Globalization;
 using FuelCalculation;
 
 namespace TravelingSuccessCalculationView
@@ -15,57 +13,13 @@ namespace TravelingSuccessCalculationView
             InitializeComponent();
         }
 
-        private void AddNewItemForm_Load(object sender, EventArgs e)
+        private void OKButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-                label6.Text = "FuelType";
-                label6.Visible = true;
-                comboBox1.Visible = true;
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-                label6.Text = "Mass";
-                label6.Visible = true;
-                textBox6.Visible = true;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (radioButton1.Checked)
-            {
-                Car car = new Car();
-                car.TransportName = textBox1.Text;
-                car.WearRate = Convert.ToDouble(textBox2.Text);
-                car.FuelWaste = Convert.ToDouble(textBox3.Text);
-                car.Speed = Convert.ToDouble(textBox4.Text);
-                car.TankVolume = Convert.ToDouble(textBox5.Text);
-                car.FuelType = (FuelType)Enum.Parse(typeof(FuelType), comboBox1.Text);
-
-                TransportProperty = car;
-            }
-
-            else
-            {
-                Helicopter helicopter = new Helicopter();
-                helicopter.TransportName = textBox1.Text;
-                helicopter.WearRate = Convert.ToDouble(textBox2.Text);
-                helicopter.FuelWaste = Convert.ToDouble(textBox3.Text);
-                helicopter.Speed = Convert.ToDouble(textBox4.Text);
-                helicopter.TankVolume = Convert.ToDouble(textBox5.Text);
-                helicopter.Mass = Convert.ToDouble(textBox5.Text);
-
-                TransportProperty = helicopter;
-            }
-
+            DialogResult = DialogResult.OK;
             Close();
         }
 
-        public ITransportProperty TransportProperty
+        /*public ITransportProperty TransportProperty
         {
             set
             {
@@ -75,67 +29,106 @@ namespace TravelingSuccessCalculationView
             {
                 return _transportProperty;
             }
-        }
+        }*/
 
         public ITransportProperty GetTransport()
         {
+            if (ChooseTransportComboBox.Text == "Car")
+            {
+                Car car = new Car();
+                car.TransportName = TNameTextBox.Text;
+                car.WearRate = Convert.ToDouble(WearRateTextBox.Text);
+                car.FuelWaste = Convert.ToDouble(FuelWasteTtextBox.Text);
+                car.Speed = Convert.ToDouble(SpeedTextBox.Text);
+                car.TankVolume = Convert.ToDouble(TankVolumeTextBox.Text);
+                car.FuelType = (FuelType)Enum.Parse(typeof(FuelType), FuelTypeComboBox.Text);
 
+                return car;
+            }
 
-            return null;
+            else
+            {
+                Helicopter helicopter = new Helicopter();
+                helicopter.TransportName = TNameTextBox.Text;
+                helicopter.WearRate = Convert.ToDouble(WearRateTextBox.Text);
+                helicopter.FuelWaste = Convert.ToDouble(FuelWasteTtextBox.Text);
+                helicopter.Speed = Convert.ToDouble(SpeedTextBox.Text);
+                helicopter.TankVolume = Convert.ToDouble(TankVolumeTextBox.Text);
+                helicopter.Mass = Convert.ToDouble(TankVolumeTextBox.Text);
 
+                return helicopter;
+            }
         }
 
         public void SetTransport(ITransportProperty transport)
         {
-            textBox1.Text = Convert.ToString(transport.TransportName);
-            textBox2.Text = Convert.ToString(transport.WearRate);
-            textBox3.Text = Convert.ToString(transport.FuelWaste);
-            textBox4.Text = Convert.ToString(transport.Speed);
-            textBox5.Text = Convert.ToString(transport.TankVolume);
+            TNameTextBox.Text = Convert.ToString(transport.TransportName);
+            WearRateTextBox.Text = Convert.ToString(transport.WearRate);
+            FuelWasteTtextBox.Text = Convert.ToString(transport.FuelWaste);
+            SpeedTextBox.Text = Convert.ToString(transport.Speed);
+            TankVolumeTextBox.Text = Convert.ToString(transport.TankVolume);
             if (transport is Car)
             {
                 var carTransport = new Car();
                 carTransport = (Car)transport;
-                radioButton1.Checked = true;
-                comboBox1.Text = Convert.ToString(carTransport.FuelType);
+                ChooseTransportComboBox.Text = "Car";
+                FuelTypeComboBox.Text = Convert.ToString(carTransport.FuelType);
             }
             else
             {
                 var carTransport = new Helicopter();
                 carTransport = (Helicopter)transport;
-                radioButton2.Checked = true;
-                textBox6.Text = Convert.ToString(carTransport.Mass);
+                ChooseTransportComboBox.Text = "Helocopter";
+                MassTextBox.Text = Convert.ToString(carTransport.Mass);
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void GenerateRandomValuesButton_Click(object sender, EventArgs e)
         {
             const int size = 5;
             Random rand = new Random();
 
             string name = "abcdefghijklmnopqrstuvwxyz";
-            for (int i = 0; i < size; i++, textBox1.Text += name[rand.Next(name.Length)].ToString()) ;
+            for (int i = 0; i < size; i++, TNameTextBox.Text += name[rand.Next(name.Length)].ToString()) ;
 
             char[] newName = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
-            for (int i = 0; i < size; i++, textBox1.Text += newName[rand.Next(newName.Length)].ToString()) ;
+            for (int i = 0; i < size; i++, TNameTextBox.Text += newName[rand.Next(newName.Length)].ToString()) ;
 
             /*-------------------------*/
+            var unixTimestamp = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+            var randomInt = new Random(unixTimestamp);
+            WearRateTextBox.Text = @"0," + Convert.ToString(randomInt.Next(10, 90));
+            FuelWasteTtextBox.Text = Convert.ToString(randomInt.Next(25, 27));
+            SpeedTextBox.Text = Convert.ToString(randomInt.Next(100, 180));
+            TankVolumeTextBox.Text = Convert.ToString(randomInt.Next(50, 60));
 
-            var randomInt = new Random(50);
-            textBox2.Text = @"0," + Convert.ToString(randomInt.Next(10, 90));
-            textBox3.Text = Convert.ToString(randomInt.Next(25, 27));
-            textBox4.Text = Convert.ToString(randomInt.Next(100, 180));
-            textBox5.Text = Convert.ToString(randomInt.Next(50, 60));
-
-            if (radioButton1.Checked)
+            if (ChooseTransportComboBox.Text == "Car")
             {
-                comboBox1.Text = Convert.ToString(FuelType.Бензин);
+                FuelTypeComboBox.Text = Convert.ToString(FuelType.Бензин);
             }
             else
             {
-                textBox6.Text = Convert.ToString(randomInt.Next(500, 999));
+                MassTextBox.Text = Convert.ToString(randomInt.Next(500, 999));
             }
 
+        }
+
+        private void ChooseTransportComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ChooseTransportComboBox.Text == "Car")
+            {
+                UniqeFieldLabel.Text = "FuelType";
+                UniqeFieldLabel.Visible = true;
+                FuelTypeComboBox.Visible = true;
+                MassTextBox.Visible = false;
+            }
+            else
+            {
+                UniqeFieldLabel.Text = "Mass";
+                UniqeFieldLabel.Visible = true;
+                MassTextBox.Visible = true;
+                FuelTypeComboBox.Visible = false;
+            }
         }
     }
 }
