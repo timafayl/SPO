@@ -45,6 +45,7 @@
             this.GenerateRandomValuesButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.ChooseTransportComboBox = new System.Windows.Forms.ComboBox();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TNameLabel
@@ -139,7 +140,7 @@
             // 
             // OKButton
             // 
-            this.OKButton.Location = new System.Drawing.Point(92, 245);
+            this.OKButton.Location = new System.Drawing.Point(65, 245);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(69, 23);
             this.OKButton.TabIndex = 14;
@@ -198,11 +199,22 @@
             this.ChooseTransportComboBox.TabIndex = 21;
             this.ChooseTransportComboBox.SelectedIndexChanged += new System.EventHandler(this.ChooseTransportComboBox_SelectedIndexChanged);
             // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(141, 245);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(69, 23);
+            this.CancelButton.TabIndex = 22;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
             // AddNewItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(273, 272);
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ChooseTransportComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.GenerateRandomValuesButton);
@@ -246,5 +258,6 @@
         private System.Windows.Forms.Button GenerateRandomValuesButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox ChooseTransportComboBox;
+        private System.Windows.Forms.Button CancelButton;
     }
 }

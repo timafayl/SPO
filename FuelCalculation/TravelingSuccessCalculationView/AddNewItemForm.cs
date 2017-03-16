@@ -130,5 +130,10 @@ namespace TravelingSuccessCalculationView
                 FuelTypeComboBox.Visible = false;
             }
         }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
