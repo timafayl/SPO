@@ -35,7 +35,14 @@ namespace TravelingSuccessCalculationView
             var formatter = new BinaryFormatter();
             using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
-                myList = (List<ITransportProperty>)formatter.Deserialize(fs);
+                if(fs.Length == 0)
+                {
+                    myList = null;
+                }
+                else
+                {
+                    myList = (List<ITransportProperty>)formatter.Deserialize(fs);
+                }
             }
         }
     }

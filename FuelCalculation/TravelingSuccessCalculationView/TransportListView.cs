@@ -15,6 +15,7 @@ namespace TravelingSuccessCalculationView
 
             TransportList = new List<ITransportProperty>();
             Serialization.Deserialize(ref TransportList);
+            iTransportPropertyBindingSource.DataSource = TransportList;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -24,46 +25,52 @@ namespace TravelingSuccessCalculationView
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddNewItemForm frm = new AddNewItemForm();
+            var frm = new AddNewItemForm();
             frm.ShowDialog();
-            var transport = frm.GetTransport();
+            ITransportProperty transport = frm.GetTransport();
             iTransportPropertyBindingSource.Add(transport);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AddNewItemForm frm = new AddNewItemForm();
-            int index = dataGridView1.CurrentRow.Index;
-            frm.SetTransport((ITransportProperty)iTransportPropertyBindingSource.Current);
-            frm.ShowDialog();
-            var transport = frm.GetTransport();
-            iTransportPropertyBindingSource[index] = transport;
+            var frm = new AddNewItemForm();
+            if (dataGridView1.CurrentRow != null)
+            {
+                var index = dataGridView1.CurrentRow.Index;
+                frm.SetTransport((ITransportProperty)iTransportPropertyBindingSource.Current);
+                frm.ShowDialog();
+                var transport = frm.GetTransport();
+                iTransportPropertyBindingSource[index] = transport;
+            }
         }
 
         private void TransportListView_Load(object sender, EventArgs e)
         {
-            iTransportPropertyBindingSource.DataSource = TransportList;
+            //iTransportPropertyBindingSource.DataSource = TransportList;
         }
 
         private void TransportListView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Serialization.Serialize(TransportList);
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            //Serialization.Serialize(TransportList);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int index = dataGridView1.CurrentRow.Index;
-            dataGridView1.Rows.RemoveAt(index);
+            if (dataGridView1.CurrentRow != null)
+            {
+                var index = dataGridView1.CurrentRow.Index;
+                dataGridView1.Rows.RemoveAt(index);
+            }
         }
 
         private void abouUsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SaveMenuItem_Click(object sender, EventArgs e)
+        {
+            Serialization.Serialize(TransportList);
         }
     }
 }

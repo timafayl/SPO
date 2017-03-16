@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Globalization;
 using FuelCalculation;
 
 namespace TravelingSuccessCalculationView
@@ -48,7 +49,7 @@ namespace TravelingSuccessCalculationView
                 car.FuelWaste = Convert.ToDouble(textBox3.Text);
                 car.Speed = Convert.ToDouble(textBox4.Text);
                 car.TankVolume = Convert.ToDouble(textBox5.Text);
-                car.FuelType = (FuelType) Enum.Parse(typeof(FuelType), comboBox1.Text);
+                car.FuelType = (FuelType)Enum.Parse(typeof(FuelType), comboBox1.Text);
 
                 return car;
             }
@@ -75,18 +76,48 @@ namespace TravelingSuccessCalculationView
             textBox5.Text = Convert.ToString(transport.TankVolume);
             if (transport is Car)
             {
-                Car carTransport = new Car();
+                var carTransport = new Car();
                 carTransport = (Car)transport;
                 radioButton1.Checked = true;
                 comboBox1.Text = Convert.ToString(carTransport.FuelType);
             }
-            else //if (transport is Helicopter)
+            else
             {
-                Helicopter carTransport = new Helicopter();
+                var carTransport = new Helicopter();
                 carTransport = (Helicopter)transport;
                 radioButton2.Checked = true;
                 textBox6.Text = Convert.ToString(carTransport.Mass);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            const int size = 5;
+            Random rand = new Random();
+
+            string name = "abcdefghijklmnopqrstuvwxyz";
+            for (int i = 0; i < size; i++, textBox1.Text += name[rand.Next(name.Length)].ToString()) ;
+
+            char[] newName = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            for (int i = 0; i < size; i++, textBox1.Text += newName[rand.Next(newName.Length)].ToString()) ;
+
+            /*-------------------------*/
+
+            var randomInt = new Random(50);
+            textBox2.Text = @"0," + Convert.ToString(randomInt.Next(10, 90));
+            textBox3.Text = Convert.ToString(randomInt.Next(25, 27));
+            textBox4.Text = Convert.ToString(randomInt.Next(100, 180));
+            textBox5.Text = Convert.ToString(randomInt.Next(50, 60));
+
+            if (radioButton1.Checked)
+            {
+                comboBox1.Text = Convert.ToString(FuelType.Бензин);
+            }
+            else
+            {
+                textBox6.Text = Convert.ToString(randomInt.Next(500, 999));
+            }
+
         }
     }
 }

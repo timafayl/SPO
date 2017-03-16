@@ -143,7 +143,7 @@ namespace FuelCalculation
             get { return _fuelType; }
             set
             {
-                if (((int)value < 1) || ((int)value > 2))
+                if (((FuelType)value == FuelType.Бензин) || ((FuelType)value == FuelType.Дизель))
                 {
                     _fuelType = (FuelType)value;
                 }
