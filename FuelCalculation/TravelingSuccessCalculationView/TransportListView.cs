@@ -38,7 +38,6 @@ namespace TravelingSuccessCalculationView
             frm.ShowDialog();
             var transport = frm.GetTransport();
             iTransportPropertyBindingSource[index] = transport;
-            //iTransportPropertyBindingSource.Add(transport);
         }
 
         private void TransportListView_Load(object sender, EventArgs e)
@@ -60,6 +59,11 @@ namespace TravelingSuccessCalculationView
         {
             int index = dataGridView1.CurrentRow.Index;
             dataGridView1.Rows.RemoveAt(index);
+        }
+
+        private void abouUsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
