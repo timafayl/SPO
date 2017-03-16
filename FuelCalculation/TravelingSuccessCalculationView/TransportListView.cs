@@ -14,7 +14,7 @@ namespace TravelingSuccessCalculationView
             InitializeComponent();
 
             TransportList = new List<ITransportProperty>();
-            Serialization.Deserialize(ref TransportList);
+            //Serialization.Deserialize(ref TransportList);
             iTransportPropertyBindingSource.DataSource = TransportList;
         }
 
@@ -27,8 +27,8 @@ namespace TravelingSuccessCalculationView
         {
             var frm = new AddNewItemForm();
             frm.ShowDialog();
-            ITransportProperty transport = frm.GetTransport();
-            iTransportPropertyBindingSource.Add(transport);
+           // var transport = frm.GetTransport();
+            iTransportPropertyBindingSource.Add(frm.TransportProperty);
         }
 
         private void button2_Click(object sender, EventArgs e)

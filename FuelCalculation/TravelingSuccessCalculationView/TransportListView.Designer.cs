@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.transportNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wearRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fuelWasteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tankVolumeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iTransportPropertyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -50,17 +56,11 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.iTransportPropertyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.transportNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wearRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fuelWasteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tankVolumeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTransportPropertyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iTransportPropertyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -97,6 +97,46 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(544, 415);
             this.dataGridView2.TabIndex = 4;
+            // 
+            // transportNameDataGridViewTextBoxColumn
+            // 
+            this.transportNameDataGridViewTextBoxColumn.DataPropertyName = "TransportName";
+            this.transportNameDataGridViewTextBoxColumn.HeaderText = "TransportName";
+            this.transportNameDataGridViewTextBoxColumn.Name = "transportNameDataGridViewTextBoxColumn";
+            this.transportNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // wearRateDataGridViewTextBoxColumn
+            // 
+            this.wearRateDataGridViewTextBoxColumn.DataPropertyName = "WearRate";
+            this.wearRateDataGridViewTextBoxColumn.HeaderText = "WearRate";
+            this.wearRateDataGridViewTextBoxColumn.Name = "wearRateDataGridViewTextBoxColumn";
+            this.wearRateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fuelWasteDataGridViewTextBoxColumn
+            // 
+            this.fuelWasteDataGridViewTextBoxColumn.DataPropertyName = "FuelWaste";
+            this.fuelWasteDataGridViewTextBoxColumn.HeaderText = "FuelWaste";
+            this.fuelWasteDataGridViewTextBoxColumn.Name = "fuelWasteDataGridViewTextBoxColumn";
+            this.fuelWasteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // speedDataGridViewTextBoxColumn
+            // 
+            this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
+            this.speedDataGridViewTextBoxColumn.HeaderText = "Speed";
+            this.speedDataGridViewTextBoxColumn.Name = "speedDataGridViewTextBoxColumn";
+            this.speedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tankVolumeDataGridViewTextBoxColumn
+            // 
+            this.tankVolumeDataGridViewTextBoxColumn.DataPropertyName = "TankVolume";
+            this.tankVolumeDataGridViewTextBoxColumn.HeaderText = "TankVolume";
+            this.tankVolumeDataGridViewTextBoxColumn.Name = "tankVolumeDataGridViewTextBoxColumn";
+            this.tankVolumeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iTransportPropertyBindingSource
+            // 
+            this.iTransportPropertyBindingSource.AllowNew = true;
+            this.iTransportPropertyBindingSource.DataSource = typeof(FuelCalculation.ITransportProperty);
             // 
             // dataGridView1
             // 
@@ -166,26 +206,26 @@
             // OpenMenuItem
             // 
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.OpenMenuItem.Size = new System.Drawing.Size(149, 22);
             this.OpenMenuItem.Text = "Открыть";
             // 
             // SaveMenuItem
             // 
             this.SaveMenuItem.Name = "SaveMenuItem";
-            this.SaveMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SaveMenuItem.Size = new System.Drawing.Size(149, 22);
             this.SaveMenuItem.Text = "Сохранить";
             this.SaveMenuItem.Click += new System.EventHandler(this.SaveMenuItem_Click);
             // 
             // SaveAsMenuItem
             // 
             this.SaveAsMenuItem.Name = "SaveAsMenuItem";
-            this.SaveAsMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SaveAsMenuItem.Size = new System.Drawing.Size(149, 22);
             this.SaveAsMenuItem.Text = "Сохранить как";
             // 
             // CloseMenuItem
             // 
             this.CloseMenuItem.Name = "CloseMenuItem";
-            this.CloseMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CloseMenuItem.Size = new System.Drawing.Size(149, 22);
             this.CloseMenuItem.Text = "Закрыть";
             // 
             // правкаToolStripMenuItem
@@ -237,45 +277,6 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
-            // iTransportPropertyBindingSource
-            // 
-            this.iTransportPropertyBindingSource.DataSource = typeof(FuelCalculation.ITransportProperty);
-            // 
-            // transportNameDataGridViewTextBoxColumn
-            // 
-            this.transportNameDataGridViewTextBoxColumn.DataPropertyName = "TransportName";
-            this.transportNameDataGridViewTextBoxColumn.HeaderText = "TransportName";
-            this.transportNameDataGridViewTextBoxColumn.Name = "transportNameDataGridViewTextBoxColumn";
-            this.transportNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // wearRateDataGridViewTextBoxColumn
-            // 
-            this.wearRateDataGridViewTextBoxColumn.DataPropertyName = "WearRate";
-            this.wearRateDataGridViewTextBoxColumn.HeaderText = "WearRate";
-            this.wearRateDataGridViewTextBoxColumn.Name = "wearRateDataGridViewTextBoxColumn";
-            this.wearRateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fuelWasteDataGridViewTextBoxColumn
-            // 
-            this.fuelWasteDataGridViewTextBoxColumn.DataPropertyName = "FuelWaste";
-            this.fuelWasteDataGridViewTextBoxColumn.HeaderText = "FuelWaste";
-            this.fuelWasteDataGridViewTextBoxColumn.Name = "fuelWasteDataGridViewTextBoxColumn";
-            this.fuelWasteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // speedDataGridViewTextBoxColumn
-            // 
-            this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
-            this.speedDataGridViewTextBoxColumn.HeaderText = "Speed";
-            this.speedDataGridViewTextBoxColumn.Name = "speedDataGridViewTextBoxColumn";
-            this.speedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tankVolumeDataGridViewTextBoxColumn
-            // 
-            this.tankVolumeDataGridViewTextBoxColumn.DataPropertyName = "TankVolume";
-            this.tankVolumeDataGridViewTextBoxColumn.HeaderText = "TankVolume";
-            this.tankVolumeDataGridViewTextBoxColumn.Name = "tankVolumeDataGridViewTextBoxColumn";
-            this.tankVolumeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // TransportListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,10 +292,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTransportPropertyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iTransportPropertyBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

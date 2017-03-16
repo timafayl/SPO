@@ -8,6 +8,8 @@ namespace TravelingSuccessCalculationView
 {
     public partial class AddNewItemForm : Form
     {
+        private ITransportProperty _transportProperty;
+
         public AddNewItemForm()
         {
             InitializeComponent();
@@ -34,16 +36,9 @@ namespace TravelingSuccessCalculationView
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Close();
-        }
-
-        public ITransportProperty GetTransport()
-        {
-            Car car = new Car();
-            Helicopter helicopter = new Helicopter();
-
             if (radioButton1.Checked)
             {
+                Car car = new Car();
                 car.TransportName = textBox1.Text;
                 car.WearRate = Convert.ToDouble(textBox2.Text);
                 car.FuelWaste = Convert.ToDouble(textBox3.Text);
@@ -51,11 +46,12 @@ namespace TravelingSuccessCalculationView
                 car.TankVolume = Convert.ToDouble(textBox5.Text);
                 car.FuelType = (FuelType)Enum.Parse(typeof(FuelType), comboBox1.Text);
 
-                return car;
+                TransportProperty = car;
             }
 
             else
             {
+                Helicopter helicopter = new Helicopter();
                 helicopter.TransportName = textBox1.Text;
                 helicopter.WearRate = Convert.ToDouble(textBox2.Text);
                 helicopter.FuelWaste = Convert.ToDouble(textBox3.Text);
@@ -63,8 +59,30 @@ namespace TravelingSuccessCalculationView
                 helicopter.TankVolume = Convert.ToDouble(textBox5.Text);
                 helicopter.Mass = Convert.ToDouble(textBox5.Text);
 
-                return helicopter;
+                TransportProperty = helicopter;
             }
+
+            Close();
+        }
+
+        public ITransportProperty TransportProperty
+        {
+            set
+            {
+                _transportProperty = value;
+            }
+            get
+            {
+                return _transportProperty;
+            }
+        }
+
+        public ITransportProperty GetTransport()
+        {
+
+
+            return null;
+
         }
 
         public void SetTransport(ITransportProperty transport)
