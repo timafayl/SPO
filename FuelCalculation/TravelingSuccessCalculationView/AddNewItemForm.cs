@@ -4,11 +4,11 @@ using FuelCalculation;
 
 namespace TravelingSuccessCalculationView
 {
-    public partial class AddNewItemForm : Form
+    public partial class AddNewTransportForm : Form
     {
-        private ITransportProperty _transportProperty;
+        //private ITransportProperty _transportProperty;
 
-        public AddNewItemForm()
+        public AddNewTransportForm()
         {
             InitializeComponent();
         }

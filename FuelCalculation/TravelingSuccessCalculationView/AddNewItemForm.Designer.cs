@@ -1,6 +1,6 @@
 ﻿namespace TravelingSuccessCalculationView
 {
-    partial class AddNewItemForm
+    partial class AddNewTransportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewTransportForm));
             this.TNameLabel = new System.Windows.Forms.Label();
             this.WearRateLabel = new System.Windows.Forms.Label();
             this.FuelWasteLabel = new System.Windows.Forms.Label();
@@ -174,7 +175,7 @@
             this.GenerateRandomValuesButton.Name = "GenerateRandomValuesButton";
             this.GenerateRandomValuesButton.Size = new System.Drawing.Size(210, 23);
             this.GenerateRandomValuesButton.TabIndex = 19;
-            this.GenerateRandomValuesButton.Text = "Сгенерировать случайные данные";
+            this.GenerateRandomValuesButton.Text = "Generate random values";
             this.GenerateRandomValuesButton.UseVisualStyleBackColor = true;
             this.GenerateRandomValuesButton.Click += new System.EventHandler(this.GenerateRandomValuesButton_Click);
             // 
@@ -209,7 +210,7 @@
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // AddNewItemForm
+            // AddNewTransportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -233,8 +234,9 @@
             this.Controls.Add(this.WearRateLabel);
             this.Controls.Add(this.TNameLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "AddNewItemForm";
-            this.Text = "AddNewItem";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "AddNewTransportForm";
+            this.Text = "Add New Transport";
             this.ResumeLayout(false);
             this.PerformLayout();
 

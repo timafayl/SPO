@@ -8,6 +8,7 @@ namespace TravelingSuccessCalculationView
     public partial class TransportListForm : Form
     {
         public List<ITransportProperty> TransportList;
+        private List<ITransportProperty> _savedTransportList = new List<ITransportProperty>();
 
         public TransportListForm()
         {
@@ -20,7 +21,7 @@ namespace TravelingSuccessCalculationView
 
         private void AddNewItemButton_Click(object sender, EventArgs e)
         {
-            var frm = new AddNewItemForm();
+            var frm = new AddNewTransportForm();
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 var transport = frm.GetTransport();
@@ -31,7 +32,7 @@ namespace TravelingSuccessCalculationView
 
         private void ModifyItemButton_Click(object sender, EventArgs e)
         {
-            var frm = new AddNewItemForm();
+            var frm = new AddNewTransportForm();
             frm.SetTransport((ITransportProperty)iTransportPropertyBindingSource.Current);
             frm.ShowDialog();
                 
@@ -48,7 +49,10 @@ namespace TravelingSuccessCalculationView
 
         private void TransportListView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Serialization.Serialize(TransportList);
+            if (_savedTransportList.Equals(TransportList))
+            {
+                Serialization.Serialize(TransportList);
+            }
         }
 
         private void RemoveItemButton_Click(object sender, EventArgs e)
@@ -63,6 +67,7 @@ namespace TravelingSuccessCalculationView
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
             Serialization.Serialize(TransportList);
+            _savedTransportList = TransportList;
         }
     }
 }
