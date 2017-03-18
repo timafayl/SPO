@@ -49,7 +49,7 @@
             this.OpenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CloseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PrintMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddItemMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ModifyItemMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +57,7 @@
             this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProgramGuideMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CloseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TransportListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransportListGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportPropertyBindingSource)).BeginInit();
@@ -200,6 +201,7 @@
             this.OpenMenuItem,
             this.SaveMenuItem,
             this.SaveAsMenuItem,
+            this.PrintMenuItem,
             this.CloseMenuItem});
             this.FileMenuItem.Name = "FileMenuItem";
             this.FileMenuItem.Size = new System.Drawing.Size(35, 20);
@@ -208,26 +210,27 @@
             // OpenMenuItem
             // 
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.OpenMenuItem.Size = new System.Drawing.Size(152, 22);
             this.OpenMenuItem.Text = "Open";
             // 
             // SaveMenuItem
             // 
             this.SaveMenuItem.Name = "SaveMenuItem";
-            this.SaveMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.SaveMenuItem.Size = new System.Drawing.Size(152, 22);
             this.SaveMenuItem.Text = "Save";
             // 
             // SaveAsMenuItem
             // 
             this.SaveAsMenuItem.Name = "SaveAsMenuItem";
-            this.SaveAsMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.SaveAsMenuItem.Size = new System.Drawing.Size(152, 22);
             this.SaveAsMenuItem.Text = "SaveAs";
             // 
-            // CloseMenuItem
+            // PrintMenuItem
             // 
-            this.CloseMenuItem.Name = "CloseMenuItem";
-            this.CloseMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.CloseMenuItem.Text = "Close";
+            this.PrintMenuItem.Name = "PrintMenuItem";
+            this.PrintMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.PrintMenuItem.Text = "Print";
+            this.PrintMenuItem.Click += new System.EventHandler(this.PrintMenuItem_Click);
             // 
             // EditMenuItem
             // 
@@ -242,19 +245,19 @@
             // AddItemMenuItem
             // 
             this.AddItemMenuItem.Name = "AddItemMenuItem";
-            this.AddItemMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.AddItemMenuItem.Size = new System.Drawing.Size(152, 22);
             this.AddItemMenuItem.Text = "Add";
             // 
             // ModifyItemMenuItem
             // 
             this.ModifyItemMenuItem.Name = "ModifyItemMenuItem";
-            this.ModifyItemMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.ModifyItemMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ModifyItemMenuItem.Text = "Modify";
             // 
             // RemoveItemMenuItem
             // 
             this.RemoveItemMenuItem.Name = "RemoveItemMenuItem";
-            this.RemoveItemMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.RemoveItemMenuItem.Size = new System.Drawing.Size(152, 22);
             this.RemoveItemMenuItem.Text = "Remove";
             // 
             // HelpMenuItem
@@ -277,6 +280,13 @@
             this.ProgramGuideMenuItem.Name = "ProgramGuideMenuItem";
             this.ProgramGuideMenuItem.Size = new System.Drawing.Size(164, 22);
             this.ProgramGuideMenuItem.Text = "Technical guidance";
+            // 
+            // CloseMenuItem
+            // 
+            this.CloseMenuItem.Name = "CloseMenuItem";
+            this.CloseMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CloseMenuItem.Text = "Close";
+            this.CloseMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
             // 
             // TransportListForm
             // 
@@ -325,7 +335,7 @@
         private System.Windows.Forms.ToolStripMenuItem OpenMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SaveMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SaveAsMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem CloseMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PrintMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AddItemMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ModifyItemMenuItem;
@@ -333,6 +343,7 @@
         private System.Windows.Forms.ToolStripMenuItem HelpMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ProgramGuideMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CloseMenuItem;
     }
 }
 

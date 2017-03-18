@@ -10,6 +10,18 @@ namespace TravelingSuccessCalculationView
         public List<ITransportProperty> TransportList;
         private List<ITransportProperty> _savedTransportList = new List<ITransportProperty>();
 
+        public List<ITransportProperty> SavedTransportList
+        {
+            get
+            {
+                return _savedTransportList;
+            }
+            set
+            {
+                _savedTransportList = value;
+            }
+        }
+
         public TransportListForm()
         {
             InitializeComponent();
@@ -49,9 +61,19 @@ namespace TravelingSuccessCalculationView
 
         private void TransportListView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_savedTransportList.Equals(TransportList))
+            if (!SavedTransportList.Equals(TransportList))
             {
-                Serialization.Serialize(TransportList);
+                if (MessageBox.Show("Do you want to save the changes?", "BeforeClose",
+                MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                   Application.Exit();
+                }
+                else
+                {
+                    Serialization.Serialize(TransportList);
+                    Application.Exit();
+                    //_savedTransportList = TransportList;
+                }
             }
         }
 
@@ -64,10 +86,37 @@ namespace TravelingSuccessCalculationView
             }
         }
 
-        private void SaveMenuItem_Click(object sender, EventArgs e)
+        private void SaveMenuItem_Click()
         {
             Serialization.Serialize(TransportList);
-            _savedTransportList = TransportList;
+            SavedTransportList = TransportList;
+        }
+
+        private void PrintMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CloseMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!SavedTransportList.Equals(TransportList))
+            {
+                if (MessageBox.Show("Do you want to save the changes?", "BeforeClose",
+                MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    Serialization.Serialize(TransportList);
+                    if (MessageBox.Show("Changes successfully saved", "ChangesSaved",
+                            MessageBoxButtons.OK) == DialogResult.OK)
+                    {
+                        Application.Exit();
+                    }
+                    //_savedTransportList = TransportList;
+                }
+            }
         }
     }
 }
