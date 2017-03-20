@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace FuelCalculation
+﻿namespace FuelCalculation
 {
-    public interface ITransportProperty
+    public interface ITransport
     {
         /// <summary>
         /// Метод, вычисляющий вероятность успеха поездки.

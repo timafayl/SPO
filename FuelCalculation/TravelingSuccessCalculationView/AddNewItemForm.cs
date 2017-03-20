@@ -31,7 +31,7 @@ namespace TravelingSuccessCalculationView
             }
         }*/
 
-        public ITransportProperty GetTransport()
+        public ITransport GetTransport()
         {
             if (ChooseTransportComboBox.Text == "Car")
             {
@@ -60,7 +60,7 @@ namespace TravelingSuccessCalculationView
             }
         }
 
-        public void SetTransport(ITransportProperty transport)
+        public void SetTransport(ITransport transport)
         {
             TNameTextBox.Text = Convert.ToString(transport.TransportName);
             WearRateTextBox.Text = Convert.ToString(transport.WearRate);

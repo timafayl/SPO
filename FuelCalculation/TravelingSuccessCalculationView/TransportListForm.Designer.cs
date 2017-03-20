@@ -32,12 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransportListForm));
             this.TransportListGroupBox = new System.Windows.Forms.GroupBox();
             this.TransportListGridView = new System.Windows.Forms.DataGridView();
-            this.transportNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.wearRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fuelWasteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tankVolumeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iTransportPropertyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iTransportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RemoveItemButton = new System.Windows.Forms.Button();
             this.ModifyItemButton = new System.Windows.Forms.Button();
             this.AddNewItemButton = new System.Windows.Forms.Button();
@@ -50,6 +50,7 @@
             this.SaveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrintMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CloseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddItemMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ModifyItemMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,10 +58,9 @@
             this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProgramGuideMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CloseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TransportListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransportListGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iTransportPropertyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +75,7 @@
             this.TransportListGroupBox.Size = new System.Drawing.Size(641, 348);
             this.TransportListGroupBox.TabIndex = 0;
             this.TransportListGroupBox.TabStop = false;
-            this.TransportListGroupBox.Text = "Transpor tList";
+            this.TransportListGroupBox.Text = "Transport List";
             // 
             // TransportListGridView
             // 
@@ -86,12 +86,12 @@
             this.TransportListGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TransportListGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TransportListGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.transportNameDataGridViewTextBoxColumn,
-            this.wearRateDataGridViewTextBoxColumn,
-            this.fuelWasteDataGridViewTextBoxColumn,
-            this.speedDataGridViewTextBoxColumn,
-            this.tankVolumeDataGridViewTextBoxColumn});
-            this.TransportListGridView.DataSource = this.iTransportPropertyBindingSource;
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.TransportListGridView.DataSource = this.iTransportBindingSource;
             this.TransportListGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TransportListGridView.Location = new System.Drawing.Point(3, 16);
             this.TransportListGridView.Name = "TransportListGridView";
@@ -100,45 +100,44 @@
             this.TransportListGridView.Size = new System.Drawing.Size(635, 329);
             this.TransportListGridView.TabIndex = 4;
             // 
-            // transportNameDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.transportNameDataGridViewTextBoxColumn.DataPropertyName = "TransportName";
-            this.transportNameDataGridViewTextBoxColumn.HeaderText = "TransportName";
-            this.transportNameDataGridViewTextBoxColumn.Name = "transportNameDataGridViewTextBoxColumn";
-            this.transportNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TransportName";
+            this.dataGridViewTextBoxColumn1.HeaderText = "TransportName";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // wearRateDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            this.wearRateDataGridViewTextBoxColumn.DataPropertyName = "WearRate";
-            this.wearRateDataGridViewTextBoxColumn.HeaderText = "WearRate";
-            this.wearRateDataGridViewTextBoxColumn.Name = "wearRateDataGridViewTextBoxColumn";
-            this.wearRateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "WearRate";
+            this.dataGridViewTextBoxColumn2.HeaderText = "WearRate";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
-            // fuelWasteDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn3
             // 
-            this.fuelWasteDataGridViewTextBoxColumn.DataPropertyName = "FuelWaste";
-            this.fuelWasteDataGridViewTextBoxColumn.HeaderText = "FuelWaste";
-            this.fuelWasteDataGridViewTextBoxColumn.Name = "fuelWasteDataGridViewTextBoxColumn";
-            this.fuelWasteDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "FuelWaste";
+            this.dataGridViewTextBoxColumn3.HeaderText = "FuelWaste";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // speedDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn4
             // 
-            this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
-            this.speedDataGridViewTextBoxColumn.HeaderText = "Speed";
-            this.speedDataGridViewTextBoxColumn.Name = "speedDataGridViewTextBoxColumn";
-            this.speedDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Speed";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Speed";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // tankVolumeDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn5
             // 
-            this.tankVolumeDataGridViewTextBoxColumn.DataPropertyName = "TankVolume";
-            this.tankVolumeDataGridViewTextBoxColumn.HeaderText = "TankVolume";
-            this.tankVolumeDataGridViewTextBoxColumn.Name = "tankVolumeDataGridViewTextBoxColumn";
-            this.tankVolumeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "TankVolume";
+            this.dataGridViewTextBoxColumn5.HeaderText = "TankVolume";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
-            // iTransportPropertyBindingSource
+            // iTransportBindingSource
             // 
-            this.iTransportPropertyBindingSource.AllowNew = true;
-            this.iTransportPropertyBindingSource.DataSource = typeof(FuelCalculation.ITransportProperty);
+            this.iTransportBindingSource.DataSource = typeof(FuelCalculation.ITransport);
             // 
             // RemoveItemButton
             // 
@@ -218,12 +217,14 @@
             this.SaveMenuItem.Name = "SaveMenuItem";
             this.SaveMenuItem.Size = new System.Drawing.Size(152, 22);
             this.SaveMenuItem.Text = "Save";
+            this.SaveMenuItem.Click += new System.EventHandler(this.SaveMenuItem_Click);
             // 
             // SaveAsMenuItem
             // 
             this.SaveAsMenuItem.Name = "SaveAsMenuItem";
             this.SaveAsMenuItem.Size = new System.Drawing.Size(152, 22);
             this.SaveAsMenuItem.Text = "SaveAs";
+            this.SaveAsMenuItem.Click += new System.EventHandler(this.SaveAsMenuItem_Click);
             // 
             // PrintMenuItem
             // 
@@ -231,6 +232,13 @@
             this.PrintMenuItem.Size = new System.Drawing.Size(152, 22);
             this.PrintMenuItem.Text = "Print";
             this.PrintMenuItem.Click += new System.EventHandler(this.PrintMenuItem_Click);
+            // 
+            // CloseMenuItem
+            // 
+            this.CloseMenuItem.Name = "CloseMenuItem";
+            this.CloseMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CloseMenuItem.Text = "Close";
+            this.CloseMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
             // 
             // EditMenuItem
             // 
@@ -245,19 +253,19 @@
             // AddItemMenuItem
             // 
             this.AddItemMenuItem.Name = "AddItemMenuItem";
-            this.AddItemMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.AddItemMenuItem.Size = new System.Drawing.Size(113, 22);
             this.AddItemMenuItem.Text = "Add";
             // 
             // ModifyItemMenuItem
             // 
             this.ModifyItemMenuItem.Name = "ModifyItemMenuItem";
-            this.ModifyItemMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ModifyItemMenuItem.Size = new System.Drawing.Size(113, 22);
             this.ModifyItemMenuItem.Text = "Modify";
             // 
             // RemoveItemMenuItem
             // 
             this.RemoveItemMenuItem.Name = "RemoveItemMenuItem";
-            this.RemoveItemMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.RemoveItemMenuItem.Size = new System.Drawing.Size(113, 22);
             this.RemoveItemMenuItem.Text = "Remove";
             // 
             // HelpMenuItem
@@ -281,13 +289,6 @@
             this.ProgramGuideMenuItem.Size = new System.Drawing.Size(164, 22);
             this.ProgramGuideMenuItem.Text = "Technical guidance";
             // 
-            // CloseMenuItem
-            // 
-            this.CloseMenuItem.Name = "CloseMenuItem";
-            this.CloseMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.CloseMenuItem.Text = "Close";
-            this.CloseMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
-            // 
             // TransportListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,10 +304,9 @@
             this.Name = "TransportListForm";
             this.Text = "Transport Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TransportListView_FormClosing);
-            this.Load += new System.EventHandler(this.TransportListView_Load);
             this.TransportListGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TransportListGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iTransportPropertyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -329,7 +329,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fuelWasteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn speedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tankVolumeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource iTransportPropertyBindingSource;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem FileMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OpenMenuItem;
@@ -344,6 +343,12 @@
         private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ProgramGuideMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CloseMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.BindingSource iTransportBindingSource;
     }
 }
 

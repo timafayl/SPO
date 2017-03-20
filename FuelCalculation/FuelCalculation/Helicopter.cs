@@ -3,18 +3,18 @@
 namespace FuelCalculation
 {
     [Serializable]
-    public class Car : ITransportProperty
+    public class Helicopter : ITransport
     {
         /// <summary>
-        /// Марка машины.
+        /// Модель вертолёта.
         /// </summary>
-        private string _carName;
+        private string _copterName;
         /// <summary>
-        /// Степень износа авто.
+        /// Степень износа вертолёта.
         /// </summary>
         private double _wearRate;
         /// <summary>
-        /// Расход топлива на 100 км.
+        /// Расход топлива за 1 час.
         /// </summary>
         private double _fuelWaste;
         /// <summary>
@@ -22,45 +22,45 @@ namespace FuelCalculation
         /// </summary>
         private double _speed;
         /// <summary>
-        /// Испольуемый тип топлива.
+        /// Масса груза.
         /// </summary>
-        private FuelType _fuelType;
+        private double _mass;
         /// <summary>
         /// Общий объём бака.
         /// </summary>
         private double _tankVolume;
 
         /// <summary>
-        /// Конструктор класса CarTransportProperty.
+        /// Конструктор класса Helicopter.
         /// </summary>
-        public Car() { }
+        public Helicopter() { }
 
         /// <summary>
-        /// Конструктор класса CarTransport.
+        /// Конструктор класса Helicopter.
         /// </summary>
-        /// <param name="carName">Марка машины</param>
+        /// <param name="copterName">Модель вертолёта</param>
         /// <param name="wearRate">Степень износа</param>
         /// <param name="fuelWaste">Расход топлива</param>
         /// <param name="speed">Скорость</param>
-        /// <param name="fuelType">Вид топлива</param>
+        /// <param name="mass">Масса груза</param>
         /// <param name="way">Расстояние</param>
         /// <param name="tankVolume">Объём бака</param>
-        public Car(string carName, double wearRate, double fuelWaste, double speed, FuelType fuelType, double tankVolume)
+        public Helicopter(string copterName, double wearRate, double fuelWaste, double speed, double mass, double tankVolume)
         {
-            TransportName = carName;
+            TransportName = copterName;
             WearRate = wearRate;
             FuelWaste = fuelWaste;
             Speed = speed;
-            FuelType = fuelType;
+            Mass = mass;
             TankVolume = tankVolume;
         }
 
         /// <summary>
-        /// Аксессор для получения значения марки машины.
+        /// Аксессор для получения значения модели вертолёта.
         /// </summary>
         public string TransportName
         {
-            get { return _carName; }
+            get { return _copterName; }
             set
             {
                 //value = value.ToLower();
@@ -73,12 +73,12 @@ namespace FuelCalculation
                     }
                 }
 
-                _carName = value;
+                _copterName = value;
             }
         }
 
         /// <summary>
-        /// Аксессор для получения значения износа авто.
+        /// Аксессор для получения значения износа транспортного средства.
         /// </summary>
         public double WearRate
         {
@@ -104,13 +104,13 @@ namespace FuelCalculation
             get { return _fuelWaste; }
             set
             {
-                if ((value >= 5) && (value <= 30))
+                if ((value >= 20) && (value <= 50))
                 {
                     _fuelWaste = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Неверно указан расход топлива, значение должно быть от 5 до 30");
+                    throw new ArgumentException("Неверно указан расход топлива, значение должно быть от 20 до 50");
                 }
             }
         }
@@ -123,33 +123,33 @@ namespace FuelCalculation
             get { return _speed; }
             set
             {
-                if ((value > 1) && (value < 180))
+                if ((value > 1) && (value < 400))
                 {
                     _speed = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Неверно указана скорость, значение должно быть от 1 до 180");
+                    throw new ArgumentException("Неверно указана скорость, значение должно быть от 1 до 400");
                 }
             }
         }
 
         /// <summary>
-        /// Аксессор для получения значения типа топлива авто.
+        /// Аксессор для получения значения массы груза на вертолете.
         /// </summary>
         /// <returns>Массу груза</returns>
-        public FuelType FuelType
+        public double Mass
         {
-            get { return _fuelType; }
+            get { return _mass; }
             set
             {
-                if (((FuelType)value == FuelType.Бензин) || ((FuelType)value == FuelType.Дизель))
+                if ((value > 0) && (value < 1000))
                 {
-                    _fuelType = (FuelType)value;
+                    _mass = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Неверно указан тип топлива, значение может быть либо 'Бензин', либо 'Дизель'");
+                    throw new ArgumentException("Неверно указана массы, значение должно быть от 1 до 1000");
                 }
             }
         }
@@ -162,13 +162,13 @@ namespace FuelCalculation
             get { return _tankVolume; }
             set
             {
-                if ((value >= 20) && (value <= 100))
+                if ((value >= 50) && (value <= 200))
                 {
                     _tankVolume = value;
                 }
                 else
                 {
-                    throw new ArgumentException("Неверно указан объём бака, значение должно быть в диапозоне от 20 до 100");
+                    throw new ArgumentException("Неверно указан объём бака, значение должно быть в диапозоне от 50 до 200");
                 }
             }
         }
@@ -180,11 +180,7 @@ namespace FuelCalculation
         /// <returns>true или false в зависимости от успеха поездки</returns>
         public bool IsCanPassDistance(double distance)
         {
-            double calcValue;
-
-            var coef = (_fuelType == FuelType.Бензин) ? 1 : 0.9;
-       
-            calcValue = coef * 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed/80) * distance;
+            double calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 200) * (1 + 0.0001*_mass) * (distance / _speed);
 
             _wearRate += 0.0001 * distance;
 

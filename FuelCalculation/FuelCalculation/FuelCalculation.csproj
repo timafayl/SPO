@@ -40,10 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarTransportProperty.cs" />
+    <Compile Include="Car.cs" />
     <Compile Include="FuelType.cs" />
-    <Compile Include="HelicopterTransportProperty.cs" />
-    <Compile Include="ITransportProperty.cs" />
+    <Compile Include="Helicopter.cs" />
+    <Compile Include="ITransport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
