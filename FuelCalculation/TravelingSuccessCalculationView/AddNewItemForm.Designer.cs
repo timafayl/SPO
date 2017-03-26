@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewTransportForm));
             this.TNameLabel = new System.Windows.Forms.Label();
             this.WearRateLabel = new System.Windows.Forms.Label();
@@ -37,7 +38,7 @@
             this.UniqeFieldLabel = new System.Windows.Forms.Label();
             this.TNameTextBox = new System.Windows.Forms.TextBox();
             this.WearRateTextBox = new System.Windows.Forms.TextBox();
-            this.FuelWasteTtextBox = new System.Windows.Forms.TextBox();
+            this.FuelWasteTextBox = new System.Windows.Forms.TextBox();
             this.SpeedTextBox = new System.Windows.Forms.TextBox();
             this.TankVolumeTextBox = new System.Windows.Forms.TextBox();
             this.OKButton = new System.Windows.Forms.Button();
@@ -47,6 +48,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ChooseTransportComboBox = new System.Windows.Forms.ComboBox();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // TNameLabel
@@ -109,42 +114,44 @@
             this.TNameTextBox.Location = new System.Drawing.Point(141, 60);
             this.TNameTextBox.Name = "TNameTextBox";
             this.TNameTextBox.Size = new System.Drawing.Size(122, 20);
-            this.TNameTextBox.TabIndex = 8;
+            this.TNameTextBox.TabIndex = 2;
+            this.TNameTextBox.Leave += new System.EventHandler(this.TNameTextBox_Leave);
+            this.TNameTextBox.MouseHover += new System.EventHandler(this.TNameTextBox_MouseHover);
             // 
             // WearRateTextBox
             // 
             this.WearRateTextBox.Location = new System.Drawing.Point(141, 86);
             this.WearRateTextBox.Name = "WearRateTextBox";
             this.WearRateTextBox.Size = new System.Drawing.Size(61, 20);
-            this.WearRateTextBox.TabIndex = 9;
+            this.WearRateTextBox.TabIndex = 3;
             // 
-            // FuelWasteTtextBox
+            // FuelWasteTextBox
             // 
-            this.FuelWasteTtextBox.Location = new System.Drawing.Point(141, 112);
-            this.FuelWasteTtextBox.Name = "FuelWasteTtextBox";
-            this.FuelWasteTtextBox.Size = new System.Drawing.Size(61, 20);
-            this.FuelWasteTtextBox.TabIndex = 10;
+            this.FuelWasteTextBox.Location = new System.Drawing.Point(141, 112);
+            this.FuelWasteTextBox.Name = "FuelWasteTextBox";
+            this.FuelWasteTextBox.Size = new System.Drawing.Size(61, 20);
+            this.FuelWasteTextBox.TabIndex = 4;
             // 
             // SpeedTextBox
             // 
             this.SpeedTextBox.Location = new System.Drawing.Point(141, 138);
             this.SpeedTextBox.Name = "SpeedTextBox";
             this.SpeedTextBox.Size = new System.Drawing.Size(61, 20);
-            this.SpeedTextBox.TabIndex = 11;
+            this.SpeedTextBox.TabIndex = 5;
             // 
             // TankVolumeTextBox
             // 
             this.TankVolumeTextBox.Location = new System.Drawing.Point(141, 164);
             this.TankVolumeTextBox.Name = "TankVolumeTextBox";
             this.TankVolumeTextBox.Size = new System.Drawing.Size(61, 20);
-            this.TankVolumeTextBox.TabIndex = 12;
+            this.TankVolumeTextBox.TabIndex = 6;
             // 
             // OKButton
             // 
             this.OKButton.Location = new System.Drawing.Point(65, 245);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(69, 23);
-            this.OKButton.TabIndex = 14;
+            this.OKButton.TabIndex = 10;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
@@ -158,7 +165,7 @@
             this.FuelTypeComboBox.Location = new System.Drawing.Point(141, 189);
             this.FuelTypeComboBox.Name = "FuelTypeComboBox";
             this.FuelTypeComboBox.Size = new System.Drawing.Size(122, 21);
-            this.FuelTypeComboBox.TabIndex = 17;
+            this.FuelTypeComboBox.TabIndex = 8;
             this.FuelTypeComboBox.Visible = false;
             // 
             // MassTextBox
@@ -166,7 +173,7 @@
             this.MassTextBox.Location = new System.Drawing.Point(141, 190);
             this.MassTextBox.Name = "MassTextBox";
             this.MassTextBox.Size = new System.Drawing.Size(61, 20);
-            this.MassTextBox.TabIndex = 18;
+            this.MassTextBox.TabIndex = 7;
             this.MassTextBox.Visible = false;
             // 
             // GenerateRandomValuesButton
@@ -174,7 +181,7 @@
             this.GenerateRandomValuesButton.Location = new System.Drawing.Point(30, 216);
             this.GenerateRandomValuesButton.Name = "GenerateRandomValuesButton";
             this.GenerateRandomValuesButton.Size = new System.Drawing.Size(210, 23);
-            this.GenerateRandomValuesButton.TabIndex = 19;
+            this.GenerateRandomValuesButton.TabIndex = 1;
             this.GenerateRandomValuesButton.Text = "Generate random values";
             this.GenerateRandomValuesButton.UseVisualStyleBackColor = true;
             this.GenerateRandomValuesButton.Click += new System.EventHandler(this.GenerateRandomValuesButton_Click);
@@ -197,7 +204,7 @@
             this.ChooseTransportComboBox.Location = new System.Drawing.Point(141, 10);
             this.ChooseTransportComboBox.Name = "ChooseTransportComboBox";
             this.ChooseTransportComboBox.Size = new System.Drawing.Size(122, 21);
-            this.ChooseTransportComboBox.TabIndex = 21;
+            this.ChooseTransportComboBox.TabIndex = 0;
             this.ChooseTransportComboBox.SelectedIndexChanged += new System.EventHandler(this.ChooseTransportComboBox_SelectedIndexChanged);
             // 
             // CancelButton
@@ -205,16 +212,20 @@
             this.CancelButton.Location = new System.Drawing.Point(141, 245);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(69, 23);
-            this.CancelButton.TabIndex = 22;
+            this.CancelButton.TabIndex = 11;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // AddNewTransportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 272);
+            this.ClientSize = new System.Drawing.Size(288, 272);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ChooseTransportComboBox);
             this.Controls.Add(this.label1);
@@ -224,7 +235,7 @@
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.TankVolumeTextBox);
             this.Controls.Add(this.SpeedTextBox);
-            this.Controls.Add(this.FuelWasteTtextBox);
+            this.Controls.Add(this.FuelWasteTextBox);
             this.Controls.Add(this.WearRateTextBox);
             this.Controls.Add(this.TNameTextBox);
             this.Controls.Add(this.UniqeFieldLabel);
@@ -237,6 +248,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddNewTransportForm";
             this.Text = "Add New Transport";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,7 +263,7 @@
         private System.Windows.Forms.Label UniqeFieldLabel;
         private System.Windows.Forms.TextBox TNameTextBox;
         private System.Windows.Forms.TextBox WearRateTextBox;
-        private System.Windows.Forms.TextBox FuelWasteTtextBox;
+        private System.Windows.Forms.TextBox FuelWasteTextBox;
         private System.Windows.Forms.TextBox SpeedTextBox;
         private System.Windows.Forms.TextBox TankVolumeTextBox;
         private System.Windows.Forms.Button OKButton;
@@ -261,5 +273,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox ChooseTransportComboBox;
         private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

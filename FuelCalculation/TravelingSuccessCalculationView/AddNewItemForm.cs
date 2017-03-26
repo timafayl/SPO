@@ -6,7 +6,7 @@ namespace TravelingSuccessCalculationView
 {
     public partial class AddNewTransportForm : Form
     {
-        //private ITransportProperty _transportProperty;
+        public ITransport Transport { set; get; }
 
         public AddNewTransportForm()
         {
@@ -15,43 +15,38 @@ namespace TravelingSuccessCalculationView
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
-            Close();
+            try
+            {
+                Transport = SetTransport();
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch(Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
         }
 
-        /*public ITransportProperty TransportProperty
-        {
-            set
-            {
-                _transportProperty = value;
-            }
-            get
-            {
-                return _transportProperty;
-            }
-        }*/
-
-        public ITransport GetTransport()
+        public ITransport SetTransport()
         {
             if (ChooseTransportComboBox.Text == "Car")
             {
                 Car car = new Car();
                 car.TransportName = TNameTextBox.Text;
                 car.WearRate = Convert.ToDouble(WearRateTextBox.Text);
-                car.FuelWaste = Convert.ToDouble(FuelWasteTtextBox.Text);
+                car.FuelWaste = Convert.ToDouble(FuelWasteTextBox.Text);
                 car.Speed = Convert.ToDouble(SpeedTextBox.Text);
                 car.TankVolume = Convert.ToDouble(TankVolumeTextBox.Text);
                 car.FuelType = (FuelType)Enum.Parse(typeof(FuelType), FuelTypeComboBox.Text);
 
                 return car;
             }
-
             else
             {
                 Helicopter helicopter = new Helicopter();
                 helicopter.TransportName = TNameTextBox.Text;
                 helicopter.WearRate = Convert.ToDouble(WearRateTextBox.Text);
-                helicopter.FuelWaste = Convert.ToDouble(FuelWasteTtextBox.Text);
+                helicopter.FuelWaste = Convert.ToDouble(FuelWasteTextBox.Text);
                 helicopter.Speed = Convert.ToDouble(SpeedTextBox.Text);
                 helicopter.TankVolume = Convert.ToDouble(TankVolumeTextBox.Text);
                 helicopter.Mass = Convert.ToDouble(TankVolumeTextBox.Text);
@@ -60,11 +55,11 @@ namespace TravelingSuccessCalculationView
             }
         }
 
-        public void SetTransport(ITransport transport)
+        public void GetTransport(ITransport transport)
         {
             TNameTextBox.Text = Convert.ToString(transport.TransportName);
             WearRateTextBox.Text = Convert.ToString(transport.WearRate);
-            FuelWasteTtextBox.Text = Convert.ToString(transport.FuelWaste);
+            FuelWasteTextBox.Text = Convert.ToString(transport.FuelWaste);
             SpeedTextBox.Text = Convert.ToString(transport.Speed);
             TankVolumeTextBox.Text = Convert.ToString(transport.TankVolume);
             if (transport is Car)
@@ -98,7 +93,7 @@ namespace TravelingSuccessCalculationView
             var unixTimestamp = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
             var randomInt = new Random(unixTimestamp);
             WearRateTextBox.Text = @"0," + Convert.ToString(randomInt.Next(10, 90));
-            FuelWasteTtextBox.Text = Convert.ToString(randomInt.Next(25, 27));
+            FuelWasteTextBox.Text = Convert.ToString(randomInt.Next(25, 27));
             SpeedTextBox.Text = Convert.ToString(randomInt.Next(100, 180));
             TankVolumeTextBox.Text = Convert.ToString(randomInt.Next(50, 60));
 
@@ -114,7 +109,7 @@ namespace TravelingSuccessCalculationView
         }
 
         private void ChooseTransportComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        { 
             if (ChooseTransportComboBox.Text == "Car")
             {
                 UniqeFieldLabel.Text = "FuelType";
@@ -134,6 +129,23 @@ namespace TravelingSuccessCalculationView
         private void CancelButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void TNameTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TNameTextBox.Text))
+            {
+                errorProvider1.SetError(TNameTextBox, "Please enter your transport name using only a-z letters");
+            }
+            else
+            {
+                errorProvider1.SetError(TNameTextBox, null);
+            }
+        }
+
+        private void TNameTextBox_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show("Введите имя транспорта", TNameTextBox);
         }
     }
 }
