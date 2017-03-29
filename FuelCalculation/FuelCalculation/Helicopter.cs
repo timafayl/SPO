@@ -149,7 +149,7 @@ namespace FuelCalculation
                 }
                 else
                 {
-                    throw new ArgumentException("Неверно указана массы, значение должно быть от 1 до 1000");
+                    throw new ArgumentException("Неверно указана масса, значение должно быть от 1 до 1000");
                 }
             }
         }

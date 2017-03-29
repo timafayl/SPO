@@ -23,21 +23,7 @@ namespace TravelingSuccessCalculationView
 
         private void CreateMenuItem_Click(object sender, EventArgs e)
         {
-            if (_projectSavedChanges != true)
-            {
-                if (MessageBox.Show("Do you want to save the changes?", "BeforeClose",
-                      MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    if (_filePath != null)
-                    {
-                        Serialization.Serialize(_transportList, _filePath);
-                    }
-                    else
-                    {
-                        SaveAsMenuItem_Click(sender, e);
-                    }
-                }
-            }
+            CheckChanges();
 
             _filePath = null;
             _projectSavedChanges = true;
@@ -47,21 +33,7 @@ namespace TravelingSuccessCalculationView
 
         private void OpenMenuItem_Click(object sender, EventArgs e)
         {
-            if (_projectSavedChanges != true)
-            {
-                if (MessageBox.Show("Do you want to save the changes?", "BeforeClose",
-                        MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    if (_filePath != null)
-                    {
-                        Serialization.Serialize(_transportList, _filePath);
-                    }
-                    else
-                    {
-                        SaveAsMenuItem_Click(sender, e);
-                    }
-                }
-            }
+            CheckChanges();
 
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = @"Transport Files (*.tnp)|*.tnp";
@@ -83,24 +55,79 @@ namespace TravelingSuccessCalculationView
             }
             else
             {
-                SaveAsMenuItem_Click(sender, e);
+                SaveAs();
             }
 
             _projectSavedChanges = true;
         }
 
+        private void SaveAsMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveAs();
+        }
+
         private void AddNewItemButton_Click(object sender, EventArgs e)
         {
-            var frm = new AddNewTransportForm();
-            if (frm.ShowDialog() == DialogResult.OK)
+            AddNewItem();
+        }
+
+        private void AddItemMenuItem_Click(object sender, EventArgs e)
+        {
+            AddNewItem();
+        }
+
+        private void ModifyItemButton_Click(object sender, EventArgs e)
+        {
+            ModifyItem();
+        }
+
+        private void ModifyItemMenuItem_Click(object sender, EventArgs e)
+        {
+            ModifyItem();
+        }
+
+        private void RemoveItemButton_Click(object sender, EventArgs e)
+        {
+            RemoveItem();
+        }
+
+        private void RemoveItemMenuItem_Click(object sender, EventArgs e)
+        {
+            RemoveItem();
+        }
+
+        private void CloseMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void TransportListView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CheckChanges();
+        }
+
+/*----------------------------------------------------------GENERAL METHODS-------------------------------------------------------------------------*/
+
+        private void CheckChanges()
+        {
+            if (!_projectSavedChanges)
             {
-                var transport = frm.Transport;
-                iTransportBindingSource.Add(transport);
-                _projectSavedChanges = false;
+                if (MessageBox.Show("Do you want to save the changes?", "BeforeClose",
+                      MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    if (_filePath != null)
+                    {
+                        Serialization.Serialize(_transportList, _filePath);
+                    }
+                    else
+                    {
+                        SaveAs();
+                    }
+                }
             }
         }
 
-        private void SaveAsMenuItem_Click(object sender, EventArgs e)
+        private void SaveAs()
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.DefaultExt = "tnp";
@@ -114,12 +141,18 @@ namespace TravelingSuccessCalculationView
             }
         }
 
-        private void AddItemMenuItem_Click(object sender, EventArgs e)
+        private void AddNewItem()
         {
-            AddNewItemButton_Click(sender, e);
+            var frm = new AddNewTransportForm();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                var transport = frm.Transport;
+                iTransportBindingSource.Add(transport);
+                _projectSavedChanges = false;
+            }
         }
 
-        private void ModifyItemButton_Click(object sender, EventArgs e)
+        private void ModifyItem()
         {
             var frm = new AddNewTransportForm();
 
@@ -128,39 +161,14 @@ namespace TravelingSuccessCalculationView
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 var transport = frm.Transport;
-                var index = _transportList.IndexOf((ITransport) iTransportBindingSource.Current);
+                var index = _transportList.IndexOf((ITransport)iTransportBindingSource.Current);
                 iTransportBindingSource.RemoveAt(index);
                 iTransportBindingSource.Insert(index, transport);
                 _projectSavedChanges = false;
             }
         }
 
-        private void ModifyItemMenuItem_Click(object sender, EventArgs e)
-        {
-            ModifyItemButton_Click(sender, e);
-        }
-
-        private void TransportListView_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if ((_projectSavedChanges != true && iTransportBindingSource.Count != 0) || 
-                (_projectSavedChanges != true && iTransportBindingSource.Count == 0))
-            {
-                if (MessageBox.Show("Do you want to save the changes?", "BeforeClose",
-                        MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    if (_filePath != null)
-                    {
-                        Serialization.Serialize(_transportList, _filePath);
-                    }
-                    else
-                    {
-                        SaveAsMenuItem_Click(sender, e);
-                    }
-                }
-            }
-        }
-
-        private void RemoveItemButton_Click(object sender, EventArgs e)
+        private void RemoveItem()
         {
             if (TransportListGridView.CurrentRow != null)
             {
@@ -172,16 +180,6 @@ namespace TravelingSuccessCalculationView
                     _projectSavedChanges = false;
                 }
             }
-        }
-
-        private void RemoveItemMenuItem_Click(object sender, EventArgs e)
-        {
-            RemoveItemButton_Click(sender, e);
-        }
-
-        private void CloseMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }
