@@ -55,8 +55,7 @@
             this.ModifyItemMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RemoveItemMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ProgramGuideMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TransportListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransportListGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
@@ -165,12 +164,13 @@
             // AddNewItemButton
             // 
             this.AddNewItemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddNewItemButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.AddNewItemButton.Location = new System.Drawing.Point(12, 381);
             this.AddNewItemButton.Name = "AddNewItemButton";
             this.AddNewItemButton.Size = new System.Drawing.Size(92, 23);
             this.AddNewItemButton.TabIndex = 1;
             this.AddNewItemButton.Text = "Add";
-            this.AddNewItemButton.UseVisualStyleBackColor = true;
+            this.AddNewItemButton.UseVisualStyleBackColor = false;
             this.AddNewItemButton.Click += new System.EventHandler(this.AddNewItemButton_Click);
             // 
             // openFileDialog1
@@ -179,10 +179,12 @@
             // 
             // menuStrip
             // 
+            this.menuStrip.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenuItem,
             this.EditMenuItem,
-            this.HelpMenuItem});
+            this.HelpMenuItem,
+            this.aboutMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(665, 24);
@@ -204,35 +206,35 @@
             // CreateMenuItem
             // 
             this.CreateMenuItem.Name = "CreateMenuItem";
-            this.CreateMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CreateMenuItem.Size = new System.Drawing.Size(110, 22);
             this.CreateMenuItem.Text = "Create";
             this.CreateMenuItem.Click += new System.EventHandler(this.CreateMenuItem_Click);
             // 
             // OpenMenuItem
             // 
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.OpenMenuItem.Size = new System.Drawing.Size(110, 22);
             this.OpenMenuItem.Text = "Open";
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
             // 
             // SaveMenuItem
             // 
             this.SaveMenuItem.Name = "SaveMenuItem";
-            this.SaveMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SaveMenuItem.Size = new System.Drawing.Size(110, 22);
             this.SaveMenuItem.Text = "Save";
             this.SaveMenuItem.Click += new System.EventHandler(this.SaveMenuItem_Click);
             // 
             // SaveAsMenuItem
             // 
             this.SaveAsMenuItem.Name = "SaveAsMenuItem";
-            this.SaveAsMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SaveAsMenuItem.Size = new System.Drawing.Size(110, 22);
             this.SaveAsMenuItem.Text = "SaveAs";
             this.SaveAsMenuItem.Click += new System.EventHandler(this.SaveAsMenuItem_Click);
             // 
             // CloseMenuItem
             // 
             this.CloseMenuItem.Name = "CloseMenuItem";
-            this.CloseMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CloseMenuItem.Size = new System.Drawing.Size(110, 22);
             this.CloseMenuItem.Text = "Close";
             this.CloseMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
             // 
@@ -249,49 +251,41 @@
             // AddItemMenuItem
             // 
             this.AddItemMenuItem.Name = "AddItemMenuItem";
-            this.AddItemMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.AddItemMenuItem.Size = new System.Drawing.Size(113, 22);
             this.AddItemMenuItem.Text = "Add";
             this.AddItemMenuItem.Click += new System.EventHandler(this.AddItemMenuItem_Click);
             // 
             // ModifyItemMenuItem
             // 
             this.ModifyItemMenuItem.Name = "ModifyItemMenuItem";
-            this.ModifyItemMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ModifyItemMenuItem.Size = new System.Drawing.Size(113, 22);
             this.ModifyItemMenuItem.Text = "Modify";
             this.ModifyItemMenuItem.Click += new System.EventHandler(this.ModifyItemMenuItem_Click);
             // 
             // RemoveItemMenuItem
             // 
             this.RemoveItemMenuItem.Name = "RemoveItemMenuItem";
-            this.RemoveItemMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.RemoveItemMenuItem.Size = new System.Drawing.Size(113, 22);
             this.RemoveItemMenuItem.Text = "Remove";
             this.RemoveItemMenuItem.Click += new System.EventHandler(this.RemoveItemMenuItem_Click);
             // 
             // HelpMenuItem
             // 
-            this.HelpMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AboutMenuItem,
-            this.ProgramGuideMenuItem});
             this.HelpMenuItem.Name = "HelpMenuItem";
             this.HelpMenuItem.Size = new System.Drawing.Size(40, 20);
             this.HelpMenuItem.Text = "Help";
             // 
-            // AboutMenuItem
+            // aboutMenuItem
             // 
-            this.AboutMenuItem.Name = "AboutMenuItem";
-            this.AboutMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.AboutMenuItem.Text = "About";
-            // 
-            // ProgramGuideMenuItem
-            // 
-            this.ProgramGuideMenuItem.Name = "ProgramGuideMenuItem";
-            this.ProgramGuideMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.ProgramGuideMenuItem.Text = "Technical guidance";
+            this.aboutMenuItem.Name = "aboutMenuItem";
+            this.aboutMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.aboutMenuItem.Text = "About";
             // 
             // TransportListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(665, 431);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.RemoveItemButton);
@@ -337,8 +331,6 @@
         private System.Windows.Forms.ToolStripMenuItem ModifyItemMenuItem;
         private System.Windows.Forms.ToolStripMenuItem RemoveItemMenuItem;
         private System.Windows.Forms.ToolStripMenuItem HelpMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ProgramGuideMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CloseMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -347,6 +339,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.BindingSource iTransportBindingSource;
         private System.Windows.Forms.ToolStripMenuItem CreateMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
     }
 }
 

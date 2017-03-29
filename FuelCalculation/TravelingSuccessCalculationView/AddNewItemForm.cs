@@ -52,10 +52,10 @@ namespace TravelingSuccessCalculationView
             {
                 Car car = new Car();
                 car.TransportName = TNameTextBox.Text;
-                car.WearRate = Convert.ToDouble(WearRateTextBox.Text);
-                car.FuelWaste = Convert.ToDouble(FuelWasteTextBox.Text);
-                car.Speed = Convert.ToDouble(SpeedTextBox.Text);
-                car.TankVolume = Convert.ToDouble(TankVolumeTextBox.Text);
+                car.WearRate = ConvertToDouble(WearRateTextBox.Text, "WearRate");
+                car.FuelWaste = ConvertToDouble(FuelWasteTextBox.Text, "FuelWaste");
+                car.Speed = ConvertToDouble(SpeedTextBox.Text, "Speed");
+                car.TankVolume = ConvertToDouble(TankVolumeTextBox.Text, "TankVolume");
                 car.FuelType = (FuelType)Enum.Parse(typeof(FuelType), FuelTypeComboBox.Text);
 
                 return car;
@@ -64,19 +64,28 @@ namespace TravelingSuccessCalculationView
             {
                 Helicopter helicopter = new Helicopter();
                 helicopter.TransportName = TNameTextBox.Text;
-                helicopter.WearRate = Convert.ToDouble(WearRateTextBox.Text);
-                helicopter.FuelWaste = Convert.ToDouble(FuelWasteTextBox.Text);
-                helicopter.Speed = Convert.ToDouble(SpeedTextBox.Text);
-                helicopter.TankVolume = Convert.ToDouble(TankVolumeTextBox.Text);
+                helicopter.WearRate = ConvertToDouble(WearRateTextBox.Text, "WearRate");
+                helicopter.FuelWaste = ConvertToDouble(FuelWasteTextBox.Text, "FuelWaste");
+                helicopter.Speed = ConvertToDouble(SpeedTextBox.Text, "Speed");
+                helicopter.TankVolume = ConvertToDouble(TankVolumeTextBox.Text, "TankVolume");
                 helicopter.Mass = Convert.ToDouble(TankVolumeTextBox.Text);
 
                 return helicopter;
             }
         }
 
-        private void ToDouble()
+        private double ConvertToDouble (string value, string fieldname)
         {
-            
+            double a;
+            try
+            {
+                a = Convert.ToDouble(value);
+            }
+            catch (FormatException exception)
+            {
+                throw new FormatException(fieldname + " have to contain digits only");
+            }
+            return a;
         }
 
         public void GetTransport(ITransport transport)

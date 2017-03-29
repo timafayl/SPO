@@ -165,7 +165,7 @@
             // 
             // FuelTypeComboBox
             // 
-            this.FuelTypeComboBox.FormattingEnabled = true;
+            this.FuelTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FuelTypeComboBox.Items.AddRange(new object[] {
             "Бензин",
             "Дизель"});

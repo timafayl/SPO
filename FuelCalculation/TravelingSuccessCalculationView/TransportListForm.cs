@@ -154,6 +154,12 @@ namespace TravelingSuccessCalculationView
 
         private void ModifyItem()
         {
+            if (_transportList.Count == 0)
+            {
+                MessageBox.Show("Your list is empty!");
+                return;
+            }
+
             var frm = new AddNewTransportForm();
 
             frm.GetTransport((ITransport)iTransportBindingSource.Current);
