@@ -10,13 +10,16 @@ namespace TravelingSuccessCalculationView
     {
         private string _filePath;
         private bool _projectSavedChanges;
+        private bool _afterSearchChanges;
         private List<ITransport> _transportList;
+        private List<ITransport> _searchedTransportList;
 
         public TransportListForm()
         {
             InitializeComponent();
             _filePath = null;
             _projectSavedChanges = true;
+            _afterSearchChanges = false;
             _transportList = new List<ITransport>();
             iTransportBindingSource.DataSource = _transportList;
         }
@@ -172,11 +175,25 @@ namespace TravelingSuccessCalculationView
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                var transport = frm.Transport;
-                var index = _transportList.IndexOf((ITransport) iTransportBindingSource.Current);
-                iTransportBindingSource.RemoveAt(index);
-                iTransportBindingSource.Insert(index, transport);
-                _projectSavedChanges = false;
+                if (_afterSearchChanges == false)
+                {
+                    var transport = frm.Transport;
+                    var index = _transportList.IndexOf((ITransport) iTransportBindingSource.Current);
+                    iTransportBindingSource.RemoveAt(index);
+                    iTransportBindingSource.Insert(index, transport);
+                    _projectSavedChanges = false;
+                }
+                else
+                {
+                    var transport = frm.Transport;
+                    var index = _transportList.IndexOf((ITransport)iTransportBindingSource.Current);
+                    var afterIndex = _searchedTransportList.IndexOf((ITransport)iTransportBindingSource.Current);
+                    iTransportBindingSource.RemoveAt(afterIndex);
+                    iTransportBindingSource.Insert(afterIndex, transport);
+                    _transportList.RemoveAt(index);
+                    _transportList.Insert(index, transport);
+                    _projectSavedChanges = false;
+                }
             }
         }
 
@@ -206,6 +223,7 @@ namespace TravelingSuccessCalculationView
             {
                 if (ByItemSerchComboBox.SelectedIndex != -1)
                 {
+                    _afterSearchChanges = true;
                     string searchLine = ItemSearchTextBox.Text;
 
                     switch (ByItemSerchComboBox.SelectedItem.ToString())
@@ -236,7 +254,9 @@ namespace TravelingSuccessCalculationView
                         }
                         case "Speed":
                         {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate (ITransport transport)
+                            
+
+                            iTransportBindingSource.DataSource = _searchedTransportList = _transportList.FindAll(delegate (ITransport transport)
                             {
                                 return transport.Speed.ToString() == searchLine;
                             });
@@ -265,9 +285,11 @@ namespace TravelingSuccessCalculationView
 
         private void ItemSearchTextBox_Leave(object sender, EventArgs e)
         {
+            
             if (ItemSearchTextBox.Text == "")
             {
                 iTransportBindingSource.DataSource = _transportList;
+                _afterSearchChanges = false;
             }
         }
 
@@ -276,6 +298,7 @@ namespace TravelingSuccessCalculationView
             if (ItemSearchTextBox.Text == "")
             {
                 iTransportBindingSource.DataSource = _transportList;
+                _afterSearchChanges = false;
             }
         }
     }
