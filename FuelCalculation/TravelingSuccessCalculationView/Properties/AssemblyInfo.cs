@@ -1,16 +1,17 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("TravelingSuccessCalculationView")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Traveling Success Calculation")]
+[assembly: AssemblyDescription("Program, which calculate the success of your travelling on the chosen transoprt according its charactristics.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("TravelingSuccessCalculationView")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2017")]
+[assembly: AssemblyCompany("TUSUR SPO LABS Production")]
+[assembly: AssemblyProduct("Traveling Success Calculation")]
+[assembly: AssemblyCopyright("Copyright © Tima Fayl")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -34,3 +35,5 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("en-GB")]
+

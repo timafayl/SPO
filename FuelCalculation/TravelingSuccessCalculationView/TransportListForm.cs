@@ -106,14 +106,20 @@ namespace TravelingSuccessCalculationView
             CheckChanges();
         }
 
-/*----------------------------------------------------------GENERAL METHODS-------------------------------------------------------------------------*/
+        private void aboutMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new AboutBox();
+            frm.ShowDialog();
+        }
+
+        /*----------------------------------------------------------GENERAL METHODS-------------------------------------------------------------------------*/
 
         private void CheckChanges()
         {
             if (!_projectSavedChanges)
             {
                 if (MessageBox.Show("Do you want to save the changes?", "BeforeClose",
-                      MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     if (_filePath != null)
                     {
@@ -162,12 +168,12 @@ namespace TravelingSuccessCalculationView
 
             var frm = new AddNewTransportForm();
 
-            frm.GetTransport((ITransport)iTransportBindingSource.Current);
+            frm.GetTransport((ITransport) iTransportBindingSource.Current);
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 var transport = frm.Transport;
-                var index = _transportList.IndexOf((ITransport)iTransportBindingSource.Current);
+                var index = _transportList.IndexOf((ITransport) iTransportBindingSource.Current);
                 iTransportBindingSource.RemoveAt(index);
                 iTransportBindingSource.Insert(index, transport);
                 _projectSavedChanges = false;
@@ -176,7 +182,11 @@ namespace TravelingSuccessCalculationView
 
         private void RemoveItem()
         {
-            if (TransportListGridView.CurrentRow != null)
+            if (_transportList.Count == 0)
+            {
+                MessageBox.Show("Your list is empty!");
+            }
+            else if (TransportListGridView.CurrentRow != null)
             {
                 if (MessageBox.Show("Do you really want to remove this object?", "TransportRemove",
                         MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -185,6 +195,87 @@ namespace TravelingSuccessCalculationView
                     TransportListGridView.Rows.RemoveAt(index);
                     _projectSavedChanges = false;
                 }
+            }
+        }
+
+        /*-----------------------------------------------------------------------GELEGATES------------------------------------------------------------------*/
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            if (_transportList != null)
+            {
+                if (ByItemSerchComboBox.SelectedIndex != -1)
+                {
+                    string searchLine = ItemSearchTextBox.Text;
+
+                    switch (ByItemSerchComboBox.SelectedItem.ToString())
+                    {
+                        case "Transport Name":
+                        {
+                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate (ITransport transport)
+                            {
+                                return transport.TransportName == searchLine;
+                            });
+                            break;
+                        }
+                        case "Wear Rate":
+                        {
+                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate (ITransport transport)
+                            {
+                                return transport.WearRate.ToString() == searchLine;
+                            });
+                            break;
+                        }
+                        case "Fuel Waste":
+                        {
+                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate (ITransport transport)
+                            {
+                                return transport.FuelWaste.ToString() == searchLine;
+                            });
+                            break;
+                        }
+                        case "Speed":
+                        {
+                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate (ITransport transport)
+                            {
+                                return transport.Speed.ToString() == searchLine;
+                            });
+                            break;
+                        }
+                        case "Tank Volume":
+                        {
+                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate (ITransport transport)
+                            {
+                                return transport.TankVolume.ToString() == searchLine;
+                            });
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Не выбрано поле поиска");
+                }
+            }
+            else
+            {
+                MessageBox.Show("База данных пуста");
+            }
+        }
+
+        private void ItemSearchTextBox_Leave(object sender, EventArgs e)
+        {
+            if (ItemSearchTextBox.Text == "")
+            {
+                iTransportBindingSource.DataSource = _transportList;
+            }
+        }
+
+        private void ItemSearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (ItemSearchTextBox.Text == "")
+            {
+                iTransportBindingSource.DataSource = _transportList;
             }
         }
     }

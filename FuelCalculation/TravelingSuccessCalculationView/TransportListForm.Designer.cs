@@ -56,6 +56,9 @@
             this.RemoveItemMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemSearchTextBox = new System.Windows.Forms.TextBox();
+            this.SearchButton = new System.Windows.Forms.Button();
+            this.ByItemSerchComboBox = new System.Windows.Forms.ComboBox();
             this.TransportListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransportListGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
@@ -70,7 +73,7 @@
             this.TransportListGroupBox.Controls.Add(this.TransportListGridView);
             this.TransportListGroupBox.Location = new System.Drawing.Point(12, 27);
             this.TransportListGroupBox.Name = "TransportListGroupBox";
-            this.TransportListGroupBox.Size = new System.Drawing.Size(641, 348);
+            this.TransportListGroupBox.Size = new System.Drawing.Size(691, 348);
             this.TransportListGroupBox.TabIndex = 0;
             this.TransportListGroupBox.TabStop = false;
             this.TransportListGroupBox.Text = "Transport List";
@@ -95,7 +98,7 @@
             this.TransportListGridView.Name = "TransportListGridView";
             this.TransportListGridView.ReadOnly = true;
             this.TransportListGridView.RowHeadersVisible = false;
-            this.TransportListGridView.Size = new System.Drawing.Size(635, 329);
+            this.TransportListGridView.Size = new System.Drawing.Size(685, 329);
             this.TransportListGridView.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn1
@@ -187,7 +190,7 @@
             this.aboutMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(665, 24);
+            this.menuStrip.Size = new System.Drawing.Size(715, 24);
             this.menuStrip.TabIndex = 6;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -280,13 +283,51 @@
             this.aboutMenuItem.Name = "aboutMenuItem";
             this.aboutMenuItem.Size = new System.Drawing.Size(48, 20);
             this.aboutMenuItem.Text = "About";
+            this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
+            // 
+            // ItemSearchTextBox
+            // 
+            this.ItemSearchTextBox.Location = new System.Drawing.Point(447, 383);
+            this.ItemSearchTextBox.Name = "ItemSearchTextBox";
+            this.ItemSearchTextBox.Size = new System.Drawing.Size(175, 20);
+            this.ItemSearchTextBox.TabIndex = 7;
+            this.ItemSearchTextBox.TextChanged += new System.EventHandler(this.ItemSearchTextBox_TextChanged);
+            this.ItemSearchTextBox.Leave += new System.EventHandler(this.ItemSearchTextBox_Leave);
+            // 
+            // SearchButton
+            // 
+            this.SearchButton.Location = new System.Drawing.Point(628, 381);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(75, 23);
+            this.SearchButton.TabIndex = 8;
+            this.SearchButton.Text = "Search";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
+            // ByItemSerchComboBox
+            // 
+            this.ByItemSerchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ByItemSerchComboBox.FormattingEnabled = true;
+            this.ByItemSerchComboBox.Items.AddRange(new object[] {
+            "Transpor tName",
+            "Wear Rate",
+            "Fuel Waste",
+            "Speed",
+            "Tank Volume"});
+            this.ByItemSerchComboBox.Location = new System.Drawing.Point(320, 383);
+            this.ByItemSerchComboBox.Name = "ByItemSerchComboBox";
+            this.ByItemSerchComboBox.Size = new System.Drawing.Size(121, 21);
+            this.ByItemSerchComboBox.TabIndex = 9;
             // 
             // TransportListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(665, 431);
+            this.ClientSize = new System.Drawing.Size(715, 431);
+            this.Controls.Add(this.ByItemSerchComboBox);
+            this.Controls.Add(this.SearchButton);
+            this.Controls.Add(this.ItemSearchTextBox);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.RemoveItemButton);
             this.Controls.Add(this.TransportListGroupBox);
@@ -340,6 +381,9 @@
         private System.Windows.Forms.BindingSource iTransportBindingSource;
         private System.Windows.Forms.ToolStripMenuItem CreateMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
+        private System.Windows.Forms.TextBox ItemSearchTextBox;
+        private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.ComboBox ByItemSerchComboBox;
     }
 }
 
