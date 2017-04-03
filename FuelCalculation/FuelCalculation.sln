@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelingSuccessCalculation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelCalculation", "FuelCalculation\FuelCalculation.csproj", "{6304E18E-E5DD-4F1C-AD01-664FC4F995B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FuelCalculationTests", "FuelCalculationTests1\FuelCalculationTests.csproj", "{3E2199AF-3FE4-4DD4-8CF1-32F0BB48E60F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6304E18E-E5DD-4F1C-AD01-664FC4F995B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6304E18E-E5DD-4F1C-AD01-664FC4F995B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6304E18E-E5DD-4F1C-AD01-664FC4F995B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E2199AF-3FE4-4DD4-8CF1-32F0BB48E60F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E2199AF-3FE4-4DD4-8CF1-32F0BB48E60F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E2199AF-3FE4-4DD4-8CF1-32F0BB48E60F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E2199AF-3FE4-4DD4-8CF1-32F0BB48E60F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
