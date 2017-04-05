@@ -30,6 +30,7 @@ namespace TravelingSuccessCalculationView
 
             _filePath = null;
             _projectSavedChanges = true;
+            PointFixer(_projectSavedChanges);
             _transportList = new List<ITransport>();
             iTransportBindingSource.DataSource = _transportList;
         }
@@ -47,6 +48,7 @@ namespace TravelingSuccessCalculationView
                 Serialization.Deserialize(ref _transportList, _filePath);
                 iTransportBindingSource.DataSource = _transportList;
                 _projectSavedChanges = true;
+                PointFixer(_projectSavedChanges);
             }
         }
 
@@ -60,8 +62,8 @@ namespace TravelingSuccessCalculationView
             {
                 SaveAs();
             }
-
             _projectSavedChanges = true;
+            PointFixer(_projectSavedChanges);
         }
 
         private void SaveAsMenuItem_Click(object sender, EventArgs e)
@@ -147,6 +149,8 @@ namespace TravelingSuccessCalculationView
             {
                 _filePath = sfd.FileName;
                 Serialization.Serialize(_transportList, _filePath);
+                _projectSavedChanges = true;
+                PointFixer(_projectSavedChanges);
             }
         }
 
@@ -158,6 +162,7 @@ namespace TravelingSuccessCalculationView
                 var transport = frm.Transport;
                 iTransportBindingSource.Add(transport);
                 _projectSavedChanges = false;
+                PointFixer(_projectSavedChanges);
             }
         }
 
@@ -181,7 +186,6 @@ namespace TravelingSuccessCalculationView
                     var index = _transportList.IndexOf((ITransport) iTransportBindingSource.Current);
                     iTransportBindingSource.RemoveAt(index);
                     iTransportBindingSource.Insert(index, transport);
-                    _projectSavedChanges = false;
                 }
                 else
                 {
@@ -192,8 +196,9 @@ namespace TravelingSuccessCalculationView
                     iTransportBindingSource.Insert(afterIndex, transport);
                     _transportList.RemoveAt(index);
                     _transportList.Insert(index, transport);
-                    _projectSavedChanges = false;
                 }
+                PointFixer(_projectSavedChanges);
+                _projectSavedChanges = false;
             }
         }
 
@@ -208,9 +213,20 @@ namespace TravelingSuccessCalculationView
                 if (MessageBox.Show("Do you really want to remove this object?", "TransportRemove",
                         MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    var index = TransportListGridView.CurrentRow.Index;
-                    TransportListGridView.Rows.RemoveAt(index);
+                    if (_afterSearchChanges == false)
+                    {
+                        var index = TransportListGridView.CurrentRow.Index;
+                        TransportListGridView.Rows.RemoveAt(index);
+                    }
+                    else
+                    {
+                        var index = _transportList.IndexOf((ITransport)iTransportBindingSource.Current);
+                        var afterIndex = TransportListGridView.CurrentRow.Index;
+                        iTransportBindingSource.RemoveAt(afterIndex);
+                        _transportList.RemoveAt(index);
+                    }
                     _projectSavedChanges = false;
+                    PointFixer(_projectSavedChanges);
                 }
             }
         }
@@ -230,7 +246,7 @@ namespace TravelingSuccessCalculationView
                     {
                         case "Transport Name":
                         {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate (ITransport transport)
+                            iTransportBindingSource.DataSource = _searchedTransportList = _transportList.FindAll(delegate (ITransport transport)
                             {
                                 return transport.TransportName == searchLine;
                             });
@@ -238,7 +254,7 @@ namespace TravelingSuccessCalculationView
                         }
                         case "Wear Rate":
                         {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate (ITransport transport)
+                            iTransportBindingSource.DataSource = _searchedTransportList = _transportList.FindAll(delegate (ITransport transport)
                             {
                                 return transport.WearRate.ToString() == searchLine;
                             });
@@ -246,7 +262,7 @@ namespace TravelingSuccessCalculationView
                         }
                         case "Fuel Waste":
                         {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate (ITransport transport)
+                            iTransportBindingSource.DataSource = _searchedTransportList = _transportList.FindAll(delegate (ITransport transport)
                             {
                                 return transport.FuelWaste.ToString() == searchLine;
                             });
@@ -254,8 +270,6 @@ namespace TravelingSuccessCalculationView
                         }
                         case "Speed":
                         {
-                            
-
                             iTransportBindingSource.DataSource = _searchedTransportList = _transportList.FindAll(delegate (ITransport transport)
                             {
                                 return transport.Speed.ToString() == searchLine;
@@ -264,7 +278,7 @@ namespace TravelingSuccessCalculationView
                         }
                         case "Tank Volume":
                         {
-                            iTransportBindingSource.DataSource = _transportList.FindAll(delegate (ITransport transport)
+                            iTransportBindingSource.DataSource = _searchedTransportList = _transportList.FindAll(delegate (ITransport transport)
                             {
                                 return transport.TankVolume.ToString() == searchLine;
                             });
@@ -283,9 +297,8 @@ namespace TravelingSuccessCalculationView
             }
         }
 
-        private void ItemSearchTextBox_Leave(object sender, EventArgs e)
+        private void ItemSearchTextBox_TextChanged(object sender, EventArgs e)
         {
-            
             if (ItemSearchTextBox.Text == "")
             {
                 iTransportBindingSource.DataSource = _transportList;
@@ -293,12 +306,22 @@ namespace TravelingSuccessCalculationView
             }
         }
 
-        private void ItemSearchTextBox_TextChanged(object sender, EventArgs e)
+        private void PointFixer(bool projectSavedChanges)
         {
-            if (ItemSearchTextBox.Text == "")
+            if (_filePath != null)
             {
-                iTransportBindingSource.DataSource = _transportList;
-                _afterSearchChanges = false;
+                if (!projectSavedChanges)
+                {
+                    this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + "* - Transport Form";
+                }
+                else
+                {
+                    this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + " - Transport Form";
+                }
+            }
+            else
+            {
+                this.Text = "Transport Form";
             }
         }
     }

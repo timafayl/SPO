@@ -292,7 +292,6 @@
             this.ItemSearchTextBox.Size = new System.Drawing.Size(175, 20);
             this.ItemSearchTextBox.TabIndex = 7;
             this.ItemSearchTextBox.TextChanged += new System.EventHandler(this.ItemSearchTextBox_TextChanged);
-            this.ItemSearchTextBox.Leave += new System.EventHandler(this.ItemSearchTextBox_Leave);
             // 
             // SearchButton
             // 
