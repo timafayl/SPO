@@ -1,7 +1,6 @@
 ﻿using FuelCalculation;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
 
 namespace TravelingSuccessCalculationView
@@ -13,6 +12,7 @@ namespace TravelingSuccessCalculationView
         private bool _afterSearchChanges;
         private List<ITransport> _transportList;
         private List<ITransport> _searchedTransportList;
+        private List<RecentFiles> _recentFiles;
 
         public TransportListForm()
         {
@@ -22,6 +22,9 @@ namespace TravelingSuccessCalculationView
             _afterSearchChanges = false;
             _transportList = new List<ITransport>();
             iTransportBindingSource.DataSource = _transportList;
+            _recentFiles = new List<RecentFiles>();
+            Serialization.DeserializeRecentFile(_recentFiles);
+            LoadRecentFiles();
         }
 
         private void CreateMenuItem_Click(object sender, EventArgs e)
@@ -49,6 +52,8 @@ namespace TravelingSuccessCalculationView
                 iTransportBindingSource.DataSource = _transportList;
                 _projectSavedChanges = true;
                 PointFixer(_projectSavedChanges);
+                AddToRecentFiles();
+                LoadRecentFiles();
             }
         }
 
@@ -109,6 +114,10 @@ namespace TravelingSuccessCalculationView
         private void TransportListView_FormClosing(object sender, FormClosingEventArgs e)
         {
             CheckChanges();
+            if (_recentFiles.Count > 0)
+            {
+                Serialization.SerializeRecentFile(_recentFiles);
+            }
         }
 
         private void aboutMenuItem_Click(object sender, EventArgs e)
@@ -151,6 +160,8 @@ namespace TravelingSuccessCalculationView
                 Serialization.Serialize(_transportList, _filePath);
                 _projectSavedChanges = true;
                 PointFixer(_projectSavedChanges);
+                AddToRecentFiles();
+                LoadRecentFiles();
             }
         }
 
@@ -323,6 +334,56 @@ namespace TravelingSuccessCalculationView
             {
                 this.Text = "Transport Form";
             }
+        }
+
+        private void AddToRecentFiles()
+        {
+            var recentItem = new RecentFiles(_filePath.Substring(_filePath.LastIndexOf("\\") + 1), _filePath);
+            if (_recentFiles.Contains(recentItem))
+            {
+                _recentFiles.Remove(recentItem);
+                _recentFiles.Insert(0, recentItem);
+            }
+            else
+            {
+                _recentFiles.Insert(0, recentItem);
+                if (_recentFiles.Count == 5)
+                {
+                    _recentFiles.RemoveAt(4);
+                }
+            }
+        }
+
+        private void LoadRecentFiles()
+        {
+            var items = new List<String>();
+            foreach (var item in _recentFiles)
+            {
+                items.Add(item.RecentItem);
+            }
+            if (items.Count > 0)
+            {
+                for (var i = 0; i < items.Count; i++)
+                {
+                    recentFilesMenuItem.DropDownItems.Add(items[i]);
+                    recentFilesMenuItem.DropDownItems[i].Click += OnClick;
+                }
+            }
+        }
+
+        private void OnClick(object sender, EventArgs eventArgs)
+        {
+            CheckChanges();
+            var stripItem = (ToolStripDropDownItem)sender;
+            var index = recentFilesMenuItem.DropDownItems.IndexOf(stripItem);
+            _filePath = _recentFiles[index].RecentFilePath;
+            Serialization.Deserialize(ref _transportList, _filePath);
+            iTransportBindingSource.DataSource = _transportList;
+            _projectSavedChanges = true;
+            PointFixer(_projectSavedChanges);
+            AddToRecentFiles();
+            LoadRecentFiles();
+
         }
     }
 }

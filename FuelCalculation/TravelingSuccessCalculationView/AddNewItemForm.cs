@@ -106,7 +106,7 @@ namespace TravelingSuccessCalculationView
             {
                 var carTransport = new Helicopter();
                 carTransport = (Helicopter)transport;
-                ChooseTransportComboBox.Text = "Helocopter";
+                ChooseTransportComboBox.Text = "Helicopter";
                 MassTextBox.Text = Convert.ToString(carTransport.Mass);
             }
         }

@@ -35,6 +35,8 @@ namespace FuelCalculation
         /// </summary>
         public Car() { }
 
+
+        //TODO удалить если не используется
         /// <summary>
         /// Конструктор класса CarTransport.
         /// </summary>
@@ -186,13 +188,9 @@ namespace FuelCalculation
         public bool IsCanPassDistance(double distance)
         {
             double calcValue;
-
             var coef = (_fuelType == FuelType.Бензин) ? 1 : 0.9;
-       
             calcValue = coef * 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed/80) * distance;
-
             _wearRate += 0.0001 * distance;
-
             return ((calcValue <= _tankVolume) && (_wearRate <= 1));
         }
     }

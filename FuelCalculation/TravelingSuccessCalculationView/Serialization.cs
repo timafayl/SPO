@@ -38,6 +38,36 @@ namespace TravelingSuccessCalculationView
                 }
             }
         }
+
+        /// <summary>
+        /// Сериализует получаемый на вход список объектов.
+        /// </summary>
+        /// <param name="myList">Список объектов, который будет сериализован</param>
+        public static void SerializeRecentFile(List<RecentFiles> myList)
+        {
+            var formatter = new BinaryFormatter();
+            using (var fs = new FileStream("recentFiles.txt", FileMode.Create))
+            {
+                formatter.Serialize(fs, myList);
+                fs.Close();
+            }
+        }
+
+        /// <summary>
+        /// Десериализует данные в получаемый на вход список.
+        /// </summary>
+        /// <param name="myList">Список, в который будут десериализованы данные из файла</param>
+        public static void DeserializeRecentFile(List<RecentFiles> myList)
+        {
+            var formatter = new BinaryFormatter();
+            using (var fs = new FileStream("recentFiles.txt", FileMode.OpenOrCreate))
+            {
+                if (fs.Length != 0)
+                {
+                    myList = (List<RecentFiles>)formatter.Deserialize(fs);
+                }
+            }
+        }
     }
 }
 

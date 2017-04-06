@@ -50,6 +50,7 @@
             this.SaveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CloseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recentFilesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddItemMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ModifyItemMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -201,7 +202,8 @@
             this.OpenMenuItem,
             this.SaveMenuItem,
             this.SaveAsMenuItem,
-            this.CloseMenuItem});
+            this.CloseMenuItem,
+            this.recentFilesMenuItem});
             this.FileMenuItem.Name = "FileMenuItem";
             this.FileMenuItem.Size = new System.Drawing.Size(35, 20);
             this.FileMenuItem.Text = "File";
@@ -209,37 +211,43 @@
             // CreateMenuItem
             // 
             this.CreateMenuItem.Name = "CreateMenuItem";
-            this.CreateMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.CreateMenuItem.Size = new System.Drawing.Size(152, 22);
             this.CreateMenuItem.Text = "Create";
             this.CreateMenuItem.Click += new System.EventHandler(this.CreateMenuItem_Click);
             // 
             // OpenMenuItem
             // 
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.OpenMenuItem.Size = new System.Drawing.Size(152, 22);
             this.OpenMenuItem.Text = "Open";
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
             // 
             // SaveMenuItem
             // 
             this.SaveMenuItem.Name = "SaveMenuItem";
-            this.SaveMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.SaveMenuItem.Size = new System.Drawing.Size(152, 22);
             this.SaveMenuItem.Text = "Save";
             this.SaveMenuItem.Click += new System.EventHandler(this.SaveMenuItem_Click);
             // 
             // SaveAsMenuItem
             // 
             this.SaveAsMenuItem.Name = "SaveAsMenuItem";
-            this.SaveAsMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.SaveAsMenuItem.Size = new System.Drawing.Size(152, 22);
             this.SaveAsMenuItem.Text = "SaveAs";
             this.SaveAsMenuItem.Click += new System.EventHandler(this.SaveAsMenuItem_Click);
             // 
             // CloseMenuItem
             // 
             this.CloseMenuItem.Name = "CloseMenuItem";
-            this.CloseMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.CloseMenuItem.Size = new System.Drawing.Size(152, 22);
             this.CloseMenuItem.Text = "Close";
             this.CloseMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
+            // 
+            // recentFilesMenuItem
+            // 
+            this.recentFilesMenuItem.Name = "recentFilesMenuItem";
+            this.recentFilesMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.recentFilesMenuItem.Text = "Recent files";
             // 
             // EditMenuItem
             // 
@@ -383,6 +391,7 @@
         private System.Windows.Forms.TextBox ItemSearchTextBox;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.ComboBox ByItemSerchComboBox;
+        private System.Windows.Forms.ToolStripMenuItem recentFilesMenuItem;
     }
 }
 
