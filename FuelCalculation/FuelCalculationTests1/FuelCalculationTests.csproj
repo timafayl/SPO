@@ -6,8 +6,8 @@
     <ProjectGuid>{3E2199AF-3FE4-4DD4-8CF1-32F0BB48E60F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FuelCalculationTests1</RootNamespace>
-    <AssemblyName>FuelCalculationTests1</AssemblyName>
+    <RootNamespace>FuelCalculationTests</RootNamespace>
+    <AssemblyName>FuelCalculationTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

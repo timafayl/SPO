@@ -60,21 +60,22 @@
             this.ItemSearchTextBox = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
             this.ByItemSerchComboBox = new System.Windows.Forms.ComboBox();
+            this.ObjectControlGroupBox = new System.Windows.Forms.GroupBox();
+            this.control1 = new TravelingSuccessCalculationView.Control();
             this.TransportListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransportListGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
             this.menuStrip.SuspendLayout();
+            this.ObjectControlGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // TransportListGroupBox
             // 
-            this.TransportListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TransportListGroupBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TransportListGroupBox.Controls.Add(this.TransportListGridView);
             this.TransportListGroupBox.Location = new System.Drawing.Point(12, 27);
             this.TransportListGroupBox.Name = "TransportListGroupBox";
-            this.TransportListGroupBox.Size = new System.Drawing.Size(691, 348);
+            this.TransportListGroupBox.Size = new System.Drawing.Size(586, 345);
             this.TransportListGroupBox.TabIndex = 0;
             this.TransportListGroupBox.TabStop = false;
             this.TransportListGroupBox.Text = "Transport List";
@@ -84,6 +85,7 @@
             this.TransportListGridView.AllowUserToAddRows = false;
             this.TransportListGridView.AllowUserToResizeColumns = false;
             this.TransportListGridView.AllowUserToResizeRows = false;
+            this.TransportListGridView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TransportListGridView.AutoGenerateColumns = false;
             this.TransportListGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TransportListGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -94,12 +96,11 @@
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
             this.TransportListGridView.DataSource = this.iTransportBindingSource;
-            this.TransportListGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TransportListGridView.Location = new System.Drawing.Point(3, 16);
+            this.TransportListGridView.Location = new System.Drawing.Point(6, 19);
             this.TransportListGridView.Name = "TransportListGridView";
             this.TransportListGridView.ReadOnly = true;
             this.TransportListGridView.RowHeadersVisible = false;
-            this.TransportListGridView.Size = new System.Drawing.Size(685, 329);
+            this.TransportListGridView.Size = new System.Drawing.Size(574, 320);
             this.TransportListGridView.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn1
@@ -145,7 +146,7 @@
             // 
             this.RemoveItemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.RemoveItemButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.RemoveItemButton.Location = new System.Drawing.Point(208, 381);
+            this.RemoveItemButton.Location = new System.Drawing.Point(209, 378);
             this.RemoveItemButton.Name = "RemoveItemButton";
             this.RemoveItemButton.Size = new System.Drawing.Size(92, 23);
             this.RemoveItemButton.TabIndex = 3;
@@ -157,7 +158,7 @@
             // 
             this.ModifyItemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ModifyItemButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.ModifyItemButton.Location = new System.Drawing.Point(110, 381);
+            this.ModifyItemButton.Location = new System.Drawing.Point(111, 378);
             this.ModifyItemButton.Name = "ModifyItemButton";
             this.ModifyItemButton.Size = new System.Drawing.Size(92, 23);
             this.ModifyItemButton.TabIndex = 2;
@@ -169,7 +170,7 @@
             // 
             this.AddNewItemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AddNewItemButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.AddNewItemButton.Location = new System.Drawing.Point(12, 381);
+            this.AddNewItemButton.Location = new System.Drawing.Point(12, 378);
             this.AddNewItemButton.Name = "AddNewItemButton";
             this.AddNewItemButton.Size = new System.Drawing.Size(92, 23);
             this.AddNewItemButton.TabIndex = 1;
@@ -191,7 +192,7 @@
             this.aboutMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(715, 24);
+            this.menuStrip.Size = new System.Drawing.Size(887, 24);
             this.menuStrip.TabIndex = 6;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -211,42 +212,42 @@
             // CreateMenuItem
             // 
             this.CreateMenuItem.Name = "CreateMenuItem";
-            this.CreateMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CreateMenuItem.Size = new System.Drawing.Size(130, 22);
             this.CreateMenuItem.Text = "Create";
             this.CreateMenuItem.Click += new System.EventHandler(this.CreateMenuItem_Click);
             // 
             // OpenMenuItem
             // 
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.OpenMenuItem.Size = new System.Drawing.Size(130, 22);
             this.OpenMenuItem.Text = "Open";
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
             // 
             // SaveMenuItem
             // 
             this.SaveMenuItem.Name = "SaveMenuItem";
-            this.SaveMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SaveMenuItem.Size = new System.Drawing.Size(130, 22);
             this.SaveMenuItem.Text = "Save";
             this.SaveMenuItem.Click += new System.EventHandler(this.SaveMenuItem_Click);
             // 
             // SaveAsMenuItem
             // 
             this.SaveAsMenuItem.Name = "SaveAsMenuItem";
-            this.SaveAsMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SaveAsMenuItem.Size = new System.Drawing.Size(130, 22);
             this.SaveAsMenuItem.Text = "SaveAs";
             this.SaveAsMenuItem.Click += new System.EventHandler(this.SaveAsMenuItem_Click);
             // 
             // CloseMenuItem
             // 
             this.CloseMenuItem.Name = "CloseMenuItem";
-            this.CloseMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.CloseMenuItem.Size = new System.Drawing.Size(130, 22);
             this.CloseMenuItem.Text = "Close";
             this.CloseMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
             // 
             // recentFilesMenuItem
             // 
             this.recentFilesMenuItem.Name = "recentFilesMenuItem";
-            this.recentFilesMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.recentFilesMenuItem.Size = new System.Drawing.Size(130, 22);
             this.recentFilesMenuItem.Text = "Recent files";
             // 
             // EditMenuItem
@@ -295,7 +296,7 @@
             // 
             // ItemSearchTextBox
             // 
-            this.ItemSearchTextBox.Location = new System.Drawing.Point(447, 383);
+            this.ItemSearchTextBox.Location = new System.Drawing.Point(434, 380);
             this.ItemSearchTextBox.Name = "ItemSearchTextBox";
             this.ItemSearchTextBox.Size = new System.Drawing.Size(175, 20);
             this.ItemSearchTextBox.TabIndex = 7;
@@ -303,7 +304,7 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(628, 381);
+            this.SearchButton.Location = new System.Drawing.Point(615, 378);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(75, 23);
             this.SearchButton.TabIndex = 8;
@@ -321,17 +322,35 @@
             "Fuel Waste",
             "Speed",
             "Tank Volume"});
-            this.ByItemSerchComboBox.Location = new System.Drawing.Point(320, 383);
+            this.ByItemSerchComboBox.Location = new System.Drawing.Point(307, 380);
             this.ByItemSerchComboBox.Name = "ByItemSerchComboBox";
             this.ByItemSerchComboBox.Size = new System.Drawing.Size(121, 21);
             this.ByItemSerchComboBox.TabIndex = 9;
+            // 
+            // ObjectControlGroupBox
+            // 
+            this.ObjectControlGroupBox.Controls.Add(this.control1);
+            this.ObjectControlGroupBox.Location = new System.Drawing.Point(604, 27);
+            this.ObjectControlGroupBox.Name = "ObjectControlGroupBox";
+            this.ObjectControlGroupBox.Size = new System.Drawing.Size(271, 345);
+            this.ObjectControlGroupBox.TabIndex = 10;
+            this.ObjectControlGroupBox.TabStop = false;
+            this.ObjectControlGroupBox.Text = "Object Control";
+            // 
+            // control1
+            // 
+            this.control1.Location = new System.Drawing.Point(6, 19);
+            this.control1.Name = "control1";
+            this.control1.Size = new System.Drawing.Size(258, 186);
+            this.control1.TabIndex = 0;
             // 
             // TransportListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(715, 431);
+            this.ClientSize = new System.Drawing.Size(887, 413);
+            this.Controls.Add(this.ObjectControlGroupBox);
             this.Controls.Add(this.ByItemSerchComboBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.ItemSearchTextBox);
@@ -350,6 +369,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.ObjectControlGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,6 +412,8 @@
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.ComboBox ByItemSerchComboBox;
         private System.Windows.Forms.ToolStripMenuItem recentFilesMenuItem;
+        private System.Windows.Forms.GroupBox ObjectControlGroupBox;
+        private Control control1;
     }
 }
 

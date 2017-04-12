@@ -47,10 +47,6 @@ namespace FuelCalculation.Tests
             return transport.Speed = speed;
         }
 
-
-        //TODO дописать констуктор с дефолтными занчениями и проверить присваивается ли это значение правильно
-
-
         [Test]
         [TestCase(55, TestName = "Тестирование поля Car.TankVolume со значением диапазона 20-100", ExpectedResult = 55)]
         [TestCase(101, TestName = "Тестирование поля Car.TankVolume  со значением больше, чем заданный диапазон", ExpectedException = typeof(ArgumentException))]
@@ -59,6 +55,16 @@ namespace FuelCalculation.Tests
         {
             Car transport = new Car();
             return transport.TankVolume = tankVolume;
+        }
+        //TODO переписать описание тестов для IsCanPassDistanceTest
+        [Test]
+        [TestCase(800, TestName = "Тестирование метода Car.IsCanPassDistanec с созданным объектом, при котором значение при заданной дистанции будет false", ExpectedResult = false)]
+        [TestCase(1500, TestName = "Тестирование метода Car.IsCanPassDistanec с созданным объектом, при котором значение при заданной дистанции будет false", ExpectedResult = false)]
+        [TestCase(300, TestName = "Тестирование метода Car.IsCanPassDistanec с созданным объектом, при котором значение при заданной дистанции будет true", ExpectedResult = true)]
+        public bool IsCanPassDistanceTest(double distance)
+        {
+            Car transport = new Car("accura", 0.15, 14, 130, FuelType.Бензин, 50);
+            return transport.IsCanPassDistance(distance);
         }
     }
 }

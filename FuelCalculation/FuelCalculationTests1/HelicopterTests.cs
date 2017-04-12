@@ -66,5 +66,15 @@ namespace FuelCalculation.Tests
             Helicopter transport = new Helicopter();
             return transport.Mass = mass;
         }
+
+        [Test]
+        [TestCase(1000, TestName = "Тестирование метода Helicopter.IsCanPassDistanec с созданным объектом, при котором значение при заданной дистанции будет false", ExpectedResult = false)]
+        [TestCase(10000, TestName = "Тестирование метода Helicopter.IsCanPassDistance с созданным объектом, при котором значение при заданной дистанции будет false", ExpectedResult = false)]
+        [TestCase(3000, TestName = "Тестирование метода Helicopter.IsCanPassDistanec с созданным объектом, при котором значение при заданной дистанции будет true", ExpectedResult = true)]
+        public bool IsCanPassDistanceTest(double distance)
+        {
+            Helicopter transport = new Helicopter("robinson", 0.05, 35, 310, 600, 130);
+            return transport.IsCanPassDistance(distance);
+        }
     }
 }

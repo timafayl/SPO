@@ -1,26 +1,46 @@
-﻿namespace TravelingSuccessCalculationView
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace TravelingSuccessCalculationView
 {
+    [Serializable]
     public class RecentFiles
     {
-        private string _recentItem;
-        private string _recentFilePath;
+        private List<string> _recentFiles = new List<string>();
 
-        public string RecentItem
+        public void AddToRecentFiles(string filePath)
         {
-            get { return _recentItem; }
-            set { _recentItem = value; }
+            if (filePath != null)
+            {
+                if (_recentFiles.Contains(filePath))
+                {
+                    _recentFiles.RemoveAt(_recentFiles.IndexOf(filePath));
+                }
+                _recentFiles.Insert(0, filePath);
+                if (_recentFiles.Count > 4)
+                {
+                    for (var i = 4; i < _recentFiles.Count; i++)
+                    {
+                        _recentFiles.RemoveAt(i);
+                    }
+                }
+            }
         }
 
-        public string RecentFilePath
+        public List<string> GetRecentFilesList()
         {
-            get { return _recentFilePath; }
-            set { _recentFilePath = value; }
+            return _recentFiles.ToList();
         }
 
-        public RecentFiles(string recentItem, string recentFilePath)
+        public void RecentFilesSerialize()
         {
-            RecentItem = recentItem;
-            RecentFilePath = recentFilePath;
+            Serialization.SerializeRecentFile(_recentFiles);
+        }
+
+        public void RecentFilesDeserialize()
+        {
+            Serialization.DeserializeRecentFile(_recentFiles);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using FuelCalculation;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace TravelingSuccessCalculationView
@@ -12,7 +13,7 @@ namespace TravelingSuccessCalculationView
         private bool _afterSearchChanges;
         private List<ITransport> _transportList;
         private List<ITransport> _searchedTransportList;
-        private List<RecentFiles> _recentFiles;
+        private RecentFiles _recentFiles = new RecentFiles();
 
         public TransportListForm()
         {
@@ -22,9 +23,11 @@ namespace TravelingSuccessCalculationView
             _afterSearchChanges = false;
             _transportList = new List<ITransport>();
             iTransportBindingSource.DataSource = _transportList;
-            _recentFiles = new List<RecentFiles>();
-            Serialization.DeserializeRecentFile(_recentFiles);
-            LoadRecentFiles();
+            _recentFiles.RecentFilesDeserialize();
+            if (_recentFiles.GetRecentFilesList().Count > 0)
+            {
+                LoadRecentFilesToMenu();
+            }
         }
 
         private void CreateMenuItem_Click(object sender, EventArgs e)
@@ -52,8 +55,7 @@ namespace TravelingSuccessCalculationView
                 iTransportBindingSource.DataSource = _transportList;
                 _projectSavedChanges = true;
                 PointFixer(_projectSavedChanges);
-                AddToRecentFiles();
-                LoadRecentFiles();
+                LoadRecentFiles(_filePath);
             }
         }
 
@@ -113,11 +115,8 @@ namespace TravelingSuccessCalculationView
 
         private void TransportListView_FormClosing(object sender, FormClosingEventArgs e)
         {
+            _recentFiles.RecentFilesDeserialize();
             CheckChanges();
-            if (_recentFiles.Count > 0)
-            {
-                Serialization.SerializeRecentFile(_recentFiles);
-            }
         }
 
         private void aboutMenuItem_Click(object sender, EventArgs e)
@@ -145,6 +144,10 @@ namespace TravelingSuccessCalculationView
                     }
                 }
             }
+            /*if (_recentFiles.Count > 0)
+            {
+                Serialization.SerializeRecentFile(_recentFiles);
+            }*/
         }
 
         private void SaveAs()
@@ -160,8 +163,7 @@ namespace TravelingSuccessCalculationView
                 Serialization.Serialize(_transportList, _filePath);
                 _projectSavedChanges = true;
                 PointFixer(_projectSavedChanges);
-                AddToRecentFiles();
-                LoadRecentFiles();
+                LoadRecentFiles(_filePath);
             }
         }
 
@@ -336,38 +338,25 @@ namespace TravelingSuccessCalculationView
             }
         }
 
-        private void AddToRecentFiles()
+        private void LoadRecentFiles(string filePath)
         {
-            var recentItem = new RecentFiles(_filePath.Substring(_filePath.LastIndexOf("\\") + 1), _filePath);
-            if (_recentFiles.Contains(recentItem))
+            _recentFiles.AddToRecentFiles(filePath);
+
+            if (_recentFiles.GetRecentFilesList().Count > 0)
             {
-                _recentFiles.Remove(recentItem);
-                _recentFiles.Insert(0, recentItem);
-            }
-            else
-            {
-                _recentFiles.Insert(0, recentItem);
-                if (_recentFiles.Count == 5)
-                {
-                    _recentFiles.RemoveAt(4);
-                }
+                recentFilesMenuItem.DropDownItems.Clear();
+
+                LoadRecentFilesToMenu();
             }
         }
 
-        private void LoadRecentFiles()
+        private void LoadRecentFilesToMenu()
         {
-            var items = new List<String>();
-            foreach (var item in _recentFiles)
+            for (var i = 0; i < _recentFiles.GetRecentFilesList().Count; i++)
             {
-                items.Add(item.RecentItem);
-            }
-            if (items.Count > 0)
-            {
-                for (var i = 0; i < items.Count; i++)
-                {
-                    recentFilesMenuItem.DropDownItems.Add(items[i]);
-                    recentFilesMenuItem.DropDownItems[i].Click += OnClick;
-                }
+                var projectName = Path.GetFileName(_recentFiles.GetRecentFilesList()[i]);
+                recentFilesMenuItem.DropDownItems.Add(projectName);
+                recentFilesMenuItem.DropDownItems[i].Click += OnClick;
             }
         }
 
@@ -376,14 +365,12 @@ namespace TravelingSuccessCalculationView
             CheckChanges();
             var stripItem = (ToolStripDropDownItem)sender;
             var index = recentFilesMenuItem.DropDownItems.IndexOf(stripItem);
-            _filePath = _recentFiles[index].RecentFilePath;
+            _filePath = _recentFiles.GetRecentFilesList()[index];
             Serialization.Deserialize(ref _transportList, _filePath);
             iTransportBindingSource.DataSource = _transportList;
             _projectSavedChanges = true;
             PointFixer(_projectSavedChanges);
-            AddToRecentFiles();
-            LoadRecentFiles();
-
+            LoadRecentFiles(_filePath);
         }
     }
 }

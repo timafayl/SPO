@@ -187,11 +187,12 @@ namespace FuelCalculation
         /// <returns>true или false в зависимости от успеха поездки</returns>
         public bool IsCanPassDistance(double distance)
         {
+            double wearRate = _wearRate;
             double calcValue;
             var coef = (_fuelType == FuelType.Бензин) ? 1 : 0.9;
-            calcValue = coef * 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed/80) * distance;
-            _wearRate += 0.0001 * distance;
-            return ((calcValue <= _tankVolume) && (_wearRate <= 1));
+            calcValue = coef * 0.01 * _fuelWaste * (0.3 + _wearRate) * (_speed/80) * distance;
+            wearRate += 0.0001 * distance;
+            return ((calcValue <= _tankVolume) && (wearRate <= 1));
         }
     }
 }

@@ -45,7 +45,7 @@
             this.FuelTypeComboBox = new System.Windows.Forms.ComboBox();
             this.MassTextBox = new System.Windows.Forms.TextBox();
             this.GenerateRandomValuesButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ChooseTransportLabel = new System.Windows.Forms.Label();
             this.ChooseTransportComboBox = new System.Windows.Forms.ComboBox();
             this.CancelButton = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -197,14 +197,14 @@
             this.GenerateRandomValuesButton.UseVisualStyleBackColor = true;
             this.GenerateRandomValuesButton.Click += new System.EventHandler(this.GenerateRandomValuesButton_Click);
             // 
-            // label1
+            // ChooseTransportLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Choose transport:";
+            this.ChooseTransportLabel.AutoSize = true;
+            this.ChooseTransportLabel.Location = new System.Drawing.Point(12, 13);
+            this.ChooseTransportLabel.Name = "ChooseTransportLabel";
+            this.ChooseTransportLabel.Size = new System.Drawing.Size(90, 13);
+            this.ChooseTransportLabel.TabIndex = 20;
+            this.ChooseTransportLabel.Text = "Choose transport:";
             // 
             // ChooseTransportComboBox
             // 
@@ -239,7 +239,7 @@
             this.ClientSize = new System.Drawing.Size(288, 272);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ChooseTransportComboBox);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ChooseTransportLabel);
             this.Controls.Add(this.GenerateRandomValuesButton);
             this.Controls.Add(this.MassTextBox);
             this.Controls.Add(this.FuelTypeComboBox);
@@ -281,7 +281,7 @@
         private System.Windows.Forms.ComboBox FuelTypeComboBox;
         private System.Windows.Forms.TextBox MassTextBox;
         private System.Windows.Forms.Button GenerateRandomValuesButton;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ChooseTransportLabel;
         private System.Windows.Forms.ComboBox ChooseTransportComboBox;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.ErrorProvider errorProvider;

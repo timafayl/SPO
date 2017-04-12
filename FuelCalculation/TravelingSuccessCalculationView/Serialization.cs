@@ -43,7 +43,7 @@ namespace TravelingSuccessCalculationView
         /// Сериализует получаемый на вход список объектов.
         /// </summary>
         /// <param name="myList">Список объектов, который будет сериализован</param>
-        public static void SerializeRecentFile(List<RecentFiles> myList)
+        public static void SerializeRecentFile(List<string> myList)
         {
             var formatter = new BinaryFormatter();
             using (var fs = new FileStream("recentFiles.txt", FileMode.Create))
@@ -57,14 +57,14 @@ namespace TravelingSuccessCalculationView
         /// Десериализует данные в получаемый на вход список.
         /// </summary>
         /// <param name="myList">Список, в который будут десериализованы данные из файла</param>
-        public static void DeserializeRecentFile(List<RecentFiles> myList)
+        public static void DeserializeRecentFile(List<string> myList)
         {
             var formatter = new BinaryFormatter();
             using (var fs = new FileStream("recentFiles.txt", FileMode.OpenOrCreate))
             {
                 if (fs.Length != 0)
                 {
-                    myList = (List<RecentFiles>)formatter.Deserialize(fs);
+                    myList = (List<string>)formatter.Deserialize(fs);
                 }
             }
         }
