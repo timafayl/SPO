@@ -61,7 +61,7 @@
             this.SearchButton = new System.Windows.Forms.Button();
             this.ByItemSerchComboBox = new System.Windows.Forms.ComboBox();
             this.ObjectControlGroupBox = new System.Windows.Forms.GroupBox();
-            this.control1 = new TravelingSuccessCalculationView.Control();
+            this.ObjectControl = new TravelingSuccessCalculationView.TransportControl();
             this.TransportListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransportListGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
@@ -71,11 +71,13 @@
             // 
             // TransportListGroupBox
             // 
-            this.TransportListGroupBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TransportListGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TransportListGroupBox.Controls.Add(this.TransportListGridView);
             this.TransportListGroupBox.Location = new System.Drawing.Point(12, 27);
             this.TransportListGroupBox.Name = "TransportListGroupBox";
-            this.TransportListGroupBox.Size = new System.Drawing.Size(586, 345);
+            this.TransportListGroupBox.Size = new System.Drawing.Size(618, 363);
             this.TransportListGroupBox.TabIndex = 0;
             this.TransportListGroupBox.TabStop = false;
             this.TransportListGroupBox.Text = "Transport List";
@@ -85,7 +87,9 @@
             this.TransportListGridView.AllowUserToAddRows = false;
             this.TransportListGridView.AllowUserToResizeColumns = false;
             this.TransportListGridView.AllowUserToResizeRows = false;
-            this.TransportListGridView.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TransportListGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TransportListGridView.AutoGenerateColumns = false;
             this.TransportListGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TransportListGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -100,7 +104,8 @@
             this.TransportListGridView.Name = "TransportListGridView";
             this.TransportListGridView.ReadOnly = true;
             this.TransportListGridView.RowHeadersVisible = false;
-            this.TransportListGridView.Size = new System.Drawing.Size(574, 320);
+            this.TransportListGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.TransportListGridView.Size = new System.Drawing.Size(606, 338);
             this.TransportListGridView.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn1
@@ -146,7 +151,7 @@
             // 
             this.RemoveItemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.RemoveItemButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.RemoveItemButton.Location = new System.Drawing.Point(209, 378);
+            this.RemoveItemButton.Location = new System.Drawing.Point(209, 396);
             this.RemoveItemButton.Name = "RemoveItemButton";
             this.RemoveItemButton.Size = new System.Drawing.Size(92, 23);
             this.RemoveItemButton.TabIndex = 3;
@@ -158,7 +163,7 @@
             // 
             this.ModifyItemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ModifyItemButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.ModifyItemButton.Location = new System.Drawing.Point(111, 378);
+            this.ModifyItemButton.Location = new System.Drawing.Point(111, 396);
             this.ModifyItemButton.Name = "ModifyItemButton";
             this.ModifyItemButton.Size = new System.Drawing.Size(92, 23);
             this.ModifyItemButton.TabIndex = 2;
@@ -170,7 +175,7 @@
             // 
             this.AddNewItemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AddNewItemButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.AddNewItemButton.Location = new System.Drawing.Point(12, 378);
+            this.AddNewItemButton.Location = new System.Drawing.Point(12, 396);
             this.AddNewItemButton.Name = "AddNewItemButton";
             this.AddNewItemButton.Size = new System.Drawing.Size(92, 23);
             this.AddNewItemButton.TabIndex = 1;
@@ -192,7 +197,7 @@
             this.aboutMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(887, 24);
+            this.menuStrip.Size = new System.Drawing.Size(919, 24);
             this.menuStrip.TabIndex = 6;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -296,7 +301,8 @@
             // 
             // ItemSearchTextBox
             // 
-            this.ItemSearchTextBox.Location = new System.Drawing.Point(434, 380);
+            this.ItemSearchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ItemSearchTextBox.Location = new System.Drawing.Point(434, 398);
             this.ItemSearchTextBox.Name = "ItemSearchTextBox";
             this.ItemSearchTextBox.Size = new System.Drawing.Size(175, 20);
             this.ItemSearchTextBox.TabIndex = 7;
@@ -304,7 +310,8 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(615, 378);
+            this.SearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SearchButton.Location = new System.Drawing.Point(615, 396);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(75, 23);
             this.SearchButton.TabIndex = 8;
@@ -314,6 +321,7 @@
             // 
             // ByItemSerchComboBox
             // 
+            this.ByItemSerchComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ByItemSerchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ByItemSerchComboBox.FormattingEnabled = true;
             this.ByItemSerchComboBox.Items.AddRange(new object[] {
@@ -322,34 +330,36 @@
             "Fuel Waste",
             "Speed",
             "Tank Volume"});
-            this.ByItemSerchComboBox.Location = new System.Drawing.Point(307, 380);
+            this.ByItemSerchComboBox.Location = new System.Drawing.Point(307, 398);
             this.ByItemSerchComboBox.Name = "ByItemSerchComboBox";
             this.ByItemSerchComboBox.Size = new System.Drawing.Size(121, 21);
             this.ByItemSerchComboBox.TabIndex = 9;
             // 
             // ObjectControlGroupBox
             // 
-            this.ObjectControlGroupBox.Controls.Add(this.control1);
-            this.ObjectControlGroupBox.Location = new System.Drawing.Point(604, 27);
+            this.ObjectControlGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ObjectControlGroupBox.Controls.Add(this.ObjectControl);
+            this.ObjectControlGroupBox.Location = new System.Drawing.Point(636, 27);
             this.ObjectControlGroupBox.Name = "ObjectControlGroupBox";
-            this.ObjectControlGroupBox.Size = new System.Drawing.Size(271, 345);
+            this.ObjectControlGroupBox.Size = new System.Drawing.Size(271, 363);
             this.ObjectControlGroupBox.TabIndex = 10;
             this.ObjectControlGroupBox.TabStop = false;
-            this.ObjectControlGroupBox.Text = "Object Control";
+            this.ObjectControlGroupBox.Text = "Transport Control";
             // 
-            // control1
+            // ObjectControl
             // 
-            this.control1.Location = new System.Drawing.Point(6, 19);
-            this.control1.Name = "control1";
-            this.control1.Size = new System.Drawing.Size(258, 186);
-            this.control1.TabIndex = 0;
+            this.ObjectControl.Location = new System.Drawing.Point(6, 19);
+            this.ObjectControl.Name = "ObjectControl";
+            this.ObjectControl.Size = new System.Drawing.Size(258, 186);
+            this.ObjectControl.TabIndex = 0;
             // 
             // TransportListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(887, 413);
+            this.ClientSize = new System.Drawing.Size(919, 431);
             this.Controls.Add(this.ObjectControlGroupBox);
             this.Controls.Add(this.ByItemSerchComboBox);
             this.Controls.Add(this.SearchButton);
@@ -413,7 +423,7 @@
         private System.Windows.Forms.ComboBox ByItemSerchComboBox;
         private System.Windows.Forms.ToolStripMenuItem recentFilesMenuItem;
         private System.Windows.Forms.GroupBox ObjectControlGroupBox;
-        private Control control1;
+        private TransportControl ObjectControl;
     }
 }
 

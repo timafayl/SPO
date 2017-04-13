@@ -28,6 +28,7 @@ namespace TravelingSuccessCalculationView
             {
                 LoadRecentFilesToMenu();
             }
+            TransportListGridView.ClearSelection();
         }
 
         private void CreateMenuItem_Click(object sender, EventArgs e)
@@ -186,11 +187,8 @@ namespace TravelingSuccessCalculationView
                 MessageBox.Show("Your list is empty!");
                 return;
             }
-
             var frm = new AddNewTransportForm();
-
-            frm.GetTransport((ITransport) iTransportBindingSource.Current);
-
+            frm.Transport = (ITransport) iTransportBindingSource.Current;
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 if (_afterSearchChanges == false)
