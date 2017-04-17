@@ -35,7 +35,7 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.transportControl1 = new TravelingSuccessCalculationView.TransportControl();
+            this.TransportControl = new TravelingSuccessCalculationView.TransportControl();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +57,6 @@
             this.GenerateRandomValuesButton.TabIndex = 1;
             this.GenerateRandomValuesButton.Text = "Generate random values";
             this.GenerateRandomValuesButton.UseVisualStyleBackColor = true;
-          //  this.GenerateRandomValuesButton.Click += new System.EventHandler(this.GenerateRandomValuesButton_Click);
             // 
             // CancelButton
             // 
@@ -73,19 +72,21 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // transportControl1
+            // TransportControl
             // 
-            this.transportControl1.Location = new System.Drawing.Point(12, 12);
-            this.transportControl1.Name = "transportControl1";
-            this.transportControl1.Size = new System.Drawing.Size(257, 184);
-            this.transportControl1.TabIndex = 13;
+            this.TransportControl.Location = new System.Drawing.Point(12, 12);
+            this.TransportControl.Name = "TransportControl";
+            this.TransportControl.ReadOnly = false;
+            this.TransportControl.Size = new System.Drawing.Size(257, 184);
+            this.TransportControl.TabIndex = 13;
+            this.TransportControl.Transport = null;
             // 
             // AddNewTransportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(281, 266);
-            this.Controls.Add(this.transportControl1);
+            this.Controls.Add(this.TransportControl);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.GenerateRandomValuesButton);
             this.Controls.Add(this.OKButton);
@@ -104,6 +105,6 @@
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.ToolTip toolTip;
-        private TransportControl transportControl1;
+        private TransportControl TransportControl;
     }
 }

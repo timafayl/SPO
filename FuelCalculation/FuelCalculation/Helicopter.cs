@@ -65,8 +65,8 @@ namespace FuelCalculation
             {
                 if (value == String.Empty)
                 {
-                    throw new ArgumentException("Вы не указали марку авто, пожалуйста укажите наименование " +
-                                                    "авто используя только буквы латинского алфавита");
+                    throw new ArgumentException("Вы не указали марку вертолета, пожалуйста укажите наименование " +
+                                                    "вертолета, используя только буквы латинского алфавита");
                 }
                 //value = value.ToLower();
                 foreach (char letter in value)

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FuelCalculation;
 
@@ -13,6 +6,9 @@ namespace TravelingSuccessCalculationView.Controls
 {
     public partial class HelicopterControl : UserControl
     {
+        private Helicopter _helicopter = new Helicopter();
+        private bool _readonly;
+
         public HelicopterControl()
         {
             InitializeComponent();
@@ -22,23 +18,30 @@ namespace TravelingSuccessCalculationView.Controls
         {
             set
             {
-                Helicopter = value;
-                TNameTextBox.Text = Convert.ToString(Helicopter.TransportName);
-                WearRateTextBox.Text = Convert.ToString(Helicopter.WearRate);
-                FuelWasteTextBox.Text = Convert.ToString(Helicopter.FuelWaste);
-                SpeedTextBox.Text = Convert.ToString(Helicopter.Speed);
-                TankVolumeTextBox.Text = Convert.ToString(Helicopter.TankVolume);
-                MassTextBox.Text = Convert.ToString(Helicopter.Mass);
+                if (value == null)
+                {
+                    return;
+                }
+                _helicopter = value;
+                TNameTextBox.Text = Convert.ToString(_helicopter.TransportName);
+                WearRateTextBox.Text = Convert.ToString(_helicopter.WearRate);
+                FuelWasteTextBox.Text = Convert.ToString(_helicopter.FuelWaste);
+                SpeedTextBox.Text = Convert.ToString(_helicopter.Speed);
+                TankVolumeTextBox.Text = Convert.ToString(_helicopter.TankVolume);
+                MassTextBox.Text = Convert.ToString(_helicopter.Mass);
             }
             get
             {
-                Helicopter.TransportName = TNameTextBox.Text;
-                Helicopter.WearRate = ConvertToDouble(WearRateTextBox.Text, "WearRate");
-                Helicopter.FuelWaste = ConvertToDouble(FuelWasteTextBox.Text, "FuelWaste");
-                Helicopter.Speed = ConvertToDouble(SpeedTextBox.Text, "Speed");
-                Helicopter.TankVolume = ConvertToDouble(TankVolumeTextBox.Text, "TankVolume");
-                Helicopter.Mass = ConvertToDouble(MassTextBox.Text, "Mass");
-                return Helicopter;
+                if (TNameTextBox.Text != "" && WearRateTextBox.Text != "" && FuelWasteTextBox.Text != "" &&
+                    SpeedTextBox.Text != "" && TankVolumeTextBox.Text != "" && MassTextBox.Text != "") {
+                    _helicopter.TransportName = TNameTextBox.Text;
+                    _helicopter.WearRate = ConvertToDouble(WearRateTextBox.Text, "WearRate");
+                    _helicopter.FuelWaste = ConvertToDouble(FuelWasteTextBox.Text, "FuelWaste");
+                    _helicopter.Speed = ConvertToDouble(SpeedTextBox.Text, "Speed");
+                    _helicopter.TankVolume = ConvertToDouble(TankVolumeTextBox.Text, "TankVolume");
+                    _helicopter.Mass = ConvertToDouble(MassTextBox.Text, "Mass");
+                }
+                return _helicopter;
             }
         }
 
@@ -49,11 +52,29 @@ namespace TravelingSuccessCalculationView.Controls
             {
                 setting_value = Convert.ToDouble(value);
             }
-            catch (FormatException exception)
+            catch (FormatException)
             {
                 throw new FormatException(fieldname + " have to contain digits only");
             }
             return setting_value;
+        }
+
+        public bool ReadOnly
+        {
+            set
+            {
+                _readonly = value;
+                TNameTextBox.ReadOnly = value;
+                WearRateTextBox.ReadOnly = value;
+                FuelWasteTextBox.ReadOnly = value;
+                SpeedTextBox.ReadOnly = value;
+                TankVolumeTextBox.ReadOnly = value;
+                MassTextBox.ReadOnly = value;
+            }
+            get
+            {
+                return _readonly;
+            }
         }
     }
 }

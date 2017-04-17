@@ -1,53 +1,65 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FuelCalculation;
+using TravelingSuccessCalculationView.Controls;
 
 namespace TravelingSuccessCalculationView
 {
     public partial class TransportControl : UserControl
     {
-        public ITransport Transport {
-            set
-            {
-                Transport = value;
-                if (value is Car)
-                {
-                    TransportTypeComboBox.Text = "Car";
-                    CarControl.Car = value as Car;
-                }
-                else
-                {
-                    TransportTypeComboBox.Text = "Helicopter";
-                    HelicopterControl.Helicopter = value as Helicopter;
-                }
-            }
-            get
-            {
-                if (TransportTypeComboBox.Text == "Car")
-                {
-                    Transport = CarControl.Car;
-                }
-                else
-                {
-                    Transport = HelicopterControl.Helicopter;
-                }
-                return Transport;
-            }
-        }
-
-        public bool ReadOnly { set; get; }
+        private ITransport _transport;
+        private bool _readonly;
 
         public TransportControl()
         {
             InitializeComponent();
         }
+
+        public ITransport Transport
+        {
+            set
+            {
+                _transport = value;
+                if (value is Car)
+                {
+                    CarControl.Car = value as Car;
+                    TransportTypeComboBox.SelectedIndex = 0;
+                }
+                else if (value is Helicopter)
+                {
+                    HelicopterControl.Helicopter = value as Helicopter;
+                    TransportTypeComboBox.SelectedIndex = 1;
+                }
+            }
+            get
+            {
+                if (TransportTypeComboBox.SelectedIndex == 0)
+                {
+                    _transport = CarControl.Car;
+                }
+                else if (TransportTypeComboBox.SelectedIndex == 1)
+                {
+                    _transport = HelicopterControl.Helicopter;
+                }
+                return _transport;
+            }
+        }
+
+        public bool ReadOnly {
+            set
+            {
+                _readonly = value;
+                if (TransportTypeComboBox.Text == "Car")
+                {
+                    CarControl.ReadOnly = value;
+                }
+                else if (TransportTypeComboBox.Text == "Helicopter")
+                {
+                    HelicopterControl.ReadOnly = value;
+                }
+
+            }
+            get { return _readonly; } }
 
         private void TransportTypeComboBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -58,8 +70,8 @@ namespace TravelingSuccessCalculationView
             }
             else
             {
-                CarControl.Visible = false;
                 HelicopterControl.Visible = true;
+                CarControl.Visible = false;
             }
         }
     }

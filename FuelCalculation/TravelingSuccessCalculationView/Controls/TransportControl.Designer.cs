@@ -30,8 +30,8 @@
         {
             this.TransportTypeComboBox = new System.Windows.Forms.ComboBox();
             this.TransportTypeLabel = new System.Windows.Forms.Label();
-            this.CarControl = new TravelingSuccessCalculationView.Controls.CarControl();
             this.HelicopterControl = new TravelingSuccessCalculationView.Controls.HelicopterControl();
+            this.CarControl = new TravelingSuccessCalculationView.Controls.CarControl();
             this.SuspendLayout();
             // 
             // TransportTypeComboBox
@@ -55,13 +55,6 @@
             this.TransportTypeLabel.TabIndex = 35;
             this.TransportTypeLabel.Text = "Transport type:";
             // 
-            // CarControl
-            // 
-            this.CarControl.Location = new System.Drawing.Point(3, 30);
-            this.CarControl.Name = "CarControl";
-            this.CarControl.Size = new System.Drawing.Size(251, 151);
-            this.CarControl.TabIndex = 36;
-            // 
             // HelicopterControl
             // 
             this.HelicopterControl.Location = new System.Drawing.Point(3, 30);
@@ -69,14 +62,21 @@
             this.HelicopterControl.Size = new System.Drawing.Size(253, 151);
             this.HelicopterControl.TabIndex = 37;
             // 
+            // CarControl
+            // 
+            this.CarControl.Location = new System.Drawing.Point(3, 30);
+            this.CarControl.Name = "CarControl";
+            this.CarControl.Size = new System.Drawing.Size(251, 151);
+            this.CarControl.TabIndex = 36;
+            // 
             // TransportControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.CarControl);
             this.Controls.Add(this.TransportTypeComboBox);
             this.Controls.Add(this.TransportTypeLabel);
             this.Controls.Add(this.HelicopterControl);
+            this.Controls.Add(this.CarControl);
             this.Name = "TransportControl";
             this.Size = new System.Drawing.Size(257, 184);
             this.ResumeLayout(false);
@@ -88,7 +88,7 @@
 
         private System.Windows.Forms.ComboBox TransportTypeComboBox;
         private System.Windows.Forms.Label TransportTypeLabel;
-        private Controls.CarControl CarControl;
         private Controls.HelicopterControl HelicopterControl;
+        private Controls.CarControl CarControl;
     }
 }

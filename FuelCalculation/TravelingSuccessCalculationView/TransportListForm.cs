@@ -13,7 +13,7 @@ namespace TravelingSuccessCalculationView
         private bool _afterSearchChanges;
         private List<ITransport> _transportList;
         private List<ITransport> _searchedTransportList;
-        private RecentFiles _recentFiles = new RecentFiles();
+        private RecentFiles _recentFiles;
 
         public TransportListForm()
         {
@@ -23,6 +23,7 @@ namespace TravelingSuccessCalculationView
             _afterSearchChanges = false;
             _transportList = new List<ITransport>();
             iTransportBindingSource.DataSource = _transportList;
+            _recentFiles = new RecentFiles();
             _recentFiles.RecentFilesDeserialize();
             if (_recentFiles.GetRecentFilesList().Count > 0)
             {
@@ -116,7 +117,7 @@ namespace TravelingSuccessCalculationView
 
         private void TransportListView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _recentFiles.RecentFilesDeserialize();
+            _recentFiles.RecentFilesSerialize();
             CheckChanges();
         }
 
@@ -145,10 +146,6 @@ namespace TravelingSuccessCalculationView
                     }
                 }
             }
-            /*if (_recentFiles.Count > 0)
-            {
-                Serialization.SerializeRecentFile(_recentFiles);
-            }*/
         }
 
         private void SaveAs()
@@ -188,20 +185,18 @@ namespace TravelingSuccessCalculationView
                 return;
             }
             var frm = new AddNewTransportForm();
-            frm.Transport = (ITransport) iTransportBindingSource.Current;
+            frm.Transport = (ITransport)iTransportBindingSource.Current;
             if (frm.ShowDialog() == DialogResult.OK)
             {
+                var transport = frm.Transport;
+                var index = _transportList.IndexOf((ITransport)iTransportBindingSource.Current);
                 if (_afterSearchChanges == false)
                 {
-                    var transport = frm.Transport;
-                    var index = _transportList.IndexOf((ITransport) iTransportBindingSource.Current);
                     iTransportBindingSource.RemoveAt(index);
                     iTransportBindingSource.Insert(index, transport);
                 }
                 else
                 {
-                    var transport = frm.Transport;
-                    var index = _transportList.IndexOf((ITransport)iTransportBindingSource.Current);
                     var afterIndex = _searchedTransportList.IndexOf((ITransport)iTransportBindingSource.Current);
                     iTransportBindingSource.RemoveAt(afterIndex);
                     iTransportBindingSource.Insert(afterIndex, transport);
@@ -369,6 +364,12 @@ namespace TravelingSuccessCalculationView
             _projectSavedChanges = true;
             PointFixer(_projectSavedChanges);
             LoadRecentFiles(_filePath);
+        }
+
+        private void TransportListGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            TransportControl.Transport = (ITransport)iTransportBindingSource.Current;
+            TransportControl.ReadOnly = true;
         }
     }
 }
