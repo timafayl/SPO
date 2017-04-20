@@ -40,7 +40,7 @@ namespace TravelingSuccessCalculationView
 
         public void RecentFilesDeserialize()
         {
-            Serialization.DeserializeRecentFile(_recentFiles);
+            _recentFiles = Serialization.DeserializeRecentFile();
         }
     }
 }

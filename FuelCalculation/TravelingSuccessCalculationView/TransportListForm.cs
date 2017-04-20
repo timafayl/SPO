@@ -366,7 +366,7 @@ namespace TravelingSuccessCalculationView
             LoadRecentFiles(_filePath);
         }
 
-        private void TransportListGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        private void TransportListGridView_MouseClick(object sender, MouseEventArgs e)
         {
             TransportControl.Transport = (ITransport)iTransportBindingSource.Current;
             TransportControl.ReadOnly = true;

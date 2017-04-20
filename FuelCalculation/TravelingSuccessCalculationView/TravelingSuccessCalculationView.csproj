@@ -75,6 +75,7 @@
       <DependentUpon>HelicopterControl.cs</DependentUpon>
     </Compile>
     <Compile Include="FilePath.cs" />
+    <Compile Include="RandomObjGenerator.cs" />
     <Compile Include="RecentFiles.cs" />
     <Compile Include="Serialization.cs" />
     <Compile Include="TransportListForm.cs">

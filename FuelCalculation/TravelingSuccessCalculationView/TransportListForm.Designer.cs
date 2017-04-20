@@ -107,7 +107,7 @@
             this.TransportListGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TransportListGridView.Size = new System.Drawing.Size(606, 338);
             this.TransportListGridView.TabIndex = 4;
-            this.TransportListGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.TransportListGridView_RowStateChanged);
+            this.TransportListGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TransportListGridView_MouseClick);
             // 
             // dataGridViewTextBoxColumn1
             // 

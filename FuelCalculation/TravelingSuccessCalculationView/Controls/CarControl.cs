@@ -76,5 +76,15 @@ namespace TravelingSuccessCalculationView.Controls
                 return _readonly;
             }
         }
+
+        public bool IsCarFieldEmpty
+        {
+            get
+            {
+                return (TNameTextBox.Text == string.Empty || WearRateTextBox.Text == string.Empty ||
+                    FuelWasteTextBox.Text == string.Empty || SpeedTextBox.Text == string.Empty ||
+                    TankVolumeTextBox.Text == string.Empty || FuelTypeComboBox.Text == string.Empty);
+            }
+        }
     }
 }

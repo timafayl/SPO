@@ -57,15 +57,16 @@ namespace TravelingSuccessCalculationView
         /// Десериализует данные в получаемый на вход список.
         /// </summary>
         /// <param name="myList">Список, в который будут десериализованы данные из файла</param>
-        public static void DeserializeRecentFile(List<string> myList)
+        public static List<string> DeserializeRecentFile()
         {
             var formatter = new BinaryFormatter();
             using (var fs = new FileStream("recentFiles.txt", FileMode.OpenOrCreate))
             {
                 if (fs.Length != 0)
                 {
-                    myList = (List<string>)formatter.Deserialize(fs);
+                    return (List<string>)formatter.Deserialize(fs);
                 }
+                return new List<string>();
             }
         }
     }

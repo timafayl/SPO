@@ -74,5 +74,14 @@ namespace TravelingSuccessCalculationView
                 CarControl.Visible = false;
             }
         }
+
+        public bool IsFieldEmpty
+        {
+            get
+            {
+                return (TransportTypeComboBox.SelectedIndex == 0) ? CarControl.IsCarFieldEmpty :
+                       (TransportTypeComboBox.SelectedIndex == 1) ? HelicopterControl.IsHelicopterFieldEmpty : true;
+            }
+        }
     }
 }
