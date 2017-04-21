@@ -83,5 +83,10 @@ namespace TravelingSuccessCalculationView
                        (TransportTypeComboBox.SelectedIndex == 1) ? HelicopterControl.IsHelicopterFieldEmpty : true;
             }
         }
+
+        public int TransportType()
+        {
+            return TransportTypeComboBox.SelectedIndex;
+        }
     }
 }

@@ -57,6 +57,7 @@
             this.GenerateRandomValuesButton.TabIndex = 1;
             this.GenerateRandomValuesButton.Text = "Generate random values";
             this.GenerateRandomValuesButton.UseVisualStyleBackColor = true;
+            this.GenerateRandomValuesButton.Click += new System.EventHandler(this.GenerateRandomValuesButton_Click);
             // 
             // CancelButton
             // 

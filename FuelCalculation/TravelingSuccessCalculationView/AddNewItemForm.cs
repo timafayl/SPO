@@ -44,7 +44,15 @@ namespace TravelingSuccessCalculationView
 
         private void GenerateRandomValuesButton_Click(object sender, EventArgs e)
         {
-          
+            var randomObj = new RandomObjGenerator();
+            if (TransportControl.TransportType() == 0)
+            {
+                Transport = randomObj.GenerateCar();
+            }
+            else if (TransportControl.TransportType() == 1)
+            {
+                Transport = randomObj.GenerateHelicopter();
+            }
         }
 
         /*-------------------------------------------BOXES' VALUES CHEKING----------------------------------------------------------------------------*/
