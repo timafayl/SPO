@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using FuelCalculation;
 using TravelingSuccessCalculationView.Controls;
+using System.Drawing;
 
 namespace TravelingSuccessCalculationView
 {
@@ -49,6 +50,12 @@ namespace TravelingSuccessCalculationView
             set
             {
                 _readonly = value;
+                TransportTypeComboBox.Enabled = !value;
+                if (TransportTypeComboBox.Enabled == false)
+                {
+                    TransportTypeComboBox.ForeColor = SystemColors.Info;
+                    TransportTypeComboBox.BackColor = SystemColors.InactiveCaptionText;
+                }
                 if (TransportTypeComboBox.Text == "Car")
                 {
                     CarControl.ReadOnly = value;

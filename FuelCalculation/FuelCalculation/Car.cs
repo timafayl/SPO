@@ -185,7 +185,7 @@ namespace FuelCalculation
         /// </summary>
         /// <param name="distance">Переменная для получения значения рассчитываемого количества топлива</param>
         /// <returns>true или false в зависимости от успеха поездки</returns>
-        public bool IsCanPassDistance(double distance)
+        public bool IsCanPassDistance(int distance)
         {
             double wearRate = _wearRate;
             double calcValue;

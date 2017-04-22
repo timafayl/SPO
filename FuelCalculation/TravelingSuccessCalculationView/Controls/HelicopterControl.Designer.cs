@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelicopterControl));
             this.MassTextBox = new System.Windows.Forms.TextBox();
             this.TankVolumeTextBox = new System.Windows.Forms.TextBox();
             this.SpeedTextBox = new System.Windows.Forms.TextBox();
@@ -40,6 +42,9 @@
             this.FuelWasteLabel = new System.Windows.Forms.Label();
             this.WearRateLabel = new System.Windows.Forms.Label();
             this.TNameLabel = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // MassTextBox
@@ -48,6 +53,8 @@
             this.MassTextBox.Name = "MassTextBox";
             this.MassTextBox.Size = new System.Drawing.Size(61, 20);
             this.MassTextBox.TabIndex = 45;
+            this.MassTextBox.Leave += new System.EventHandler(this.MassTextBox_Leave);
+            this.MassTextBox.MouseHover += new System.EventHandler(this.MassTextBox_MouseHover);
             // 
             // TankVolumeTextBox
             // 
@@ -55,6 +62,8 @@
             this.TankVolumeTextBox.Name = "TankVolumeTextBox";
             this.TankVolumeTextBox.Size = new System.Drawing.Size(61, 20);
             this.TankVolumeTextBox.TabIndex = 43;
+            this.TankVolumeTextBox.Leave += new System.EventHandler(this.TankVolumeTextBox_Leave);
+            this.TankVolumeTextBox.MouseHover += new System.EventHandler(this.TankVolumeTextBox_MouseHover);
             // 
             // SpeedTextBox
             // 
@@ -62,6 +71,8 @@
             this.SpeedTextBox.Name = "SpeedTextBox";
             this.SpeedTextBox.Size = new System.Drawing.Size(61, 20);
             this.SpeedTextBox.TabIndex = 41;
+            this.SpeedTextBox.Leave += new System.EventHandler(this.SpeedTextBox_Leave);
+            this.SpeedTextBox.MouseHover += new System.EventHandler(this.SpeedTextBox_MouseHover);
             // 
             // FuelWasteTextBox
             // 
@@ -69,6 +80,8 @@
             this.FuelWasteTextBox.Name = "FuelWasteTextBox";
             this.FuelWasteTextBox.Size = new System.Drawing.Size(61, 20);
             this.FuelWasteTextBox.TabIndex = 39;
+            this.FuelWasteTextBox.Leave += new System.EventHandler(this.FuelWasteTextBox_Leave);
+            this.FuelWasteTextBox.MouseHover += new System.EventHandler(this.FuelWasteTextBox_MouseHover);
             // 
             // WearRateTextBox
             // 
@@ -76,6 +89,8 @@
             this.WearRateTextBox.Name = "WearRateTextBox";
             this.WearRateTextBox.Size = new System.Drawing.Size(61, 20);
             this.WearRateTextBox.TabIndex = 37;
+            this.WearRateTextBox.Leave += new System.EventHandler(this.WearRateTextBox_Leave);
+            this.WearRateTextBox.MouseHover += new System.EventHandler(this.WearRateTextBox_MouseHover);
             // 
             // TNameTextBox
             // 
@@ -83,6 +98,8 @@
             this.TNameTextBox.Name = "TNameTextBox";
             this.TNameTextBox.Size = new System.Drawing.Size(122, 20);
             this.TNameTextBox.TabIndex = 35;
+            this.TNameTextBox.Leave += new System.EventHandler(this.TNameTextBox_Leave);
+            this.TNameTextBox.MouseHover += new System.EventHandler(this.TNameTextBox_MouseHover);
             // 
             // MassLabel
             // 
@@ -138,6 +155,11 @@
             this.TNameLabel.TabIndex = 36;
             this.TNameLabel.Text = "Transport name:";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
+            // 
             // HelicopterControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,6 +178,7 @@
             this.Controls.Add(this.TNameLabel);
             this.Name = "HelicopterControl";
             this.Size = new System.Drawing.Size(253, 151);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,5 +198,7 @@
         private System.Windows.Forms.Label FuelWasteLabel;
         private System.Windows.Forms.Label WearRateLabel;
         private System.Windows.Forms.Label TNameLabel;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

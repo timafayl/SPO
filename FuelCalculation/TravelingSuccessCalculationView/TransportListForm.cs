@@ -58,6 +58,7 @@ namespace TravelingSuccessCalculationView
                 _projectSavedChanges = true;
                 PointFixer(_projectSavedChanges);
                 LoadRecentFiles(_filePath);
+                TransportListGridView.ClearSelection();
             }
         }
 
@@ -370,6 +371,20 @@ namespace TravelingSuccessCalculationView
         {
             TransportControl.Transport = (ITransport)iTransportBindingSource.Current;
             TransportControl.ReadOnly = true;
+        }
+
+        private void IsCanPassDistanceButton_Click(object sender, EventArgs e)
+        {
+            int distance = Convert.ToInt32(DistanceTextBox.Text);
+            var transport = (ITransport)iTransportBindingSource.Current;
+            if (transport.IsCanPassDistance(distance))
+            {
+                MessageBox.Show("You can pass this distance using chosen transport!");
+            }
+            else
+            {
+                MessageBox.Show("It is impossible to pass this distance using chisen transport!");
+            }
         }
     }
 }

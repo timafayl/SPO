@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using FuelCalculation;
+using System.Drawing;
 
 namespace TravelingSuccessCalculationView.Controls
 {
@@ -70,6 +71,12 @@ namespace TravelingSuccessCalculationView.Controls
                 FuelWasteTextBox.ReadOnly = value;
                 SpeedTextBox.ReadOnly = value;
                 TankVolumeTextBox.ReadOnly = value;
+                FuelTypeComboBox.Enabled = !value;
+                if (FuelTypeComboBox.Enabled == false)
+                {
+                    FuelTypeComboBox.ForeColor = SystemColors.WindowText;
+                    FuelTypeComboBox.BackColor = SystemColors.InactiveCaptionText;
+                }
             }
             get
             {
@@ -85,6 +92,132 @@ namespace TravelingSuccessCalculationView.Controls
                     FuelWasteTextBox.Text == string.Empty || SpeedTextBox.Text == string.Empty ||
                     TankVolumeTextBox.Text == string.Empty || FuelTypeComboBox.Text == string.Empty);
             }
+        }
+/*-------------------------------------ERROR PROVIDER----------------------------------------------------------*/
+        private void TNameTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TNameTextBox.Text))
+            {
+                errorProvider.SetError(TNameTextBox, "Please enter your transport name using only a-z letters");
+            }
+            else
+            {
+                errorProvider.SetError(TNameTextBox, null);
+            }
+            if (TNameTextBox.ReadOnly == true)
+            {
+                errorProvider.Clear();
+            }
+        }
+
+        private void WearRateTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(WearRateTextBox.Text))
+            {
+                errorProvider.SetError(WearRateTextBox, "Please enter your transport wear rate. Value have to vary from 0 to 1");
+            }
+            else
+            {
+                errorProvider.SetError(WearRateTextBox, null);
+            }
+            if (WearRateTextBox.ReadOnly == true)
+            {
+                errorProvider.Clear();
+            }
+        }
+
+        private void FuelWasteTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TNameTextBox.Text))
+            {
+                errorProvider.SetError(FuelWasteTextBox, "Please enter your transport fuel waste. Value have to vary from 5 to 30");
+            }
+            else
+            {
+                errorProvider.SetError(FuelWasteTextBox, null);
+            }
+            if (FuelWasteTextBox.ReadOnly == true)
+            {
+                errorProvider.Clear();
+            }
+        }
+
+        private void SpeedTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(SpeedTextBox.Text))
+            {
+                errorProvider.SetError(SpeedTextBox, "Please enter speed value. Value have to vary from 1 to 180");
+            }
+            else
+            {
+                errorProvider.SetError(SpeedTextBox, null);
+            }
+            if (SpeedTextBox.ReadOnly == true)
+            {
+                errorProvider.Clear();
+            }
+        }
+
+        private void TankVolumeTextBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(TankVolumeTextBox.Text))
+            {
+                errorProvider.SetError(TankVolumeTextBox, "Please enter transport tank volume. Value have to vary from 20 to 100");
+            }
+            else
+            {
+                errorProvider.SetError(TankVolumeTextBox, null);
+            }
+            if (TankVolumeTextBox.ReadOnly == true)
+            {
+                errorProvider.Clear();
+            }
+        }
+
+        private void FuelTypeComboBox_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(FuelTypeComboBox.Text))
+            {
+                errorProvider.SetError(FuelTypeComboBox, "Please choose transport's fuel type");
+            }
+            else
+            {
+                errorProvider.SetError(FuelTypeComboBox, null);
+            }
+            if (WearRateTextBox.Enabled == false)
+            {
+                errorProvider.Clear();
+            }
+        }
+/*-------------------------------------TOOL TIP----------------------------------------------------------------*/
+        private void TNameTextBox_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.Show("Enter a transport name using a-z letters", TNameTextBox);
+        }
+
+        private void WearRateTextBox_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.Show("Transport wear rate. Value have to vary from 0 to 1", WearRateTextBox);
+        }
+
+        private void FuelWasteTextBox_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.Show("Transport fuel waste. Value have to vary from 5 to 30", FuelWasteTextBox);
+        }
+
+        private void SpeedTextBox_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.Show("Speed value. Value have to vary from 1 to 180", SpeedTextBox);
+        }
+
+        private void TankVolumeTextBox_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.Show("Transport tank volume. Value have to vary from 20 to 100", TankVolumeTextBox);
+        }
+
+        private void FuelTypeComboBox_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.Show("Transport fuel type", FuelTypeComboBox);
         }
     }
 }

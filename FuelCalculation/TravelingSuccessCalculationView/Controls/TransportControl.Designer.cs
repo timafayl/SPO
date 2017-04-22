@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransportControl));
             this.TransportTypeComboBox = new System.Windows.Forms.ComboBox();
             this.TransportTypeLabel = new System.Windows.Forms.Label();
             this.HelicopterControl = new TravelingSuccessCalculationView.Controls.HelicopterControl();
@@ -57,15 +58,19 @@
             // 
             // HelicopterControl
             // 
+            this.HelicopterControl.Helicopter = ((FuelCalculation.Helicopter)(resources.GetObject("HelicopterControl.Helicopter")));
             this.HelicopterControl.Location = new System.Drawing.Point(3, 30);
             this.HelicopterControl.Name = "HelicopterControl";
+            this.HelicopterControl.ReadOnly = false;
             this.HelicopterControl.Size = new System.Drawing.Size(253, 151);
             this.HelicopterControl.TabIndex = 37;
             // 
             // CarControl
             // 
+            this.CarControl.Car = ((FuelCalculation.Car)(resources.GetObject("CarControl.Car")));
             this.CarControl.Location = new System.Drawing.Point(3, 30);
             this.CarControl.Name = "CarControl";
+            this.CarControl.ReadOnly = false;
             this.CarControl.Size = new System.Drawing.Size(251, 151);
             this.CarControl.TabIndex = 36;
             // 
@@ -78,7 +83,7 @@
             this.Controls.Add(this.HelicopterControl);
             this.Controls.Add(this.CarControl);
             this.Name = "TransportControl";
-            this.Size = new System.Drawing.Size(257, 184);
+            this.Size = new System.Drawing.Size(256, 184);
             this.ResumeLayout(false);
             this.PerformLayout();
 

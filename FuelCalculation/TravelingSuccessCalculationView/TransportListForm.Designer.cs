@@ -62,6 +62,9 @@
             this.ByItemSerchComboBox = new System.Windows.Forms.ComboBox();
             this.TransportControlGroupBox = new System.Windows.Forms.GroupBox();
             this.TransportControl = new TravelingSuccessCalculationView.TransportControl();
+            this.IsCanPassDistanceButton = new System.Windows.Forms.Button();
+            this.DistanceTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.DistanceLabel = new System.Windows.Forms.Label();
             this.TransportListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransportListGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
@@ -340,6 +343,9 @@
             // 
             this.TransportControlGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.TransportControlGroupBox.Controls.Add(this.DistanceLabel);
+            this.TransportControlGroupBox.Controls.Add(this.DistanceTextBox);
+            this.TransportControlGroupBox.Controls.Add(this.IsCanPassDistanceButton);
             this.TransportControlGroupBox.Controls.Add(this.TransportControl);
             this.TransportControlGroupBox.Location = new System.Drawing.Point(636, 27);
             this.TransportControlGroupBox.Name = "TransportControlGroupBox";
@@ -356,6 +362,33 @@
             this.TransportControl.Size = new System.Drawing.Size(258, 186);
             this.TransportControl.TabIndex = 0;
             this.TransportControl.Transport = null;
+            // 
+            // IsCanPassDistanceButton
+            // 
+            this.IsCanPassDistanceButton.Location = new System.Drawing.Point(97, 334);
+            this.IsCanPassDistanceButton.Name = "IsCanPassDistanceButton";
+            this.IsCanPassDistanceButton.Size = new System.Drawing.Size(75, 23);
+            this.IsCanPassDistanceButton.TabIndex = 11;
+            this.IsCanPassDistanceButton.Text = "Calculate";
+            this.IsCanPassDistanceButton.UseVisualStyleBackColor = true;
+            this.IsCanPassDistanceButton.Click += new System.EventHandler(this.IsCanPassDistanceButton_Click);
+            // 
+            // DistanceTextBox
+            // 
+            this.DistanceTextBox.Location = new System.Drawing.Point(139, 308);
+            this.DistanceTextBox.Mask = "00000";
+            this.DistanceTextBox.Name = "DistanceTextBox";
+            this.DistanceTextBox.Size = new System.Drawing.Size(63, 20);
+            this.DistanceTextBox.TabIndex = 12;
+            // 
+            // DistanceLabel
+            // 
+            this.DistanceLabel.AutoSize = true;
+            this.DistanceLabel.Location = new System.Drawing.Point(9, 311);
+            this.DistanceLabel.Name = "DistanceLabel";
+            this.DistanceLabel.Size = new System.Drawing.Size(52, 13);
+            this.DistanceLabel.TabIndex = 11;
+            this.DistanceLabel.Text = "Distance:";
             // 
             // TransportListForm
             // 
@@ -383,6 +416,7 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.TransportControlGroupBox.ResumeLayout(false);
+            this.TransportControlGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,6 +461,9 @@
         private System.Windows.Forms.ToolStripMenuItem recentFilesMenuItem;
         private System.Windows.Forms.GroupBox TransportControlGroupBox;
         private TransportControl TransportControl;
+        private System.Windows.Forms.Button IsCanPassDistanceButton;
+        private System.Windows.Forms.Label DistanceLabel;
+        private System.Windows.Forms.MaskedTextBox DistanceTextBox;
     }
 }
 
