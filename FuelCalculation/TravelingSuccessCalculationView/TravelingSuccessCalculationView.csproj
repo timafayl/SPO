@@ -119,6 +119,7 @@
     <EmbeddedResource Include="Controls\TransportControl.resx">
       <DependentUpon>TransportControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\AddNewItemForm.datasource" />
     <None Include="Properties\DataSources\ChangeItemForm.datasource" />
     <None Include="Properties\DataSources\FilePath.datasource" />

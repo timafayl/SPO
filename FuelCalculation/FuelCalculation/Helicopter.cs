@@ -186,11 +186,9 @@ namespace FuelCalculation
         public bool IsCanPassDistance(int distance)
         {
             double wearRate = _wearRate;
-            double calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 200) * (1 + 0.0001*_mass) * (distance / _speed);
-
+            double calcValue = 0.01 * _fuelWaste * (1 + _wearRate * 0.1) * (_speed / 200) * (1 + 0.1*_mass) * (distance / _speed);
             wearRate += 0.0001 * distance;
-
-            return ((calcValue <= _tankVolume) && (wearRate <= 1));
+            return ((calcValue <= _tankVolume) && (wearRate < 1));
         }
     }
 }

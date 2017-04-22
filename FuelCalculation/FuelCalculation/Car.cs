@@ -192,7 +192,7 @@ namespace FuelCalculation
             var coef = (_fuelType == FuelType.Бензин) ? 1 : 0.9;
             calcValue = coef * 0.01 * _fuelWaste * (0.3 + _wearRate) * (_speed/80) * distance;
             wearRate += 0.0001 * distance;
-            return ((calcValue <= _tankVolume) && (wearRate <= 1));
+            return ((calcValue <= _tankVolume) && (wearRate < 1));
         }
     }
 }

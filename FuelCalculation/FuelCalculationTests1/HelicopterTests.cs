@@ -68,12 +68,22 @@ namespace FuelCalculation.Tests
         }
 
         [Test]
-        [TestCase(1000, TestName = "Тестирование метода Helicopter.IsCanPassDistanec с созданным объектом, при котором значение при заданной дистанции будет false", ExpectedResult = false)]
-        [TestCase(10000, TestName = "Тестирование метода Helicopter.IsCanPassDistance с созданным объектом, при котором значение при заданной дистанции будет false", ExpectedResult = false)]
-        [TestCase(3000, TestName = "Тестирование метода Helicopter.IsCanPassDistanec с созданным объектом, при котором значение при заданной дистанции будет true", ExpectedResult = true)]
-        public bool IsCanPassDistanceTest(double distance)
+        [TestCase(1000, "accura", 0.15, 30, 200, 500, 110,
+            TestName = "Тестирование метода Helicopter.IsCanPassDistanec с созданным объектом, при котором значение " +
+            "при заданной дистанции будет true", ExpectedResult = true)]
+        [TestCase(1500, "accura", 0.9, 30, 250, 800, 200,
+            TestName = "Тестирование метода Helicopter.IsCanPassDistanec с созданным объектом, при котором " +
+            "значение при заданной дистанции будет false, из-за достижения максильмального износа вертолёта", ExpectedResult = false)]
+        [TestCase(1500, "accura", 0.9, 30, 250, 800, 150,
+            TestName = "Тестирование метода Helicopter.IsCanPassDistanec с созданным объектом, при котором " +
+            "значение при заданной дистанции будет false, из-за достижения максимального износа вертолёта, а также недостаточного объёма бака", ExpectedResult = false)]
+        [TestCase(500, "accura", 0.05, 30, 250, 500, 100,
+            TestName = "Тестирование метода Helicopter.IsCanPassDistanec с созданным объектом, при котором " +
+            "значение при заданной дистанции будет false, из-за недостаточного объёма бака", ExpectedResult = true)]
+        public bool IsCanPassDistanceTest(int distance, string name, double wearRate, double fuelWaste,
+            double speed, double mass, double tankVolume)
         {
-            Helicopter transport = new Helicopter("robinson", 0.05, 35, 310, 600, 130);
+            Helicopter transport = new Helicopter(name, wearRate, fuelWaste, speed, mass, tankVolume);
             return transport.IsCanPassDistance(distance);
         }
     }

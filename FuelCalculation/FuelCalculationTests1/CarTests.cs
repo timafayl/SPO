@@ -56,14 +56,24 @@ namespace FuelCalculation.Tests
             Car transport = new Car();
             return transport.TankVolume = tankVolume;
         }
-        //TODO переписать описание тестов для IsCanPassDistanceTest
+
         [Test]
-        [TestCase(800, TestName = "Тестирование метода Car.IsCanPassDistanec с созданным объектом, при котором значение при заданной дистанции будет false", ExpectedResult = false)]
-        [TestCase(1500, TestName = "Тестирование метода Car.IsCanPassDistanec с созданным объектом, при котором значение при заданной дистанции будет false", ExpectedResult = false)]
-        [TestCase(300, TestName = "Тестирование метода Car.IsCanPassDistanec с созданным объектом, при котором значение при заданной дистанции будет true", ExpectedResult = true)]
-        public bool IsCanPassDistanceTest(double distance)
+        [TestCase(800, "accura", 0.15, 15, 150, FuelType.Бензин, 60,
+            TestName = "Тестирование метода Car.IsCanPassDistanec с созданным объектом, при котором значение " +
+            "при заданной дистанции будет false, из-за недостаточного объёма бака", ExpectedResult = false)]
+        [TestCase(200, "accura", 0.98, 15, 150, FuelType.Бензин, 80,
+            TestName = "Тестирование метода Car.IsCanPassDistanec с созданным объектом, при котором " +
+            "значение при заданной дистанции будет false, из-за достижения максильмального износа авто", ExpectedResult = false)]
+        [TestCase(300, "accura", 0.98, 15, 150, FuelType.Бензин, 60,
+            TestName = "Тестирование метода Car.IsCanPassDistanec с созданным объектом, при котором " +
+            "значение при заданной дистанции будет false, из-за достижения максимального износа авто, а также недостаточного объёма бака", ExpectedResult = false)]
+        [TestCase(500, "accura", 0.05, 15, 150, FuelType.Бензин, 70,
+            TestName = "Тестирование метода Car.IsCanPassDistanec с созданным объектом, при котором " +
+            "значение при заданной дистанции будет true", ExpectedResult = true)]
+        public bool IsCanPassDistanceTest(int distance, string name, double wearRate, double fuelWaste, 
+            double speed, FuelType fuelType, double tankVolume)
         {
-            Car transport = new Car("accura", 0.15, 14, 130, FuelType.Бензин, 50);
+            Car transport = new Car(name, wearRate, fuelWaste, speed, fuelType, tankVolume);
             return transport.IsCanPassDistance(distance);
         }
     }
