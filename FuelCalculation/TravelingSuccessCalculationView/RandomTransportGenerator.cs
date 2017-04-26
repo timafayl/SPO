@@ -38,7 +38,7 @@ namespace TravelingSuccessCalculationView
         {
             if (transportType == 0)
             {
-                transport.TransportName = Convert.ToString((HelicopterNames) _randomInt.Next(0, 20));
+                transport.TransportName = Convert.ToString((CarNames) _randomInt.Next(0, 20));
             }
             else
             {
