@@ -5,8 +5,7 @@ namespace TravelingSuccessCalculationView
 {
     public class RandomTransportGenerator
     {
-        private static int _unixTimestamp = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
-        private Random _randomInt = new Random(_unixTimestamp);
+        private Random _randomInt = new Random();
 
         public Helicopter GenerateHelicopter()
         {
