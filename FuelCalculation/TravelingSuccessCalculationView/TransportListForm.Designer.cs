@@ -61,10 +61,10 @@
             this.SearchButton = new System.Windows.Forms.Button();
             this.ByItemSerchComboBox = new System.Windows.Forms.ComboBox();
             this.TransportControlGroupBox = new System.Windows.Forms.GroupBox();
-            this.TransportControl = new TravelingSuccessCalculationView.TransportControl();
-            this.IsCanPassDistanceButton = new System.Windows.Forms.Button();
-            this.DistanceTextBox = new System.Windows.Forms.MaskedTextBox();
             this.DistanceLabel = new System.Windows.Forms.Label();
+            this.DistanceTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.IsCanPassDistanceButton = new System.Windows.Forms.Button();
+            this.TransportControl = new TravelingSuccessCalculationView.TransportControl();
             this.TransportListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransportListGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
@@ -80,7 +80,7 @@
             this.TransportListGroupBox.Controls.Add(this.TransportListGridView);
             this.TransportListGroupBox.Location = new System.Drawing.Point(12, 27);
             this.TransportListGroupBox.Name = "TransportListGroupBox";
-            this.TransportListGroupBox.Size = new System.Drawing.Size(618, 363);
+            this.TransportListGroupBox.Size = new System.Drawing.Size(550, 353);
             this.TransportListGroupBox.TabIndex = 0;
             this.TransportListGroupBox.TabStop = false;
             this.TransportListGroupBox.Text = "Transport List";
@@ -108,7 +108,7 @@
             this.TransportListGridView.ReadOnly = true;
             this.TransportListGridView.RowHeadersVisible = false;
             this.TransportListGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TransportListGridView.Size = new System.Drawing.Size(606, 338);
+            this.TransportListGridView.Size = new System.Drawing.Size(538, 328);
             this.TransportListGridView.TabIndex = 4;
             this.TransportListGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TransportListGridView_MouseClick);
             // 
@@ -155,7 +155,7 @@
             // 
             this.RemoveItemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.RemoveItemButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.RemoveItemButton.Location = new System.Drawing.Point(209, 396);
+            this.RemoveItemButton.Location = new System.Drawing.Point(209, 386);
             this.RemoveItemButton.Name = "RemoveItemButton";
             this.RemoveItemButton.Size = new System.Drawing.Size(92, 23);
             this.RemoveItemButton.TabIndex = 3;
@@ -167,7 +167,7 @@
             // 
             this.ModifyItemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ModifyItemButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.ModifyItemButton.Location = new System.Drawing.Point(111, 396);
+            this.ModifyItemButton.Location = new System.Drawing.Point(111, 386);
             this.ModifyItemButton.Name = "ModifyItemButton";
             this.ModifyItemButton.Size = new System.Drawing.Size(92, 23);
             this.ModifyItemButton.TabIndex = 2;
@@ -179,7 +179,7 @@
             // 
             this.AddNewItemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.AddNewItemButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.AddNewItemButton.Location = new System.Drawing.Point(12, 396);
+            this.AddNewItemButton.Location = new System.Drawing.Point(12, 386);
             this.AddNewItemButton.Name = "AddNewItemButton";
             this.AddNewItemButton.Size = new System.Drawing.Size(92, 23);
             this.AddNewItemButton.TabIndex = 1;
@@ -201,7 +201,7 @@
             this.aboutMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(919, 24);
+            this.menuStrip.Size = new System.Drawing.Size(851, 24);
             this.menuStrip.TabIndex = 6;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -306,7 +306,7 @@
             // ItemSearchTextBox
             // 
             this.ItemSearchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ItemSearchTextBox.Location = new System.Drawing.Point(434, 398);
+            this.ItemSearchTextBox.Location = new System.Drawing.Point(434, 388);
             this.ItemSearchTextBox.Name = "ItemSearchTextBox";
             this.ItemSearchTextBox.Size = new System.Drawing.Size(175, 20);
             this.ItemSearchTextBox.TabIndex = 7;
@@ -315,7 +315,7 @@
             // SearchButton
             // 
             this.SearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SearchButton.Location = new System.Drawing.Point(615, 396);
+            this.SearchButton.Location = new System.Drawing.Point(615, 386);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(75, 23);
             this.SearchButton.TabIndex = 8;
@@ -334,7 +334,7 @@
             "Fuel Waste",
             "Speed",
             "Tank Volume"});
-            this.ByItemSerchComboBox.Location = new System.Drawing.Point(307, 398);
+            this.ByItemSerchComboBox.Location = new System.Drawing.Point(307, 388);
             this.ByItemSerchComboBox.Name = "ByItemSerchComboBox";
             this.ByItemSerchComboBox.Size = new System.Drawing.Size(121, 21);
             this.ByItemSerchComboBox.TabIndex = 9;
@@ -347,12 +347,42 @@
             this.TransportControlGroupBox.Controls.Add(this.DistanceTextBox);
             this.TransportControlGroupBox.Controls.Add(this.IsCanPassDistanceButton);
             this.TransportControlGroupBox.Controls.Add(this.TransportControl);
-            this.TransportControlGroupBox.Location = new System.Drawing.Point(636, 27);
+            this.TransportControlGroupBox.Location = new System.Drawing.Point(568, 27);
             this.TransportControlGroupBox.Name = "TransportControlGroupBox";
-            this.TransportControlGroupBox.Size = new System.Drawing.Size(271, 363);
+            this.TransportControlGroupBox.Size = new System.Drawing.Size(271, 353);
             this.TransportControlGroupBox.TabIndex = 10;
             this.TransportControlGroupBox.TabStop = false;
             this.TransportControlGroupBox.Text = "Transport Control";
+            // 
+            // DistanceLabel
+            // 
+            this.DistanceLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.DistanceLabel.AutoSize = true;
+            this.DistanceLabel.Location = new System.Drawing.Point(9, 296);
+            this.DistanceLabel.Name = "DistanceLabel";
+            this.DistanceLabel.Size = new System.Drawing.Size(52, 13);
+            this.DistanceLabel.TabIndex = 11;
+            this.DistanceLabel.Text = "Distance:";
+            // 
+            // DistanceTextBox
+            // 
+            this.DistanceTextBox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.DistanceTextBox.Location = new System.Drawing.Point(137, 293);
+            this.DistanceTextBox.Mask = "00000";
+            this.DistanceTextBox.Name = "DistanceTextBox";
+            this.DistanceTextBox.Size = new System.Drawing.Size(63, 20);
+            this.DistanceTextBox.TabIndex = 12;
+            // 
+            // IsCanPassDistanceButton
+            // 
+            this.IsCanPassDistanceButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.IsCanPassDistanceButton.Location = new System.Drawing.Point(97, 319);
+            this.IsCanPassDistanceButton.Name = "IsCanPassDistanceButton";
+            this.IsCanPassDistanceButton.Size = new System.Drawing.Size(75, 23);
+            this.IsCanPassDistanceButton.TabIndex = 11;
+            this.IsCanPassDistanceButton.Text = "Calculate";
+            this.IsCanPassDistanceButton.UseVisualStyleBackColor = true;
+            this.IsCanPassDistanceButton.Click += new System.EventHandler(this.IsCanPassDistanceButton_Click);
             // 
             // TransportControl
             // 
@@ -363,39 +393,12 @@
             this.TransportControl.TabIndex = 0;
             this.TransportControl.Transport = null;
             // 
-            // IsCanPassDistanceButton
-            // 
-            this.IsCanPassDistanceButton.Location = new System.Drawing.Point(97, 334);
-            this.IsCanPassDistanceButton.Name = "IsCanPassDistanceButton";
-            this.IsCanPassDistanceButton.Size = new System.Drawing.Size(75, 23);
-            this.IsCanPassDistanceButton.TabIndex = 11;
-            this.IsCanPassDistanceButton.Text = "Calculate";
-            this.IsCanPassDistanceButton.UseVisualStyleBackColor = true;
-            this.IsCanPassDistanceButton.Click += new System.EventHandler(this.IsCanPassDistanceButton_Click);
-            // 
-            // DistanceTextBox
-            // 
-            this.DistanceTextBox.Location = new System.Drawing.Point(139, 308);
-            this.DistanceTextBox.Mask = "00000";
-            this.DistanceTextBox.Name = "DistanceTextBox";
-            this.DistanceTextBox.Size = new System.Drawing.Size(63, 20);
-            this.DistanceTextBox.TabIndex = 12;
-            // 
-            // DistanceLabel
-            // 
-            this.DistanceLabel.AutoSize = true;
-            this.DistanceLabel.Location = new System.Drawing.Point(9, 311);
-            this.DistanceLabel.Name = "DistanceLabel";
-            this.DistanceLabel.Size = new System.Drawing.Size(52, 13);
-            this.DistanceLabel.TabIndex = 11;
-            this.DistanceLabel.Text = "Distance:";
-            // 
             // TransportListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(919, 431);
+            this.ClientSize = new System.Drawing.Size(851, 421);
             this.Controls.Add(this.TransportControlGroupBox);
             this.Controls.Add(this.ByItemSerchComboBox);
             this.Controls.Add(this.SearchButton);
@@ -407,6 +410,7 @@
             this.Controls.Add(this.AddNewItemButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(708, 358);
             this.Name = "TransportListForm";
             this.Text = "Transport Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TransportListView_FormClosing);

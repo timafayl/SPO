@@ -12,9 +12,7 @@ namespace TravelingSuccessCalculationView
         {
             InitializeComponent();
         }
-
-        /*-------------------------------------------BUTTONS-------------------------------------------------------------------------------------------*/
-
+        /*-------------------------------------------BUTTONS----------------------------------------------------------------*/
         private void OKButton_Click(object sender, EventArgs e)
         {
             if (TransportControl.IsFieldEmpty)
@@ -44,14 +42,27 @@ namespace TravelingSuccessCalculationView
 
         private void GenerateRandomValuesButton_Click(object sender, EventArgs e)
         {
-            var randomObj = new RandomObjGenerator();
-            if (TransportControl.TransportType() == 0)
+            var randomTransport = new RandomTransportGenerator();
+            if (TransportControl.TransportType == 0)
             {
-                Transport = randomObj.GenerateCar();
+                Transport = randomTransport.GenerateCar();
             }
-            else if (TransportControl.TransportType() == 1)
+            else if (TransportControl.TransportType == 1)
             {
-                Transport = randomObj.GenerateHelicopter();
+                Transport = randomTransport.GenerateHelicopter();
+            }
+            else
+            {
+                if (randomTransport.GenerateRandomTransport() is Car)
+                {
+                    TransportControl.TransportType = 0;
+                    Transport = randomTransport.GenerateRandomTransport();
+                }
+                else
+                {
+                    TransportControl.TransportType = 1;
+                    Transport = randomTransport.GenerateRandomTransport();
+                }
             }
         }
     }

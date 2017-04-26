@@ -77,15 +77,10 @@ namespace TravelingSuccessCalculationView.Controls
             }
         }
 
-        public bool IsHelicopterFieldEmpty
-        {
-            get
-            {
-                return (TNameTextBox.Text == string.Empty || WearRateTextBox.Text == string.Empty ||
-                    FuelWasteTextBox.Text == string.Empty || SpeedTextBox.Text == string.Empty ||
-                    TankVolumeTextBox.Text == string.Empty || MassTextBox.Text == string.Empty);
-            }
-        }
+        public bool IsHelicopterFieldEmpty => 
+            (TNameTextBox.Text == string.Empty || WearRateTextBox.Text == string.Empty ||
+             FuelWasteTextBox.Text == string.Empty || SpeedTextBox.Text == string.Empty ||
+             TankVolumeTextBox.Text == string.Empty || MassTextBox.Text == string.Empty);
         /*-------------------------------------ERROR PROVIDER----------------------------------------------------------*/
         private void TNameTextBox_Leave(object sender, EventArgs e)
         {
@@ -97,7 +92,7 @@ namespace TravelingSuccessCalculationView.Controls
             {
                 errorProvider.SetError(TNameTextBox, null);
             }
-            if (TNameTextBox.ReadOnly == true)
+            if (TNameTextBox.ReadOnly)
             {
                 errorProvider.Clear();
             }
@@ -113,7 +108,7 @@ namespace TravelingSuccessCalculationView.Controls
             {
                 errorProvider.SetError(WearRateTextBox, null);
             }
-            if (WearRateTextBox.ReadOnly == true)
+            if (WearRateTextBox.ReadOnly)
             {
                 errorProvider.Clear();
             }
@@ -129,7 +124,7 @@ namespace TravelingSuccessCalculationView.Controls
             {
                 errorProvider.SetError(FuelWasteTextBox, null);
             }
-            if (FuelWasteTextBox.ReadOnly == true)
+            if (FuelWasteTextBox.ReadOnly)
             {
                 errorProvider.Clear();
             }
@@ -145,7 +140,7 @@ namespace TravelingSuccessCalculationView.Controls
             {
                 errorProvider.SetError(SpeedTextBox, null);
             }
-            if (SpeedTextBox.ReadOnly == true)
+            if (SpeedTextBox.ReadOnly)
             {
                 errorProvider.Clear();
             }
@@ -161,7 +156,7 @@ namespace TravelingSuccessCalculationView.Controls
             {
                 errorProvider.SetError(TankVolumeTextBox, null);
             }
-            if (TankVolumeTextBox.ReadOnly == true)
+            if (TankVolumeTextBox.ReadOnly)
             {
                 errorProvider.Clear();
             }
@@ -177,7 +172,7 @@ namespace TravelingSuccessCalculationView.Controls
             {
                 errorProvider.SetError(MassTextBox, null);
             }
-            if (MassTextBox.ReadOnly == true)
+            if (MassTextBox.ReadOnly)
             {
                 errorProvider.Clear();
             }

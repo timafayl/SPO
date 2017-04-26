@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using FuelCalculation;
-using TravelingSuccessCalculationView.Controls;
 using System.Drawing;
 
 namespace TravelingSuccessCalculationView
@@ -82,18 +81,14 @@ namespace TravelingSuccessCalculationView
             }
         }
 
-        public bool IsFieldEmpty
-        {
-            get
-            {
-                return (TransportTypeComboBox.SelectedIndex == 0) ? CarControl.IsCarFieldEmpty :
-                       (TransportTypeComboBox.SelectedIndex == 1) ? HelicopterControl.IsHelicopterFieldEmpty : true;
-            }
-        }
+        public bool IsFieldEmpty => 
+            (TransportTypeComboBox.SelectedIndex == 0) ? CarControl.IsCarFieldEmpty :
+            (TransportTypeComboBox.SelectedIndex == 1) ? HelicopterControl.IsHelicopterFieldEmpty : true;
 
-        public int TransportType()
+        public int TransportType
         {
-            return TransportTypeComboBox.SelectedIndex;
+            get { return TransportTypeComboBox.SelectedIndex; }
+            set { TransportTypeComboBox.SelectedIndex = value; }
         }
     }
 }

@@ -75,7 +75,7 @@
       <DependentUpon>HelicopterControl.cs</DependentUpon>
     </Compile>
     <Compile Include="FilePath.cs" />
-    <Compile Include="RandomObjGenerator.cs" />
+    <Compile Include="RandomTransportGenerator.cs" />
     <Compile Include="RecentFiles.cs" />
     <Compile Include="Serialization.cs" />
     <Compile Include="TransportListForm.cs">
@@ -92,6 +92,7 @@
     <Compile Include="Controls\TransportControl.Designer.cs">
       <DependentUpon>TransportControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="TransportNames.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
