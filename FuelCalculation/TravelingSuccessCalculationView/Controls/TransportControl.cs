@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using FuelCalculation;
-using System.Drawing;
 
 namespace TravelingSuccessCalculationView
 {
@@ -50,11 +49,6 @@ namespace TravelingSuccessCalculationView
             {
                 _readonly = value;
                 TransportTypeComboBox.Enabled = !value;
-                if (TransportTypeComboBox.Enabled == false)
-                {
-                    TransportTypeComboBox.ForeColor = SystemColors.Info;
-                    TransportTypeComboBox.BackColor = SystemColors.InactiveCaptionText;
-                }
                 if (TransportTypeComboBox.Text == "Car")
                 {
                     CarControl.ReadOnly = value;

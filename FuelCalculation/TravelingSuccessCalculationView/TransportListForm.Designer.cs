@@ -392,11 +392,13 @@
             this.TransportControl.Size = new System.Drawing.Size(258, 186);
             this.TransportControl.TabIndex = 0;
             this.TransportControl.Transport = null;
+            this.TransportControl.TransportType = -1;
             // 
             // TransportListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(851, 421);
             this.Controls.Add(this.TransportControlGroupBox);

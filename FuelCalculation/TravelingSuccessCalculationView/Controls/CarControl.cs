@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using FuelCalculation;
-using System.Drawing;
 
 namespace TravelingSuccessCalculationView.Controls
 {
@@ -72,11 +71,6 @@ namespace TravelingSuccessCalculationView.Controls
                 SpeedTextBox.ReadOnly = value;
                 TankVolumeTextBox.ReadOnly = value;
                 FuelTypeComboBox.Enabled = !value;
-                if (FuelTypeComboBox.Enabled == false)
-                {
-                    FuelTypeComboBox.ForeColor = SystemColors.WindowText;
-                    FuelTypeComboBox.BackColor = SystemColors.InactiveCaptionText;
-                }
             }
             get
             {
