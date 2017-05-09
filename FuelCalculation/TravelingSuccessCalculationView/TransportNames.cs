@@ -1,5 +1,8 @@
 ﻿namespace FuelCalculation
 {
+    /// <summary>
+    /// Перечисление марок машин.
+    /// </summary>
     public enum CarNames
     {
         acura = 0,
@@ -24,6 +27,9 @@
         dacia,
     }
 
+    /// <summary>
+    /// Перечисление марок вертолётов.
+    /// </summary>
     public enum HelicopterNames
     {
         aerodreams = 0,

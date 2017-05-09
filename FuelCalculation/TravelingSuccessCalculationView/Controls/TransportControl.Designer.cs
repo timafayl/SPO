@@ -1,4 +1,4 @@
-﻿namespace TravelingSuccessCalculationView
+﻿namespace TravelingSuccessCalculationView.Controls
 {
     partial class TransportControl
     {
@@ -45,7 +45,7 @@
             this.TransportTypeComboBox.Name = "TransportTypeComboBox";
             this.TransportTypeComboBox.Size = new System.Drawing.Size(122, 21);
             this.TransportTypeComboBox.TabIndex = 21;
-            this.TransportTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.TransportTypeComboBox_SelectedIndexChanged_1);
+            this.TransportTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.TransportTypeComboBox_SelectedIndexChanged);
             // 
             // TransportTypeLabel
             // 

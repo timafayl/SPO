@@ -2,18 +2,33 @@
 using System.Windows.Forms;
 using FuelCalculation;
 
-namespace TravelingSuccessCalculationView
+namespace TravelingSuccessCalculationView.Controls
 {
+    /// <summary>
+    /// Контрол, предназначеный для работы с транспортным средтвом, его добавлением или изменением.
+    /// </summary>
     public partial class TransportControl : UserControl
     {
+        /// <summary>
+        /// Переменная для передачи объекта на контрол и обратно.
+        /// </summary>
         private ITransport _transport;
+        /// <summary>
+        /// Переменная, определяющая свойство ReadOnly у элементов на форме.
+        /// </summary>
         private bool _readonly;
 
+        /// <summary>
+        /// Конструктор класса TransportControl.
+        /// </summary>
         public TransportControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Аксессор, для получения передаваемого объекта.
+        /// </summary>
         public ITransport Transport
         {
             set
@@ -44,6 +59,9 @@ namespace TravelingSuccessCalculationView
             }
         }
 
+        /// <summary>
+        /// Аксессор, для передачи значения ReadOnly элементам формы.
+        /// </summary>
         public bool ReadOnly {
             set
             {
@@ -61,7 +79,7 @@ namespace TravelingSuccessCalculationView
             }
             get { return _readonly; } }
 
-        private void TransportTypeComboBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void TransportTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (TransportTypeComboBox.Text == "Car")
             {
@@ -75,10 +93,16 @@ namespace TravelingSuccessCalculationView
             }
         }
 
+        /// <summary>
+        /// Метод, указывающий на то, пустые ли поля на дочернем контроле при добавлении объекта, или же нет.
+        /// </summary>
         public bool IsFieldEmpty => 
             (TransportTypeComboBox.SelectedIndex == 0) ? CarControl.IsCarFieldEmpty :
             (TransportTypeComboBox.SelectedIndex == 1) ? HelicopterControl.IsHelicopterFieldEmpty : true;
 
+        /// <summary>
+        /// Аксессор, возращающий тип транспорта, установленного в ComboBox.
+        /// </summary>
         public int TransportType
         {
             get { return TransportTypeComboBox.SelectedIndex; }

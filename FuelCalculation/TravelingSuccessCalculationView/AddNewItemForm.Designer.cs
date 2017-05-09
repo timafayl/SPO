@@ -1,4 +1,6 @@
-﻿namespace TravelingSuccessCalculationView
+﻿using TravelingSuccessCalculationView.Controls;
+
+namespace TravelingSuccessCalculationView
 {
     partial class AddNewTransportForm
     {
@@ -35,7 +37,7 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.TransportControl = new TravelingSuccessCalculationView.TransportControl();
+            this.TransportControl = new TransportControl();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 

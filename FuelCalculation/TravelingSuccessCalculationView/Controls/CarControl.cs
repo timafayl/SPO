@@ -4,16 +4,32 @@ using FuelCalculation;
 
 namespace TravelingSuccessCalculationView.Controls
 {
+    /// <summary>
+    /// Контрол, предназначеный для работы с объектом автомобиля, его добавлением или изменением.
+    /// </summary>
     public partial class CarControl : UserControl
     {
+        /// <summary>
+        /// Переменная для передачи объекта автомобиля на контрол и обратно.
+        /// </summary>
         private Car _car = new Car();
+
+        /// <summary>
+        /// Переменная, определяющая свойство ReadOnly у элементов на форме.
+        /// </summary>
         private bool _readonly;
 
+        /// <summary>
+        /// Конструктор класса CarControl.
+        /// </summary>
         public CarControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Аксессор, для получения передаваемого объекта.
+        /// </summary>
         public Car Car
         {
             set
@@ -46,6 +62,12 @@ namespace TravelingSuccessCalculationView.Controls
             }
         }
 
+        /// <summary>
+        /// Метод, конвертирующий входные значения в тип double.
+        /// </summary>
+        /// <param name="value">Значение, необходимое для конвертации</param>
+        /// <param name="fieldname">Имя поля, для указания в случае ошибки</param>
+        /// <returns>Ковертированное значение типа double</returns>
         private double ConvertToDouble(string value, string fieldname)
         {
             double setting_value;
@@ -60,6 +82,9 @@ namespace TravelingSuccessCalculationView.Controls
             return setting_value;
         }
 
+        /// <summary>
+        /// Аксессор, устанавливающий и возвращающий значение свойства ReadOnly у элементов формы.
+        /// </summary>
         public bool ReadOnly
         {
             set
@@ -78,6 +103,9 @@ namespace TravelingSuccessCalculationView.Controls
             }
         }
 
+        /// <summary>
+        ///  Метод, указывающий на то, пустые ли поля на форме при добавлении объекта, или же нет.
+        /// </summary>
         public bool IsCarFieldEmpty => 
             (TNameTextBox.Text == string.Empty || WearRateTextBox.Text == string.Empty ||
              FuelWasteTextBox.Text == string.Empty || SpeedTextBox.Text == string.Empty ||

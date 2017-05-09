@@ -35,8 +35,6 @@ namespace FuelCalculation
         /// </summary>
         public Car() { }
 
-
-        //TODO удалить если не используется
         /// <summary>
         /// Конструктор класса CarTransport.
         /// </summary>
@@ -65,12 +63,12 @@ namespace FuelCalculation
             get { return _carName; }
             set
             {
-                if (value == String.Empty)
+                if (value == string.Empty)
                 {
                     throw new ArgumentException("Вы не указали марку авто, пожалуйста укажите наименование " +
                                                     "авто используя только буквы латинского алфавита");
                 }
-                //value = value.ToLower();
+
                 foreach (char letter in value)
                 {
                     if ((letter < 'a') || (letter > 'z'))

@@ -4,16 +4,32 @@ using FuelCalculation;
 
 namespace TravelingSuccessCalculationView.Controls
 {
+    /// <summary>
+    /// Контрол, предназначеный для работы с объектом вертолёта, его добавлением или изменением.
+    /// </summary>
     public partial class HelicopterControl : UserControl
     {
+        /// <summary>
+        /// Переменная для передачи объекта вертолёта на контрол и обратно.
+        /// </summary>
         private Helicopter _helicopter = new Helicopter();
+
+        /// <summary>
+        /// Переменная, определяющая свойство ReadOnly у элементов на форме.
+        /// </summary>
         private bool _readonly;
 
+        /// <summary>
+        /// Конструктор класса HelicopterControl.
+        /// </summary>
         public HelicopterControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Аксессор, для получения передаваемого объекта.
+        /// </summary>
         public Helicopter Helicopter
         {
             set
@@ -45,6 +61,12 @@ namespace TravelingSuccessCalculationView.Controls
             }
         }
 
+        /// <summary>
+        /// Метод, конвертирующий входные значения в тип double.
+        /// </summary>
+        /// <param name="value">Значение, необходимое для конвертации</param>
+        /// <param name="fieldname">Имя поля, для указания в случае ошибки</param>
+        /// <returns>Ковертированное значение типа double</returns>
         private double ConvertToDouble(string value, string fieldname)
         {
             double setting_value;
@@ -59,6 +81,9 @@ namespace TravelingSuccessCalculationView.Controls
             return setting_value;
         }
 
+        /// <summary>
+        /// Аксессор, устанавливающий и возвращающий значение свойства ReadOnly у элементов формы.
+        /// </summary>
         public bool ReadOnly
         {
             set
@@ -77,6 +102,9 @@ namespace TravelingSuccessCalculationView.Controls
             }
         }
 
+        /// <summary>
+        ///  Метод, указывающий на то, пустые ли поля на форме при добавлении объекта, или же нет.
+        /// </summary>
         public bool IsHelicopterFieldEmpty => 
             (TNameTextBox.Text == string.Empty || WearRateTextBox.Text == string.Empty ||
              FuelWasteTextBox.Text == string.Empty || SpeedTextBox.Text == string.Empty ||

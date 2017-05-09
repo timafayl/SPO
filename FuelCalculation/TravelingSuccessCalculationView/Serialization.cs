@@ -14,12 +14,12 @@ namespace TravelingSuccessCalculationView
         /// <param name="filePath">Путь к файлу</param>
         public static void Serialize(List<ITransport> myList, string filePath)
         {
-                var formatter = new BinaryFormatter();
-                using (var fs = new FileStream(filePath, FileMode.Create))
-                {
-                    formatter.Serialize(fs, myList);
-                    fs.Close();
-                }
+            var formatter = new BinaryFormatter();
+            using (var fs = new FileStream(filePath, FileMode.Create))
+            {
+                formatter.Serialize(fs, myList);
+                fs.Close();
+            }
         }
 
         /// <summary>
@@ -32,9 +32,9 @@ namespace TravelingSuccessCalculationView
             var formatter = new BinaryFormatter();
             using (var fs = new FileStream(filePath, FileMode.OpenOrCreate))
             {
-                if(fs.Length != 0)
+                if (fs.Length != 0)
                 {
-                    myList = (List<ITransport>)formatter.Deserialize(fs);
+                    myList = (List<ITransport>) formatter.Deserialize(fs);
                 }
             }
         }
@@ -64,7 +64,7 @@ namespace TravelingSuccessCalculationView
             {
                 if (fs.Length != 0)
                 {
-                    return (List<string>)formatter.Deserialize(fs);
+                    return (List<string>) formatter.Deserialize(fs);
                 }
                 return new List<string>();
             }

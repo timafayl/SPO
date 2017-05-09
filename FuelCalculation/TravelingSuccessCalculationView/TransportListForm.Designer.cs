@@ -1,4 +1,6 @@
-﻿namespace TravelingSuccessCalculationView
+﻿using TravelingSuccessCalculationView.Controls;
+
+namespace TravelingSuccessCalculationView
 {
     partial class TransportListForm
     {
@@ -64,7 +66,7 @@
             this.DistanceLabel = new System.Windows.Forms.Label();
             this.DistanceTextBox = new System.Windows.Forms.MaskedTextBox();
             this.IsCanPassDistanceButton = new System.Windows.Forms.Button();
-            this.TransportControl = new TravelingSuccessCalculationView.TransportControl();
+            this.TransportControl = new TransportControl();
             this.TransportListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransportListGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
