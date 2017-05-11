@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace TravelingSuccessCalculationView
 {
-    public class Serialization
+    public class Serializer
     {
         /// <summary>
         /// Сериализует получаемый на вход список объектов.

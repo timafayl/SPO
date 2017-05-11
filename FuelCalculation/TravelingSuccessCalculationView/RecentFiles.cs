@@ -35,12 +35,12 @@ namespace TravelingSuccessCalculationView
 
         public void RecentFilesSerialize()
         {
-            Serialization.SerializeRecentFile(_recentFiles);
+            Serializer.SerializeRecentFile(_recentFiles);
         }
 
         public void RecentFilesDeserialize()
         {
-            _recentFiles = Serialization.DeserializeRecentFile();
+            _recentFiles = Serializer.DeserializeRecentFile();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using FuelCalculation;
 
@@ -29,6 +30,7 @@ namespace TravelingSuccessCalculationView.Controls
         /// <summary>
         /// Аксессор, для получения передаваемого объекта.
         /// </summary>
+        [DefaultValue(null)]
         public ITransport Transport
         {
             set

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using FuelCalculation;
 
@@ -30,6 +31,7 @@ namespace TravelingSuccessCalculationView.Controls
         /// <summary>
         /// Аксессор, для получения передаваемого объекта.
         /// </summary>
+        [DefaultValue(null)]
         public Car Car
         {
             set
@@ -110,9 +112,12 @@ namespace TravelingSuccessCalculationView.Controls
             (TNameTextBox.Text == string.Empty || WearRateTextBox.Text == string.Empty ||
              FuelWasteTextBox.Text == string.Empty || SpeedTextBox.Text == string.Empty ||
              TankVolumeTextBox.Text == string.Empty || FuelTypeComboBox.Text == string.Empty);
-/*-------------------------------------ERROR PROVIDER----------------------------------------------------------*/
+
+        #region - Error Provider - 
+
         private void TNameTextBox_Leave(object sender, EventArgs e)
         {
+            
             if (string.IsNullOrEmpty(TNameTextBox.Text))
             {
                 errorProvider.SetError(TNameTextBox, "Please enter your transport name using only a-z letters");
@@ -206,35 +211,7 @@ namespace TravelingSuccessCalculationView.Controls
                 errorProvider.Clear();
             }
         }
-/*-------------------------------------TOOL TIP----------------------------------------------------------------*/
-        private void TNameTextBox_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.Show("Enter a transport name using a-z letters", TNameTextBox);
-        }
 
-        private void WearRateTextBox_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.Show("Transport wear rate. Value have to vary from 0 to 1", WearRateTextBox);
-        }
-
-        private void FuelWasteTextBox_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.Show("Transport fuel waste. Value have to vary from 5 to 30", FuelWasteTextBox);
-        }
-
-        private void SpeedTextBox_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.Show("Speed value. Value have to vary from 1 to 180", SpeedTextBox);
-        }
-
-        private void TankVolumeTextBox_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.Show("Transport tank volume. Value have to vary from 20 to 100", TankVolumeTextBox);
-        }
-
-        private void FuelTypeComboBox_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.Show("Transport fuel type", FuelTypeComboBox);
-        }
+        #endregion - Error Provider - 
     }
 }

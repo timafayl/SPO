@@ -66,7 +66,7 @@ namespace TravelingSuccessCalculationView
             this.DistanceLabel = new System.Windows.Forms.Label();
             this.DistanceTextBox = new System.Windows.Forms.MaskedTextBox();
             this.IsCanPassDistanceButton = new System.Windows.Forms.Button();
-            this.TransportControl = new TransportControl();
+            this.TransportControl = new TravelingSuccessCalculationView.Controls.TransportControl();
             this.TransportListGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TransportListGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTransportBindingSource)).BeginInit();
@@ -393,7 +393,6 @@ namespace TravelingSuccessCalculationView
             this.TransportControl.ReadOnly = false;
             this.TransportControl.Size = new System.Drawing.Size(258, 186);
             this.TransportControl.TabIndex = 0;
-            this.TransportControl.Transport = null;
             this.TransportControl.TransportType = -1;
             // 
             // TransportListForm

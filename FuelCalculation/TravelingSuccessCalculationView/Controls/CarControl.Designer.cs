@@ -57,8 +57,8 @@
             this.FuelTypeComboBox.Name = "FuelTypeComboBox";
             this.FuelTypeComboBox.Size = new System.Drawing.Size(122, 21);
             this.FuelTypeComboBox.TabIndex = 60;
+            this.toolTip.SetToolTip(this.FuelTypeComboBox, "Transport fuel type");
             this.FuelTypeComboBox.Leave += new System.EventHandler(this.FuelTypeComboBox_Leave);
-            this.FuelTypeComboBox.MouseHover += new System.EventHandler(this.FuelTypeComboBox_MouseHover);
             // 
             // TankVolumeTextBox
             // 
@@ -66,8 +66,8 @@
             this.TankVolumeTextBox.Name = "TankVolumeTextBox";
             this.TankVolumeTextBox.Size = new System.Drawing.Size(61, 20);
             this.TankVolumeTextBox.TabIndex = 56;
+            this.toolTip.SetToolTip(this.TankVolumeTextBox, "Transport tank volume. Value have to vary from 20 to 100");
             this.TankVolumeTextBox.Leave += new System.EventHandler(this.TankVolumeTextBox_Leave);
-            this.TankVolumeTextBox.MouseHover += new System.EventHandler(this.TankVolumeTextBox_MouseHover);
             // 
             // SpeedTextBox
             // 
@@ -75,8 +75,8 @@
             this.SpeedTextBox.Name = "SpeedTextBox";
             this.SpeedTextBox.Size = new System.Drawing.Size(61, 20);
             this.SpeedTextBox.TabIndex = 54;
+            this.toolTip.SetToolTip(this.SpeedTextBox, "Speed value. Value have to vary from 1 to 180");
             this.SpeedTextBox.Leave += new System.EventHandler(this.SpeedTextBox_Leave);
-            this.SpeedTextBox.MouseHover += new System.EventHandler(this.SpeedTextBox_MouseHover);
             // 
             // FuelWasteTextBox
             // 
@@ -84,8 +84,8 @@
             this.FuelWasteTextBox.Name = "FuelWasteTextBox";
             this.FuelWasteTextBox.Size = new System.Drawing.Size(61, 20);
             this.FuelWasteTextBox.TabIndex = 52;
+            this.toolTip.SetToolTip(this.FuelWasteTextBox, "Transport fuel waste. Value have to vary from 5 to 30");
             this.FuelWasteTextBox.Leave += new System.EventHandler(this.FuelWasteTextBox_Leave);
-            this.FuelWasteTextBox.MouseHover += new System.EventHandler(this.FuelWasteTextBox_MouseHover);
             // 
             // WearRateTextBox
             // 
@@ -93,8 +93,8 @@
             this.WearRateTextBox.Name = "WearRateTextBox";
             this.WearRateTextBox.Size = new System.Drawing.Size(61, 20);
             this.WearRateTextBox.TabIndex = 50;
+            this.toolTip.SetToolTip(this.WearRateTextBox, "Transport wear rate. Value have to vary from 0 to 1");
             this.WearRateTextBox.Leave += new System.EventHandler(this.WearRateTextBox_Leave);
-            this.WearRateTextBox.MouseHover += new System.EventHandler(this.WearRateTextBox_MouseHover);
             // 
             // TNameTextBox
             // 
@@ -102,8 +102,8 @@
             this.TNameTextBox.Name = "TNameTextBox";
             this.TNameTextBox.Size = new System.Drawing.Size(122, 20);
             this.TNameTextBox.TabIndex = 48;
+            this.toolTip.SetToolTip(this.TNameTextBox, "Enter a transport name using a-z letters");
             this.TNameTextBox.Leave += new System.EventHandler(this.TNameTextBox_Leave);
-            this.TNameTextBox.MouseHover += new System.EventHandler(this.TNameTextBox_MouseHover);
             // 
             // FuelTypeLabel
             // 

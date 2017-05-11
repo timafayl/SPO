@@ -37,7 +37,7 @@ namespace TravelingSuccessCalculationView
             this.CancelButton = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.TransportControl = new TransportControl();
+            this.TransportControl = new TravelingSuccessCalculationView.Controls.TransportControl();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,7 +82,7 @@ namespace TravelingSuccessCalculationView
             this.TransportControl.ReadOnly = false;
             this.TransportControl.Size = new System.Drawing.Size(257, 184);
             this.TransportControl.TabIndex = 13;
-            this.TransportControl.Transport = null;
+            this.TransportControl.TransportType = -1;
             // 
             // AddNewTransportForm
             // 

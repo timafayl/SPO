@@ -53,7 +53,7 @@ namespace TravelingSuccessCalculationView
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 _filePath = ofd.FileName;
-                Serialization.Deserialize(ref _transportList, _filePath);
+                Serializer.Deserialize(ref _transportList, _filePath);
                 iTransportBindingSource.DataSource = _transportList;
                 _projectSavedChanges = true;
                 PointFixer(_projectSavedChanges);
@@ -66,7 +66,7 @@ namespace TravelingSuccessCalculationView
         {
             if (_filePath != null)
             {
-                Serialization.Serialize(_transportList, _filePath);
+                Serializer.Serialize(_transportList, _filePath);
             }
             else
             {
@@ -139,7 +139,7 @@ namespace TravelingSuccessCalculationView
                 {
                     if (_filePath != null)
                     {
-                        Serialization.Serialize(_transportList, _filePath);
+                        Serializer.Serialize(_transportList, _filePath);
                     }
                     else
                     {
@@ -159,7 +159,7 @@ namespace TravelingSuccessCalculationView
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 _filePath = sfd.FileName;
-                Serialization.Serialize(_transportList, _filePath);
+                Serializer.Serialize(_transportList, _filePath);
                 _projectSavedChanges = true;
                 PointFixer(_projectSavedChanges);
                 LoadRecentFiles(_filePath);
@@ -360,7 +360,7 @@ namespace TravelingSuccessCalculationView
             var stripItem = (ToolStripDropDownItem)sender;
             var index = recentFilesMenuItem.DropDownItems.IndexOf(stripItem);
             _filePath = _recentFiles.GetRecentFilesList()[index];
-            Serialization.Deserialize(ref _transportList, _filePath);
+            Serializer.Deserialize(ref _transportList, _filePath);
             iTransportBindingSource.DataSource = _transportList;
             _projectSavedChanges = true;
             PointFixer(_projectSavedChanges);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using FuelCalculation;
 
@@ -30,6 +31,7 @@ namespace TravelingSuccessCalculationView.Controls
         /// <summary>
         /// Аксессор, для получения передаваемого объекта.
         /// </summary>
+        [DefaultValue(null)]
         public Helicopter Helicopter
         {
             set
@@ -49,7 +51,8 @@ namespace TravelingSuccessCalculationView.Controls
             get
             {
                 if (TNameTextBox.Text != "" && WearRateTextBox.Text != "" && FuelWasteTextBox.Text != "" &&
-                    SpeedTextBox.Text != "" && TankVolumeTextBox.Text != "" && MassTextBox.Text != "") {
+                    SpeedTextBox.Text != "" && TankVolumeTextBox.Text != "" && MassTextBox.Text != "")
+                {
                     _helicopter.TransportName = TNameTextBox.Text;
                     _helicopter.WearRate = ConvertToDouble(WearRateTextBox.Text, "WearRate");
                     _helicopter.FuelWaste = ConvertToDouble(FuelWasteTextBox.Text, "FuelWaste");
@@ -105,11 +108,13 @@ namespace TravelingSuccessCalculationView.Controls
         /// <summary>
         ///  Метод, указывающий на то, пустые ли поля на форме при добавлении объекта, или же нет.
         /// </summary>
-        public bool IsHelicopterFieldEmpty => 
-            (TNameTextBox.Text == string.Empty || WearRateTextBox.Text == string.Empty ||
-             FuelWasteTextBox.Text == string.Empty || SpeedTextBox.Text == string.Empty ||
-             TankVolumeTextBox.Text == string.Empty || MassTextBox.Text == string.Empty);
-        /*-------------------------------------ERROR PROVIDER----------------------------------------------------------*/
+        public bool IsHelicopterFieldEmpty =>
+        (TNameTextBox.Text == string.Empty || WearRateTextBox.Text == string.Empty ||
+         FuelWasteTextBox.Text == string.Empty || SpeedTextBox.Text == string.Empty ||
+         TankVolumeTextBox.Text == string.Empty || MassTextBox.Text == string.Empty);
+
+        #region  - Error Provider -
+
         private void TNameTextBox_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(TNameTextBox.Text))
@@ -178,7 +183,8 @@ namespace TravelingSuccessCalculationView.Controls
         {
             if (string.IsNullOrEmpty(TankVolumeTextBox.Text))
             {
-                errorProvider.SetError(TankVolumeTextBox, "Please enter transport tank volume. Value have to vary from 50 to 200");
+                errorProvider.SetError(TankVolumeTextBox,
+                    "Please enter transport tank volume. Value have to vary from 50 to 200");
             }
             else
             {
@@ -205,35 +211,7 @@ namespace TravelingSuccessCalculationView.Controls
                 errorProvider.Clear();
             }
         }
-        /*-----------------------------------------TOOL TIP-------------------------------------------------------------*/
-        private void TNameTextBox_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.Show("Enter a transport name using a-z letters", TNameTextBox);
-        }
 
-        private void WearRateTextBox_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.Show("Transport wear rate. Value have to vary from 0 to 1", WearRateTextBox);
-        }
-
-        private void FuelWasteTextBox_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.Show("Transport fuel waste. Value have to vary from 20 to 50 (l/h)", FuelWasteTextBox);
-        }
-
-        private void SpeedTextBox_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.Show("Speed value. Value have to vary from 1 to 400", SpeedTextBox);
-        }
-
-        private void TankVolumeTextBox_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.Show("Transport tank volume. Value have to vary from 50 to 200", TankVolumeTextBox);
-        }
-
-        private void MassTextBox_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.Show("Введите массу перевозимого груза (1-1000 кг)", MassTextBox);
-        }
+        #endregion
     }
 }
