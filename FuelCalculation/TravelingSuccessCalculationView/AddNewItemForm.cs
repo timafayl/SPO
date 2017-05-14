@@ -12,17 +12,19 @@ namespace TravelingSuccessCalculationView
         {
             InitializeComponent();
         }
-        /*-------------------------------------------BUTTONS----------------------------------------------------------------*/
+
+        #region - Buttons -
+
         private void OKButton_Click(object sender, EventArgs e)
         {
             if (TransportControl.IsFieldEmpty)
             {
                 MessageBox.Show("All fields have to be filled", "ArgumentErrorMessage", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBoxIcon.Error);
                 return;
             }
 
-            
+
             try
             {
                 var transport = Transport;
@@ -65,5 +67,7 @@ namespace TravelingSuccessCalculationView
                 }
             }
         }
+
+        #endregion
     }
 }
