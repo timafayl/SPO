@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace TravelingSuccessCalculationView
 {
-    partial class AboutBox : Form
+    partial class AboutProgram : Form
     {
-        public AboutBox()
+        public AboutProgram()
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);

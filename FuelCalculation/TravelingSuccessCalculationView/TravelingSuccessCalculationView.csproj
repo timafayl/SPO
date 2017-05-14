@@ -66,11 +66,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox.cs">
+    <Compile Include="AboutProgram.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutBox.Designer.cs">
-      <DependentUpon>AboutBox.cs</DependentUpon>
+    <Compile Include="AboutProgram.Designer.cs">
+      <DependentUpon>AboutProgram.cs</DependentUpon>
     </Compile>
     <Compile Include="AddNewItemForm.cs">
       <SubType>Form</SubType>
@@ -90,7 +90,6 @@
     <Compile Include="Controls\HelicopterControl.Designer.cs">
       <DependentUpon>HelicopterControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="FilePath.cs" />
     <Compile Include="RandomTransportGenerator.cs" />
     <Compile Include="RecentFiles.cs" />
     <Compile Include="Serializer.cs" />
@@ -109,8 +108,8 @@
       <DependentUpon>TransportControl.cs</DependentUpon>
     </Compile>
     <Compile Include="TransportNames.cs" />
-    <EmbeddedResource Include="AboutBox.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
+    <EmbeddedResource Include="AboutProgram.resx">
+      <DependentUpon>AboutProgram.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddNewItemForm.resx">
       <DependentUpon>AddNewItemForm.cs</DependentUpon>

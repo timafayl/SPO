@@ -124,7 +124,7 @@ namespace TravelingSuccessCalculationView
 
         private void aboutMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new AboutBox();
+            var frm = new AboutProgram();
             frm.ShowDialog();
         }
 
