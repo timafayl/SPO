@@ -8,12 +8,16 @@ namespace TravelingSuccessCalculationView
 {
     public partial class TransportListForm : Form
     {
+        #region - Private fields - 
+
         private string _filePath;
         private bool _projectSavedChanges;
         private bool _afterSearchChanges;
         private List<ITransport> _transportList;
         private List<ITransport> _searchedTransportList;
         private RecentFiles _recentFiles;
+
+        #endregion
 
         public TransportListForm()
         {
@@ -32,13 +36,15 @@ namespace TravelingSuccessCalculationView
             TransportListGridView.ClearSelection();
         }
 
+        #region - Menu Items -
+
         private void CreateMenuItem_Click(object sender, EventArgs e)
         {
             CheckChanges();
 
             _filePath = null;
             _projectSavedChanges = true;
-            PointFixer(_projectSavedChanges);
+            FormNameChanger(_projectSavedChanges);
             _transportList = new List<ITransport>();
             iTransportBindingSource.DataSource = _transportList;
         }
@@ -56,7 +62,7 @@ namespace TravelingSuccessCalculationView
                 Serializer.Deserialize(ref _transportList, _filePath);
                 iTransportBindingSource.DataSource = _transportList;
                 _projectSavedChanges = true;
-                PointFixer(_projectSavedChanges);
+                FormNameChanger(_projectSavedChanges);
                 LoadRecentFiles(_filePath);
                 TransportListGridView.ClearSelection();
             }
@@ -73,7 +79,7 @@ namespace TravelingSuccessCalculationView
                 SaveAs();
             }
             _projectSavedChanges = true;
-            PointFixer(_projectSavedChanges);
+            FormNameChanger(_projectSavedChanges);
         }
 
         private void SaveAsMenuItem_Click(object sender, EventArgs e)
@@ -116,19 +122,21 @@ namespace TravelingSuccessCalculationView
             Close();
         }
 
-        private void TransportListView_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            _recentFiles.RecentFilesSerialize();
-            CheckChanges();
-        }
-
         private void aboutMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new AboutBox();
             frm.ShowDialog();
         }
 
-        /*----------------------------------------------------------GENERAL METHODS-------------------------------------------------------------------------*/
+        private void TransportListView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _recentFiles.RecentFilesSerialize();
+            CheckChanges();
+        }
+
+        #endregion
+
+        #region - Main Methods - 
 
         private void CheckChanges()
         {
@@ -161,7 +169,7 @@ namespace TravelingSuccessCalculationView
                 _filePath = sfd.FileName;
                 Serializer.Serialize(_transportList, _filePath);
                 _projectSavedChanges = true;
-                PointFixer(_projectSavedChanges);
+                FormNameChanger(_projectSavedChanges);
                 LoadRecentFiles(_filePath);
             }
         }
@@ -174,7 +182,7 @@ namespace TravelingSuccessCalculationView
                 var transport = frm.Transport;
                 iTransportBindingSource.Add(transport);
                 _projectSavedChanges = false;
-                PointFixer(_projectSavedChanges);
+                FormNameChanger(_projectSavedChanges);
             }
         }
 
@@ -204,7 +212,7 @@ namespace TravelingSuccessCalculationView
                     _transportList.RemoveAt(index);
                     _transportList.Insert(index, transport);
                 }
-                PointFixer(_projectSavedChanges);
+                FormNameChanger(_projectSavedChanges);
                 _projectSavedChanges = false;
             }
         }
@@ -233,12 +241,14 @@ namespace TravelingSuccessCalculationView
                         _transportList.RemoveAt(index);
                     }
                     _projectSavedChanges = false;
-                    PointFixer(_projectSavedChanges);
+                    FormNameChanger(_projectSavedChanges);
                 }
             }
         }
 
-        /*-----------------------------------------------------------------------GELEGATES------------------------------------------------------------------*/
+        #endregion
+
+        #region - Search -  
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
@@ -313,17 +323,19 @@ namespace TravelingSuccessCalculationView
             }
         }
 
-        private void PointFixer(bool projectSavedChanges)
+        #endregion
+
+        private void FormNameChanger(bool projectSavedChanges)
         {
             if (_filePath != null)
             {
                 if (!projectSavedChanges)
                 {
-                    this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + "* - Transport Form";
+                    this.Text = Path.GetFileName(_filePath) + "* - Transport Form";
                 }
                 else
                 {
-                    this.Text = _filePath.Substring(_filePath.LastIndexOf("\\") + 1) + " - Transport Form";
+                    this.Text = Path.GetFileName(_filePath) + " - Transport Form";
                 }
             }
             else
@@ -331,6 +343,8 @@ namespace TravelingSuccessCalculationView
                 this.Text = "Transport Form";
             }
         }
+
+        #region - Recent Files -
 
         private void LoadRecentFiles(string filePath)
         {
@@ -363,9 +377,13 @@ namespace TravelingSuccessCalculationView
             Serializer.Deserialize(ref _transportList, _filePath);
             iTransportBindingSource.DataSource = _transportList;
             _projectSavedChanges = true;
-            PointFixer(_projectSavedChanges);
+            FormNameChanger(_projectSavedChanges);
             LoadRecentFiles(_filePath);
         }
+
+        #endregion
+
+        #region - IsCanPassDistance -
 
         private void TransportListGridView_MouseClick(object sender, MouseEventArgs e)
         {
@@ -386,6 +404,8 @@ namespace TravelingSuccessCalculationView
                 MessageBox.Show("It is impossible to pass this distance using chisen transport!");
             }
         }
+
+        #endregion
     }
 }
 
