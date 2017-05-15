@@ -1,12 +1,24 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Windows.Forms;
 using FuelCalculation;
+
+#endregion
 
 namespace TravelingSuccessCalculationView
 {
     public partial class AddNewTransportForm : Form
     {
-        public ITransport Transport { get { return TransportControl.Transport; } set { TransportControl.Transport = value; } }
+        #region - Properties -
+
+        public ITransport Transport
+        {
+            get { return TransportControl.Transport; }
+            set { TransportControl.Transport = value; }
+        }
+
+        #endregion
 
         public AddNewTransportForm()
         {

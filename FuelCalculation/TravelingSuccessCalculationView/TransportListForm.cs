@@ -18,8 +18,9 @@ namespace TravelingSuccessCalculationView
         private RecentFiles _recentFiles;
 
         #endregion
-
-        public TransportListForm()
+        //TODO разбить все классы по регионам и отсортировать по типу полей
+        //TODO добаить класс OpenFile
+        public TransportListForm(string[] arguments)
         {
             InitializeComponent();
             _filePath = null;
@@ -41,10 +42,9 @@ namespace TravelingSuccessCalculationView
         private void CreateMenuItem_Click(object sender, EventArgs e)
         {
             CheckChanges();
-
             _filePath = null;
             _projectSavedChanges = true;
-            FormNameChanger(_projectSavedChanges);
+            FormNameChanging(_projectSavedChanges);
             _transportList = new List<ITransport>();
             iTransportBindingSource.DataSource = _transportList;
         }
@@ -62,7 +62,7 @@ namespace TravelingSuccessCalculationView
                 Serializer.Deserialize(ref _transportList, _filePath);
                 iTransportBindingSource.DataSource = _transportList;
                 _projectSavedChanges = true;
-                FormNameChanger(_projectSavedChanges);
+                FormNameChanging(_projectSavedChanges);
                 LoadRecentFiles(_filePath);
                 TransportListGridView.ClearSelection();
             }
@@ -79,7 +79,7 @@ namespace TravelingSuccessCalculationView
                 SaveAs();
             }
             _projectSavedChanges = true;
-            FormNameChanger(_projectSavedChanges);
+            FormNameChanging(_projectSavedChanges);
         }
 
         private void SaveAsMenuItem_Click(object sender, EventArgs e)
@@ -169,7 +169,7 @@ namespace TravelingSuccessCalculationView
                 _filePath = sfd.FileName;
                 Serializer.Serialize(_transportList, _filePath);
                 _projectSavedChanges = true;
-                FormNameChanger(_projectSavedChanges);
+                FormNameChanging(_projectSavedChanges);
                 LoadRecentFiles(_filePath);
             }
         }
@@ -182,7 +182,7 @@ namespace TravelingSuccessCalculationView
                 var transport = frm.Transport;
                 iTransportBindingSource.Add(transport);
                 _projectSavedChanges = false;
-                FormNameChanger(_projectSavedChanges);
+                FormNameChanging(_projectSavedChanges);
             }
         }
 
@@ -212,7 +212,7 @@ namespace TravelingSuccessCalculationView
                     _transportList.RemoveAt(index);
                     _transportList.Insert(index, transport);
                 }
-                FormNameChanger(_projectSavedChanges);
+                FormNameChanging(_projectSavedChanges);
                 _projectSavedChanges = false;
             }
         }
@@ -241,7 +241,7 @@ namespace TravelingSuccessCalculationView
                         _transportList.RemoveAt(index);
                     }
                     _projectSavedChanges = false;
-                    FormNameChanger(_projectSavedChanges);
+                    FormNameChanging(_projectSavedChanges);
                 }
             }
         }
@@ -325,7 +325,7 @@ namespace TravelingSuccessCalculationView
 
         #endregion
 
-        private void FormNameChanger(bool projectSavedChanges)
+        private void FormNameChanging(bool projectSavedChanges)
         {
             if (_filePath != null)
             {
@@ -377,7 +377,7 @@ namespace TravelingSuccessCalculationView
             Serializer.Deserialize(ref _transportList, _filePath);
             iTransportBindingSource.DataSource = _transportList;
             _projectSavedChanges = true;
-            FormNameChanger(_projectSavedChanges);
+            FormNameChanging(_projectSavedChanges);
             LoadRecentFiles(_filePath);
         }
 
