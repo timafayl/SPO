@@ -11,10 +11,16 @@ namespace TravelingSuccessCalculationView
         [STAThread]
         static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            //String[] arguments = Environment.GetCommandLineArgs();
-            Application.Run(new TransportListForm(args));
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new TransportListForm(args));
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK);
+            }
         }
     }
 }

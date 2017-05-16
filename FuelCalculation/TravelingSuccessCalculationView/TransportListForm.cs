@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security;
 using System.Windows.Forms;
 
 namespace TravelingSuccessCalculationView
@@ -10,24 +11,50 @@ namespace TravelingSuccessCalculationView
     {
         #region - Private fields - 
 
+        /// <summary>
+        /// Путь к открытому файлу.
+        /// </summary>
         private string _filePath;
+
+        /// <summary>
+        /// Флаг, обозначающий были ли сделаны изменения в документе после сохранения.
+        /// </summary>
         private bool _projectSavedChanges;
+
+        /// <summary>
+        /// Флаг, обозначающий был ли произведен поиск на форме.
+        /// </summary>
         private bool _afterSearchChanges;
+
+        /// <summary>
+        /// Список с основной базой данных.
+        /// </summary>
         private List<ITransport> _transportList;
+
+        /// <summary>
+        /// Список, с базой данных, созданной после осуществления поиска.
+        /// </summary>
         private List<ITransport> _searchedTransportList;
         private RecentFiles _recentFiles;
 
         #endregion
-        //TODO разбить все классы по регионам и отсортировать по типу полей
-        //TODO добаить класс OpenFile
+        //TODO переделать сериализацию, использовать для RecentFiles путь AppData
         public TransportListForm(string[] arguments)
         {
             InitializeComponent();
-            _filePath = null;
+            _transportList = new List<ITransport>();
+            if (arguments.Length > 0)
+            {
+                MessageBox.Show(arguments[0], "Error", MessageBoxButtons.OK);
+                OpenFile(arguments[0]);
+            }
+            else
+            {
+                iTransportBindingSource.DataSource = _transportList;
+                _filePath = null;
+            }
             _projectSavedChanges = true;
             _afterSearchChanges = false;
-            _transportList = new List<ITransport>();
-            iTransportBindingSource.DataSource = _transportList;
             _recentFiles = new RecentFiles();
             _recentFiles.RecentFilesDeserialize();
             if (_recentFiles.GetRecentFilesList().Count > 0)
@@ -58,13 +85,7 @@ namespace TravelingSuccessCalculationView
             ofd.Title = @"Open file";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                _filePath = ofd.FileName;
-                Serializer.Deserialize(ref _transportList, _filePath);
-                iTransportBindingSource.DataSource = _transportList;
-                _projectSavedChanges = true;
-                FormNameChanging(_projectSavedChanges);
-                LoadRecentFiles(_filePath);
-                TransportListGridView.ClearSelection();
+                OpenFile(ofd.FileName);
             }
         }
 
@@ -184,6 +205,37 @@ namespace TravelingSuccessCalculationView
                 _projectSavedChanges = false;
                 FormNameChanging(_projectSavedChanges);
             }
+        }
+
+        private void OpenFile(string filepath)
+        {
+            try
+            {
+                Serializer.Deserialize(ref _transportList, filepath);
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("File do not found, please sure that file does exists", "Error", MessageBoxButtons.OK);
+                return;
+            }
+            catch (DirectoryNotFoundException)
+            {
+                MessageBox.Show("Directory do not found, please sure that folder does exists", "Error",
+                    MessageBoxButtons.OK);
+                return;
+            }
+            catch (SecurityException)
+            {
+                MessageBox.Show("You do not have an access to the file, please get an " +
+                    "administrate permission", "Error", MessageBoxButtons.OK);
+                return;
+            }
+            _filePath = filepath;
+            iTransportBindingSource.DataSource = _transportList;
+            _projectSavedChanges = true;
+            FormNameChanging(_projectSavedChanges);
+            LoadRecentFiles(_filePath);
+            TransportListGridView.ClearSelection();
         }
 
         private void ModifyItem()
