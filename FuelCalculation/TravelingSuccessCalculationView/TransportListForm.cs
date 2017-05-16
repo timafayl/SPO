@@ -35,6 +35,10 @@ namespace TravelingSuccessCalculationView
         /// Список, с базой данных, созданной после осуществления поиска.
         /// </summary>
         private List<ITransport> _searchedTransportList;
+
+        /// <summary>
+        /// Список, содержащий имена недавно открытых файлов.
+        /// </summary>
         private RecentFiles _recentFiles;
 
         #endregion
