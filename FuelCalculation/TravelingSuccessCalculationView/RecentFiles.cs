@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 #endregion
@@ -15,7 +16,15 @@ namespace TravelingSuccessCalculationView
 
         private List<string> _recentFiles = new List<string>();
 
+        private string _path = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "recentFiles.txt");
+
         #endregion
+
+        public List<string> GetRecentFilesList()
+        {
+            return _recentFiles.ToList();
+        }
 
         public void AddToRecentFiles(string filePath)
         {
@@ -30,19 +39,14 @@ namespace TravelingSuccessCalculationView
             }
         }
 
-        public List<string> GetRecentFilesList()
-        {
-            return _recentFiles.ToList();
-        }
-
         public void RecentFilesSerialize()
         {
-            Serializer.SerializeRecentFile(_recentFiles);
+            Serializer.Serialize(_recentFiles, _path);
         }
 
         public void RecentFilesDeserialize()
         {
-            _recentFiles = Serializer.DeserializeRecentFile();
+            Serializer.Deserialize(ref _recentFiles, _path);
         }
     }
 }

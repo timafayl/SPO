@@ -12,7 +12,7 @@ namespace TravelingSuccessCalculationView
         /// </summary>
         /// <param name="myList">Список объектов, который будет сериализован</param>
         /// <param name="filePath">Путь к файлу</param>
-        public static void Serialize(List<ITransport> myList, string filePath)
+        public static void Serialize<T>(List<T> myList, string filePath)
         {
             var formatter = new BinaryFormatter();
             using (var fs = new FileStream(filePath, FileMode.Create))
@@ -27,46 +27,15 @@ namespace TravelingSuccessCalculationView
         /// </summary>
         /// <param name="myList">Список, в который будут десериализованы данные из файла</param>
         /// <param name="filePath">Путь к сериализуемому файлу</param>
-        public static void Deserialize(ref List<ITransport> myList, string filePath)
+        public static void Deserialize<T>(ref List<T> myList, string filePath)
         {
             var formatter = new BinaryFormatter();
             using (var fs = new FileStream(filePath, FileMode.OpenOrCreate))
             {
                 if (fs.Length != 0)
                 {
-                    myList = (List<ITransport>) formatter.Deserialize(fs);
+                    myList = (List<T>) formatter.Deserialize(fs);
                 }
-            }
-        }
-
-        /// <summary>
-        /// Сериализует получаемый на вход список объектов.
-        /// </summary>
-        /// <param name="myList">Список объектов, который будет сериализован</param>
-        public static void SerializeRecentFile(List<string> myList)
-        {
-            var formatter = new BinaryFormatter();
-            using (var fs = new FileStream("recentFiles.txt", FileMode.Create))
-            {
-                formatter.Serialize(fs, myList);
-                fs.Close();
-            }
-        }
-
-        /// <summary>
-        /// Десериализует данные в получаемый на вход список.
-        /// </summary>
-        /// <param name="myList">Список, в который будут десериализованы данные из файла</param>
-        public static List<string> DeserializeRecentFile()
-        {
-            var formatter = new BinaryFormatter();
-            using (var fs = new FileStream("recentFiles.txt", FileMode.OpenOrCreate))
-            {
-                if (fs.Length != 0)
-                {
-                    return (List<string>) formatter.Deserialize(fs);
-                }
-                return new List<string>();
             }
         }
     }
