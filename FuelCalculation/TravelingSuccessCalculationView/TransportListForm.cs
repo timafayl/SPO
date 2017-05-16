@@ -42,7 +42,7 @@ namespace TravelingSuccessCalculationView
         private RecentFiles _recentFiles;
 
         #endregion
-        //TODO переделать сериализацию, использовать для RecentFiles путь AppData
+
         public TransportListForm(string[] arguments)
         {
             InitializeComponent();
