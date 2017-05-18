@@ -23,6 +23,9 @@ namespace TravelingSuccessCalculationView
         public AddNewTransportForm()
         {
             InitializeComponent();
+#if DEBUG
+            GenerateRandomValuesButton.Visible = true;
+#endif
         }
 
         #region - Buttons -
@@ -80,6 +83,6 @@ namespace TravelingSuccessCalculationView
             }
         }
 
-        #endregion
+#endregion
     }
 }
