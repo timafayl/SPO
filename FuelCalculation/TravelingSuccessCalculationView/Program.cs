@@ -17,9 +17,10 @@ namespace TravelingSuccessCalculationView
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new TransportListForm(args));
             }
-            catch (Exception exception)
+            catch (Exception)
             {
-                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show("В проргамме произошла непредвиденная ошибка. Программа требует " +
+                                "аварийного завершения. Извините за доставленные неудобства.", "Error", MessageBoxButtons.OK);
             }
         }
     }

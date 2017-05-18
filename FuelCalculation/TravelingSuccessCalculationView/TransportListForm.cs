@@ -47,9 +47,9 @@ namespace TravelingSuccessCalculationView
         {
             InitializeComponent();
             _transportList = new List<ITransport>();
+            _recentFiles = new RecentFiles();
             if (arguments.Length > 0)
             {
-                MessageBox.Show(arguments[0], "Error", MessageBoxButtons.OK);
                 OpenFile(arguments[0]);
             }
             else
@@ -59,7 +59,6 @@ namespace TravelingSuccessCalculationView
             }
             _projectSavedChanges = true;
             _afterSearchChanges = false;
-            _recentFiles = new RecentFiles();
             _recentFiles.RecentFilesDeserialize();
             if (_recentFiles.GetRecentFilesList().Count > 0)
             {
