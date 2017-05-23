@@ -190,11 +190,18 @@ namespace TravelingSuccessCalculationView
             sfd.FileName = "*.tnp";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-                _filePath = sfd.FileName;
-                Serializer.Serialize(_transportList, _filePath);
-                _projectSavedChanges = true;
-                FormNameChanging(_projectSavedChanges);
-                LoadRecentFiles(_filePath);
+                if (_transportList.Count > 0)
+                {
+                    _filePath = sfd.FileName;
+                    Serializer.Serialize(_transportList, _filePath);
+                    _projectSavedChanges = true;
+                    FormNameChanging(_projectSavedChanges);
+                    LoadRecentFiles(_filePath);
+                }
+                else
+                {
+                    MessageBox.Show("There is no any transport in your data base!", "Empty list", MessageBoxButtons.OK);
+                }
             }
         }
 
