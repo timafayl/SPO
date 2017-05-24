@@ -50,7 +50,7 @@ namespace FuelCalculation.Tests
         [Test]
         [TestCase(124, TestName = "Тестирование поля Helicopter.TankVolume со значением диапазона 20-100", ExpectedResult = 124)]
         [TestCase(300, TestName = "Тестирование поля Helicopter.TankVolume  со значением больше, чем заданный диапазон", ExpectedException = typeof(ArgumentException))]
-        [TestCase(49.5, TestName = "Тестирование Car.TankVolume со значением меньше, чем заданный диапазон", ExpectedException = typeof(ArgumentException))]
+        [TestCase(49.5, TestName = "Тестирование Helicopter.TankVolume со значением меньше, чем заданный диапазон", ExpectedException = typeof(ArgumentException))]
         public double TankVolumeTest(double tankVolume)
         {
             Helicopter transport = new Helicopter();
@@ -58,9 +58,9 @@ namespace FuelCalculation.Tests
         }
 
         [Test]
-        [TestCase(845, TestName = "Тестирование поля Helicopter.TankVolume со значением диапазона 20-100", ExpectedResult = 845)]
-        [TestCase(1001, TestName = "Тестирование поля Helicopter.TankVolume  со значением больше, чем заданный диапазон", ExpectedException = typeof(ArgumentException))]
-        [TestCase(0, TestName = "Тестирование Car.TankVolume со значением меньше, чем заданный диапазон", ExpectedException = typeof(ArgumentException))]
+        [TestCase(845, TestName = "Тестирование поля Helicopter.Mass со значением диапазона 20-100", ExpectedResult = 845)]
+        [TestCase(1001, TestName = "Тестирование поля Helicopter.Mass  со значением больше, чем заданный диапазон", ExpectedException = typeof(ArgumentException))]
+        [TestCase(0, TestName = "Тестирование Helicopter.Mass со значением меньше, чем заданный диапазон", ExpectedException = typeof(ArgumentException))]
         public double MassTest(double mass)
         {
             Helicopter transport = new Helicopter();
